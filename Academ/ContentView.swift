@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Academ
+//  Academ testing maybe
 //
-//  Created by T Krobot on 1/10/23.
+//  Created by yoeh iskandar on 9/10/23.
 //
 
 import SwiftUI
@@ -10,10 +10,30 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+
+//                .offset(x:-70, y:-10)
+            TabView{
+                ScheduleView()
+                    .tabItem {
+                        Label("Schedule", systemImage: "checklist")
+                            .ignoresSafeArea(.all)
+                            }
+                NotesView()
+                    .tabItem{
+                        Label("Notes", systemImage:"list.bullet.clipboard")
+                            .ignoresSafeArea(.all)
+                    }
+                TimerView()
+                    .tabItem{
+                        Label("Timer", systemImage: "timer.circle.fill")
+                            .ignoresSafeArea(.all)
+                    }
+                MarkCalculatorView()
+                    .tabItem{
+                        Label("Calculator", systemImage: "minus.diamond.fill")
+                            .ignoresSafeArea(.all)
+                    }
+            }
         }
         .padding()
     }
@@ -24,3 +44,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

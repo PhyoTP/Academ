@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893940862AD7ECF400891C2D /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940852AD7ECF400891C2D /* ScheduleView.swift */; };
+		893940882AD7ED0300891C2D /* NoteEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940872AD7ED0300891C2D /* NoteEdit.swift */; };
+		8939408A2AD7ED1E00891C2D /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940892AD7ED1E00891C2D /* NewNoteView.swift */; };
+		8939408C2AD7ED3100891C2D /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408B2AD7ED3100891C2D /* NotesView.swift */; };
+		8939408E2AD7ED4300891C2D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408D2AD7ED4300891C2D /* Note.swift */; };
+		893940902AD7ED5300891C2D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408F2AD7ED5300891C2D /* TimerView.swift */; };
+		893940922AD7ED6500891C2D /* MarkCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940912AD7ED6500891C2D /* MarkCalculatorView.swift */; };
 		D9D44DAF2AC97FA20093096A /* AcademApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D44DAE2AC97FA20093096A /* AcademApp.swift */; };
 		D9D44DB12AC97FA20093096A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D44DB02AC97FA20093096A /* ContentView.swift */; };
 		D9D44DB32AC97FA50093096A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D44DB22AC97FA50093096A /* Assets.xcassets */; };
@@ -34,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		893940852AD7ECF400891C2D /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		893940872AD7ED0300891C2D /* NoteEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEdit.swift; sourceTree = "<group>"; };
+		893940892AD7ED1E00891C2D /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
+		8939408B2AD7ED3100891C2D /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		8939408D2AD7ED4300891C2D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		8939408F2AD7ED5300891C2D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		893940912AD7ED6500891C2D /* MarkCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCalculatorView.swift; sourceTree = "<group>"; };
 		D9D44DAB2AC97FA20093096A /* Academ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Academ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D44DAE2AC97FA20093096A /* AcademApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademApp.swift; sourceTree = "<group>"; };
 		D9D44DB02AC97FA20093096A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +111,13 @@
 			children = (
 				D9D44DAE2AC97FA20093096A /* AcademApp.swift */,
 				D9D44DB02AC97FA20093096A /* ContentView.swift */,
+				893940852AD7ECF400891C2D /* ScheduleView.swift */,
+				893940872AD7ED0300891C2D /* NoteEdit.swift */,
+				893940892AD7ED1E00891C2D /* NewNoteView.swift */,
+				8939408B2AD7ED3100891C2D /* NotesView.swift */,
+				8939408D2AD7ED4300891C2D /* Note.swift */,
+				8939408F2AD7ED5300891C2D /* TimerView.swift */,
+				893940912AD7ED6500891C2D /* MarkCalculatorView.swift */,
 				D9D44DB22AC97FA50093096A /* Assets.xcassets */,
 				D9D44DB72AC97FA50093096A /* Academ.entitlements */,
 				D9D44DB42AC97FA50093096A /* Preview Content */,
@@ -260,7 +281,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D44DB12AC97FA20093096A /* ContentView.swift in Sources */,
+				893940882AD7ED0300891C2D /* NoteEdit.swift in Sources */,
+				8939408E2AD7ED4300891C2D /* Note.swift in Sources */,
+				8939408C2AD7ED3100891C2D /* NotesView.swift in Sources */,
 				D9D44DAF2AC97FA20093096A /* AcademApp.swift in Sources */,
+				8939408A2AD7ED1E00891C2D /* NewNoteView.swift in Sources */,
+				893940902AD7ED5300891C2D /* TimerView.swift in Sources */,
+				893940862AD7ECF400891C2D /* ScheduleView.swift in Sources */,
+				893940922AD7ED6500891C2D /* MarkCalculatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
