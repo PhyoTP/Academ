@@ -19,3 +19,4 @@ struct MarkCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         MarkCalculatorView()
     }
+}
