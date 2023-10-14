@@ -10,7 +10,7 @@ import SwiftUI
 struct TimerView: View {
     var body: some View {
         VStack{
-            Text("Schedule")
+            Text("Timer")
         }
     }
 }
