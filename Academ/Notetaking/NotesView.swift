@@ -18,34 +18,29 @@ struct NotesView: View {
                                 Text(note.title)
                                     .bold()
                                 Text(formatDate(date: note.date))
-                                    foregroundColor(.gray)
+                                    .foregroundColor(.gray)
                                 
                             }
                             Text(note.emoji)
                         }
+                        
                     }
                 }
+                .navigationTitle("Notes")
                 
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-            }
-
-        }
-        .navigationTitle("Notes")
-        .navigationBarItems(
-            trailing: Button(action: {}, label: {
-                NavigationLink(destination: NewNoteView( sourceArray: $notes)) {
-                    Image(systemName:("plus"))
+                ToolbarItem(placement: .navigationBarTrailing){
+                    NavigationLink(destination: NewNoteView( sourceArray: $notes)) {
+                        Image(systemName:("plus"))
+                    }
                 }
-            }))
-        
+            }
+        }
     }
-    
-    
-    
 }
 
 func formatDate(date: Date) -> String {
