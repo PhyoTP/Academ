@@ -18,11 +18,11 @@ struct ContentView: View {
                         Label("Schedule", systemImage: "checklist")
                             .ignoresSafeArea(.all)
                             }
-                NotesView()
-                    .tabItem{
-                        Label("Notes", systemImage:"list.bullet.clipboard")
-                            .ignoresSafeArea(.all)
-                    }
+//                NotesView()
+//                    .tabItem{
+//                        Label("Notes", systemImage:"list.bullet.clipboard")
+//                            .ignoresSafeArea(.all)
+//                    }
                 TimerView()
                     .tabItem{
                         Label("Timer", systemImage: "timer.circle.fill")
@@ -35,7 +35,7 @@ struct ContentView: View {
                     }
             }
         }
-        .padding()
+        
     }
 }
 
