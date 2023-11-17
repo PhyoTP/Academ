@@ -12,7 +12,7 @@
 		8939408A2AD7ED1E00891C2D /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940892AD7ED1E00891C2D /* NewNoteView.swift */; };
 		8939408C2AD7ED3100891C2D /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408B2AD7ED3100891C2D /* NotesView.swift */; };
 		8939408E2AD7ED4300891C2D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408D2AD7ED4300891C2D /* Note.swift */; };
-		893940902AD7ED5300891C2D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408F2AD7ED5300891C2D /* TimerView.swift */; };
+		893940902AD7ED5300891C2D /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8939408F2AD7ED5300891C2D /* Dashboard.swift */; };
 		893940922AD7ED6500891C2D /* MarkCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893940912AD7ED6500891C2D /* MarkCalculatorView.swift */; };
 		D9D44DAF2AC97FA20093096A /* AcademApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D44DAE2AC97FA20093096A /* AcademApp.swift */; };
 		D9D44DB12AC97FA20093096A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D44DB02AC97FA20093096A /* ContentView.swift */; };
@@ -46,7 +46,7 @@
 		893940892AD7ED1E00891C2D /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
 		8939408B2AD7ED3100891C2D /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		8939408D2AD7ED4300891C2D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		8939408F2AD7ED5300891C2D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		8939408F2AD7ED5300891C2D /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		893940912AD7ED6500891C2D /* MarkCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCalculatorView.swift; sourceTree = "<group>"; };
 		D9D44DAB2AC97FA20093096A /* Academ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Academ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D44DAE2AC97FA20093096A /* AcademApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademApp.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 				D9D44DB02AC97FA20093096A /* ContentView.swift */,
 				893940852AD7ECF400891C2D /* ScheduleView.swift */,
 				D9357F442ADA5CB700F67D1E /* Notetaking */,
-				8939408F2AD7ED5300891C2D /* TimerView.swift */,
+				8939408F2AD7ED5300891C2D /* Dashboard.swift */,
 				893940912AD7ED6500891C2D /* MarkCalculatorView.swift */,
 				D9D44DB22AC97FA50093096A /* Assets.xcassets */,
 				D9D44DB72AC97FA50093096A /* Academ.entitlements */,
@@ -294,7 +294,7 @@
 				8939408C2AD7ED3100891C2D /* NotesView.swift in Sources */,
 				D9D44DAF2AC97FA20093096A /* AcademApp.swift in Sources */,
 				8939408A2AD7ED1E00891C2D /* NewNoteView.swift in Sources */,
-				893940902AD7ED5300891C2D /* TimerView.swift in Sources */,
+				893940902AD7ED5300891C2D /* Dashboard.swift in Sources */,
 				893940862AD7ECF400891C2D /* ScheduleView.swift in Sources */,
 				893940922AD7ED6500891C2D /* MarkCalculatorView.swift in Sources */,
 			);

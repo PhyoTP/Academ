@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimerView: View {
+struct Dashboard: View {
     var body: some View {
         VStack{
             Text("Timer")
@@ -29,6 +29,6 @@ struct TimerView: View {
 }
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView()
+        Dashboard()
     }
 }

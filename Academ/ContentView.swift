@@ -19,7 +19,7 @@ struct ContentView: View {
                         Label("Subjects", systemImage: "book.pages")
                             .ignoresSafeArea(.all)
                     }
-                TimerView()
+                Dashboard()
                     .tabItem{
                         Label("Dashboard", systemImage: "timer.circle.fill")
                             .ignoresSafeArea(.all)
