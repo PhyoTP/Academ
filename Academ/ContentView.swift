@@ -12,10 +12,21 @@ struct ContentView: View {
         VStack {
 
 //                .offset(x:-70, y:-10)
+            
             TabView{
+                MarkCalculatorView()
+                    .tabItem{
+                        Label("Subjects", systemImage: "book.pages")
+                            .ignoresSafeArea(.all)
+                    }
+                TimerView()
+                    .tabItem{
+                        Label("Dashboard", systemImage: "timer.circle.fill")
+                            .ignoresSafeArea(.all)
+                    }
                 ScheduleView()
                     .tabItem {
-                        Label("Schedule", systemImage: "checklist")
+                        Label("Reminders", systemImage: "bell.fill")
                             .ignoresSafeArea(.all)
                             }
 //                NotesView()
@@ -23,16 +34,8 @@ struct ContentView: View {
 //                        Label("Notes", systemImage:"list.bullet.clipboard")
 //                            .ignoresSafeArea(.all)
 //                    }
-                TimerView()
-                    .tabItem{
-                        Label("Timer", systemImage: "timer.circle.fill")
-                            .ignoresSafeArea(.all)
-                    }
-                MarkCalculatorView()
-                    .tabItem{
-                        Label("Calculator", systemImage: "minus.diamond.fill")
-                            .ignoresSafeArea(.all)
-                    }
+
+
             }
         }
         
