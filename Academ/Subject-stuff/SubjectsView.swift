@@ -29,8 +29,8 @@ struct SubjectsView: View {
             }
             }
         }
-    }
-}
+    
+
 
 
 
