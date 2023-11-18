@@ -10,32 +10,26 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-
-//                .offset(x:-70, y:-10)
+            
+            //                .offset(x:-70, y:-10)
             
             TabView{
-                MarkCalculatorView()
+                SubjectsView()
                     .tabItem{
                         Label("Subjects", systemImage: "book.pages")
                             .ignoresSafeArea(.all)
                     }
-                Dashboard()
+                DashboardView()
                     .tabItem{
                         Label("Dashboard", systemImage: "timer.circle.fill")
                             .ignoresSafeArea(.all)
                     }
-                ScheduleView()
+                SettingsView()
                     .tabItem {
                         Label("Reminders", systemImage: "bell.fill")
                             .ignoresSafeArea(.all)
-                            }
-//                NotesView()
-//                    .tabItem{
-//                        Label("Notes", systemImage:"list.bullet.clipboard")
-//                            .ignoresSafeArea(.all)
-//                    }
-
-
+                    }
+                
             }
         }
         
