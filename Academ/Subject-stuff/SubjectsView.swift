@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct SubjectsView: View {
+    @ObservedObject var subjectmanager: SubjectManager
+    
     var body: some View {
         NavigationStack {
-            VStack{
-                
+            //List($SubjectManager.todos, editActions: [.all]) { $subject in
+            //    TodoRowView(todo: $todo)
+           
             }
             .navigationTitle("Subjects")
             .toolbar {
@@ -28,10 +31,10 @@ struct SubjectsView: View {
             }
         }
     }
-}
+
 
 struct SubjectsView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectsView()
+        SubjectsView(subjectmanager: SubjectManager())
     }
 }
