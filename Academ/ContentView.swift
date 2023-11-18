@@ -16,17 +16,17 @@ struct ContentView: View {
             TabView{
                 SubjectsView()
                     .tabItem{
-                        Label("Subjects", systemImage: "book.pages")
+                        Label("Subjects", systemImage: "books.vertical")
                             .ignoresSafeArea(.all)
                     }
                 DashboardView()
                     .tabItem{
-                        Label("Dashboard", systemImage: "timer.circle.fill")
+                        Label("Dashboard", systemImage: "house")
                             .ignoresSafeArea(.all)
                     }
                 SettingsView()
                     .tabItem {
-                        Label("Reminders", systemImage: "bell.fill")
+                        Label("Settings", systemImage: "gear")
                             .ignoresSafeArea(.all)
                     }
                 
