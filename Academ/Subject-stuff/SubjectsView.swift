@@ -13,27 +13,27 @@ struct SubjectsView: View {
     var body: some View {
         NavigationStack {
             // There must be a list of subject values to display then the code below can be uncommented
-//            List($subjectmanager.subjects, editActions: [.all]) {
-//                $subject in
-//            }
+            //            List($subjectmanager.subjects, editActions: [.all]) {
+            //                $subject in
+            //            }
             
-//            .navigationTitle("Subjects")
-//            .toolbar {
-//                ToolbarItem{
-//                    Button{
-//
-//                    } label: {
-//                        Image(systemName: "plus")
-//                    }
-//                }
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    EditButton()
-//                }
-
-            }
-            }
+            //            .navigationTitle("Subjects")
+            //            .toolbar {
+            //                ToolbarItem{
+            //                    Button{
+            //
+            //                    } label: {
+            //                        Image(systemName: "plus")
+            //                    }
+            //                }
+            //                ToolbarItem(placement: .navigationBarLeading) {
+            //                    EditButton()
+            //                }
+            
         }
-    
+    }
+}
+
 
 
 
