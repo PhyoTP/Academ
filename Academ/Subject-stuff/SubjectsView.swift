@@ -12,22 +12,21 @@ struct SubjectsView: View {
     
     var body: some View {
         NavigationStack {
-            //List($SubjectManager.todos, editActions: [.all]) { $subject in
-            //    TodoRowView(todo: $todo)
-           
+            // There must be a list of subject values to display then the code can be uncommented
+//            .navigationTitle("Subjects")
+//            .toolbar {
+//                ToolbarItem{
+//                    Button{
+//
+//                    } label: {
+//                        Image(systemName: "plus")
+//                    }
+//                }
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    EditButton()
+//                }
+
             }
-            .navigationTitle("Subjects")
-            .toolbar {
-                ToolbarItem{
-                    Button{
-                        
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
             }
         }
     }
