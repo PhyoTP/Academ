@@ -13,6 +13,19 @@ struct SubjectsView: View {
             VStack{
                 
             }
+            .navigationTitle("Subjects")
+            .toolbar {
+                ToolbarItem{
+                    Button{
+                        
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+            }
         }
     }
 }
