@@ -86,6 +86,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89FD18E32B0871970054609D /* Subject-stuff */ = {
+			isa = PBXGroup;
+			children = (
+				D96546982B08476D00FEA173 /* SubjectsView.swift */,
+				89FD18E12B0871340054609D /* SubjectOverallview.swift */,
+				89FD18DF2B0871190054609D /* SubjectDetailView.swift */,
+				D96546A02B0870AE00FEA173 /* SubjectManager.swift */,
+			);
+			path = "Subject-stuff";
+			sourceTree = "<group>";
+		};
 		D9D44DA22AC97FA20093096A = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +125,7 @@
 				D9D44DB02AC97FA20093096A /* ContentView.swift */,
 				D965469A2B08478F00FEA173 /* SettingsView.swift */,
 				D965469C2B0847B900FEA173 /* DashboardView.swift */,
-				D96546982B08476D00FEA173 /* SubjectsView.swift */,
-				89FD18DF2B0871190054609D /* SubjectDetailView.swift */,
-				89FD18E12B0871340054609D /* SubjectOverallview.swift */,
-				D96546A02B0870AE00FEA173 /* SubjectManager.swift */,
+				89FD18E32B0871970054609D /* Subject-stuff */,
 				D9D44DB22AC97FA50093096A /* Assets.xcassets */,
 				D9D44DB72AC97FA50093096A /* Academ.entitlements */,
 				D9D44DB42AC97FA50093096A /* Preview Content */,
