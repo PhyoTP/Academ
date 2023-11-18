@@ -24,3 +24,4 @@ struct Subject: Identifiable{
     var name: String
     var assessments: [Assessment]
 }
+
