@@ -29,7 +29,9 @@ struct SubjectsView: View {
             }
             }
         }
-    
+    }
+}
+
 
 
 struct SubjectsView_Previews: PreviewProvider {
