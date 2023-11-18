@@ -12,7 +12,7 @@ struct SubjectsView: View {
     
     var body: some View {
         NavigationStack {
-            // There must be a list of subject values to display then the code can be uncommented
+            // There must be a list of subject values to display then the code below can be uncommented
 //            .navigationTitle("Subjects")
 //            .toolbar {
 //                ToolbarItem{
@@ -29,7 +29,7 @@ struct SubjectsView: View {
             }
             }
         }
-    }
+    
 
 
 struct SubjectsView_Previews: PreviewProvider {
