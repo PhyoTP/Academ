@@ -9,12 +9,14 @@ import SwiftUI
 
 struct SubjectsView: View {
     @EnvironmentObject var settings: SubjectManager
+    @State private var displaySheet = false
     var body: some View {
         NavigationStack{
             
             Form{
                 Section{
                     List($settings.subjects,editActions: .all){$subject in
+                            
                         NavigationLink{
                             SubjectDetailView(sub:$subject)
                         }label:{
@@ -30,11 +32,16 @@ struct SubjectsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button{
-                        
+                        displaySheet = true
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $displaySheet) {
+                Text("Test")
+                    .presentationDetents([.fraction(0.7)])
+                    .presentationDragIndicator(.visible)
             }
         }
     }
