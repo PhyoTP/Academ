@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct SubjectOverallview: View {
+    @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            VStack{
+                
+            }
+        }
     }
 }
 
 struct SubjectOverallview_Previews: PreviewProvider {
     static var previews: some View {
         SubjectOverallview()
+            .environmentObject(SubjectManager())
     }
 }
