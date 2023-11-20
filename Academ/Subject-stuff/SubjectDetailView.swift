@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SubjectDetailView: View {
     @Binding var sub: Subject
+    @State private var displaySheet = false
     var body: some View {
         
         NavigationStack {
@@ -20,6 +21,7 @@ struct SubjectDetailView: View {
                 Section(header: Text("Assessments")) {
                     Button {
                         print("swifso")
+                        displaySheet = true
                     } label: {
                         Text("+  Add an assessment")
                     }
