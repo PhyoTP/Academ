@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89564A8C2B0B013100BB0BA6 /* NewAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */; };
 		89FD18E02B0871190054609D /* SubjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD18DF2B0871190054609D /* SubjectDetailView.swift */; };
 		89FD18E22B0871340054609D /* SubjectOverallview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD18E12B0871340054609D /* SubjectOverallview.swift */; };
 		D96546992B08476D00FEA173 /* SubjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96546982B08476D00FEA173 /* SubjectsView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAssessmentView.swift; sourceTree = "<group>"; };
 		89FD18DF2B0871190054609D /* SubjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDetailView.swift; sourceTree = "<group>"; };
 		89FD18E12B0871340054609D /* SubjectOverallview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectOverallview.swift; sourceTree = "<group>"; };
 		D96546982B08476D00FEA173 /* SubjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				D96546982B08476D00FEA173 /* SubjectsView.swift */,
 				89FD18DF2B0871190054609D /* SubjectDetailView.swift */,
+				89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */,
 				89FD18E12B0871340054609D /* SubjectOverallview.swift */,
 				D96546A02B0870AE00FEA173 /* SubjectManager.swift */,
 			);
@@ -297,6 +300,7 @@
 				D96546A12B0870AE00FEA173 /* SubjectManager.swift in Sources */,
 				D965469B2B08478F00FEA173 /* SettingsView.swift in Sources */,
 				D96546992B08476D00FEA173 /* SubjectsView.swift in Sources */,
+				89564A8C2B0B013100BB0BA6 /* NewAssessmentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
