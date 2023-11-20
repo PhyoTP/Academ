@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SubjectSheets: View {
-    @EnvironmentObject var settings: SubjectManager
     @State private var placeholderText = ""
     var body: some View {
         NavigationStack {
@@ -17,15 +16,7 @@ struct SubjectSheets: View {
                     TextField("Subject", text:$placeholderText)
                 }
                 Section(header: Text("ASSESSMENTS")) {
-                    TextField("Subject", text:$placeholderText)
-//                    List($settings.subjects,editActions: .all){$subject in
-//
-//                        NavigationLink{
-//                            SubjectDetailView(sub:$subject)
-//                        }label:{
-//                            Text("subject.name")
-//                        }
-//                    }
+                    List()
                 }
                 Section() {
                     Button {
