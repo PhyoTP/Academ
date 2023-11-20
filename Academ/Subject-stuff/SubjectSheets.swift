@@ -16,7 +16,6 @@ struct SubjectSheets: View {
                     TextField("Subject", text:$placeholderText)
                 }
                 Section(header: Text("ASSESSMENTS")) {
-                    List()
                 }
                 Section() {
                     Button {
