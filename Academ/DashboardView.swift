@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
         NavigationStack{
             VStack{
@@ -21,5 +22,6 @@ struct DashboardView: View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
+            .environmentObject(SubjectManager())
     }
 }
