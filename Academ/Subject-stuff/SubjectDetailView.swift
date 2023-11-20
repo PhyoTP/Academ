@@ -16,9 +16,9 @@ struct SubjectDetailView: View {
                 
             }
         }
-        .navigationTitle("Subjects")
+        .navigationTitle($sub.name)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
         }
