@@ -23,12 +23,13 @@ struct Subject: Identifiable, Codable{
     var id = UUID()
     var name: String
     var assessments: [Assessment]
+    var credits: Int
 }
-enum GradeType{
-    case GPA, MSG, AL, ALf
+enum GradeTypes: String,CaseIterable{
+    case gpa, msg, al
 }
 struct GradeSystem{
-    var gradeType: GradeType
+    var gradeType: GradeTypes
     var grades: Grade
 }
 struct Grade{
@@ -37,4 +38,5 @@ struct Grade{
     var maxMark: Float
     var gradePoint: Float
 }
+
 
