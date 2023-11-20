@@ -16,6 +16,8 @@ struct NewAssessmentView: View {
     @State private var marksAttained = 0
     @State private var date = Date()
     @State private var reminder = false
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var subject: SubjectManager
     var body: some View {
         Form{
             Section("Assessment Info"){
@@ -33,10 +35,7 @@ struct NewAssessmentView: View {
                     TextField("Marks", value: $totalMarks, formatter: NumberFormatter())
                     
                 }
-                HStack{
-                    Text("Target marks:")
-                    TextField("Marks", value: $targetMarks, formatter: NumberFormatter())
-                }
+
                 HStack{
                     Text("Exam done?")
                     Toggle(isOn: $examDone){
@@ -50,6 +49,10 @@ struct NewAssessmentView: View {
                         TextField("Marks", value: $marksAttained, formatter: NumberFormatter())
                     }
                 } else{
+                    HStack{
+                        Text("Target marks:")
+                        TextField("Marks", value: $targetMarks, formatter: NumberFormatter())
+                    }
                     DatePicker(
                         "Start Date",
                         selection: $date,
@@ -63,8 +66,19 @@ struct NewAssessmentView: View {
                         
                     }
                 }
+//                Section {
+//                    Button("Save", role: .none) {
+//                        // code to save the assessment
+//                        let newAssessment = Subject(name: name, percentageValue: assessmentPercentage, totalMarks: totalMarks, )
+//                        $subject.assessments.append(newAssessment)
+//                        dismiss()
+//                    }
+//                    Button("Cancel", role: .destructive) {
+//                        // code to cancel
+//                        dismiss()
+//                    }
+//                }
             }
-            
         }
     }
 }
