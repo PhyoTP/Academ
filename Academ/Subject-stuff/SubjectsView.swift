@@ -27,7 +27,7 @@ struct SubjectsView: View {
             }
             .navigationTitle("Subjects")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
