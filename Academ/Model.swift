@@ -24,4 +24,17 @@ struct Subject: Identifiable, Codable{
     var name: String
     var assessments: [Assessment]
 }
+enum GradeType{
+    case GPA, MSG, AL, ALf
+}
+struct GradeSystem{
+    var gradeType: GradeType
+    var grades: Grade
+}
+struct Grade{
+    var name: String
+    var minMark: Float
+    var maxMark: Float
+    var gradePoint: Float
+}
 
