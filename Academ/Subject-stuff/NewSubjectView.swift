@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewSubjectView: View {
     @State private var placeholderText = ""
+    @EnvironmentObject var subjectmanager: SubjectManager
+    @State private var subjected:Subject = Subject(name: "", assessments: [], credits: 0)
+//    @State pri
     var body: some View {
         NavigationStack {
             List{
@@ -16,20 +19,26 @@ struct NewSubjectView: View {
                     TextField("Subject", text:$placeholderText)
                 }
                 Section(header: Text("ASSESSMENTS")) {
-                   //help idk what to do here also i left cuz cannot do pm session ok bye
+                    //help idk what to do here also i left cuz cannot do pm session ok bye
                 }
                 Section() {
                     Button {
-                        
+//                        NavigationLink{
+//                            NewAssessmentView(sub: $subjected)
+//                        }label:{
+//                            Text("Test")
+//                        }
                     } label: {
-                        Text("+ Add an assessment")
+                        Text("+   Add an assessment")
+                    }
+                        
                     }
                 }
             }
         }
     }
-}
-
+        
+        
 struct NewSubjectView_Previews: PreviewProvider {
     static var previews: some View {
         NewSubjectView()

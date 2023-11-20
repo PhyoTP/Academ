@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            VStack{
+                
+            }
+        }
+        .navigationTitle("Dashboard")
     }
 }
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
+            .environmentObject(SubjectManager())
     }
 }

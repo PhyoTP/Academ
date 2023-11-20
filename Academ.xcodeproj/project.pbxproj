@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		89564A8C2B0B013100BB0BA6 /* NewAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */; };
+		89564A8E2B0B4A4000BB0BA6 /* AssessmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89564A8D2B0B4A4000BB0BA6 /* AssessmentDetailView.swift */; };
 		89FD18E02B0871190054609D /* SubjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD18DF2B0871190054609D /* SubjectDetailView.swift */; };
 		89FD18E22B0871340054609D /* SubjectOverallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD18E12B0871340054609D /* SubjectOverallView.swift */; };
 		D96546992B08476D00FEA173 /* SubjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96546982B08476D00FEA173 /* SubjectsView.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAssessmentView.swift; sourceTree = "<group>"; };
+		89564A8D2B0B4A4000BB0BA6 /* AssessmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentDetailView.swift; sourceTree = "<group>"; };
 		89FD18DF2B0871190054609D /* SubjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDetailView.swift; sourceTree = "<group>"; };
 		89FD18E12B0871340054609D /* SubjectOverallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectOverallView.swift; sourceTree = "<group>"; };
 		D96546982B08476D00FEA173 /* SubjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				D96546982B08476D00FEA173 /* SubjectsView.swift */,
 				D976BE222B0AFD95005899C4 /* NewSubjectView.swift */,
 				89FD18DF2B0871190054609D /* SubjectDetailView.swift */,
+				89564A8D2B0B4A4000BB0BA6 /* AssessmentDetailView.swift */,
 				89564A8B2B0B013100BB0BA6 /* NewAssessmentView.swift */,
 				89FD18E12B0871340054609D /* SubjectOverallView.swift */,
 				D96546A02B0870AE00FEA173 /* SubjectManager.swift */,
@@ -303,6 +306,7 @@
 				D965469F2B086D6900FEA173 /* Model.swift in Sources */,
 				D96546A12B0870AE00FEA173 /* SubjectManager.swift in Sources */,
 				D965469B2B08478F00FEA173 /* SettingsView.swift in Sources */,
+				89564A8E2B0B4A4000BB0BA6 /* AssessmentDetailView.swift in Sources */,
 				D96546992B08476D00FEA173 /* SubjectsView.swift in Sources */,
 				89564A8C2B0B013100BB0BA6 /* NewAssessmentView.swift in Sources */,
 			);
