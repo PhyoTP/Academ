@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct AcademApp: App {
+    @AppStorage("gradeSys") private var selection = GradeTypes.al
     var body: some Scene {
         WindowGroup {
             ContentView()

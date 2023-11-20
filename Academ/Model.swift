@@ -29,7 +29,6 @@ enum GradeTypes: String,CaseIterable{
     case gpa, msg, al
 }
 struct GradeSystem{
-    var gradeType: GradeTypes
     var grades: Grade
 }
 struct Grade{
