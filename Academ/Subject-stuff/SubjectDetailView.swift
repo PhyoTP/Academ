@@ -13,7 +13,12 @@ struct SubjectDetailView: View {
         
         NavigationStack {
             List{
-                Section(header: Text("Important tasks")) {
+                Section(header: Text("subject info")) {
+                    Text(sub.name)
+                    Text("")
+                }
+                Section(header: Text("Assessments")) {
+                    
                 }
             }
             .navigationTitle($sub.name)
