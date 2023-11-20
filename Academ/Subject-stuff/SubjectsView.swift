@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SubjectsView: View {
     @EnvironmentObject var settings: SubjectManager
-    
     var body: some View {
         NavigationStack {
             

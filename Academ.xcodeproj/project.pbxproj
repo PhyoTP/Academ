@@ -90,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				D96546982B08476D00FEA173 /* SubjectsView.swift */,
-				89FD18E12B0871340054609D /* SubjectOverallview.swift */,
 				89FD18DF2B0871190054609D /* SubjectDetailView.swift */,
+				89FD18E12B0871340054609D /* SubjectOverallview.swift */,
 				D96546A02B0870AE00FEA173 /* SubjectManager.swift */,
 			);
 			path = "Subject-stuff";
