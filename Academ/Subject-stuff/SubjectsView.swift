@@ -12,18 +12,7 @@ struct SubjectsView: View {
     
     var body: some View {
         NavigationStack {
-            //            .navigationTitle("Subjects")
-            //            .toolbar {
-            //                ToolbarItem{
-            //                    Button{
-            //
-            //                    } label: {
-            //                        Image(systemName: "plus")
-            //                    }
-            //                }
-            //                ToolbarItem(placement: .navigationBarLeading) {
-            //                    EditButton()
-            //                }
+            
             Form{
                 Section{
                     List($settings.subjects,editActions: .all){$subject in
@@ -35,10 +24,22 @@ struct SubjectsView: View {
                     }
                 }
             }
+            .navigationTitle("Subjects")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button{
+                        
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
     }
 }
-
 
 
 
