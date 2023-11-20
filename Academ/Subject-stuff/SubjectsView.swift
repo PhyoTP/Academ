@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct SubjectsView: View {
-    @ObservedObject var subjectmanager: SubjectManager
+    @EnvironmentObject var settings: SubjectManager
     
     var body: some View {
         NavigationStack {
-            // There must be a list of subject values to display then the code below can be uncommented
-            //            List($subjectmanager.subjects, editActions: [.all]) {
-            //                $subject in
-            //            }
-            
             //            .navigationTitle("Subjects")
             //            .toolbar {
             //                ToolbarItem{
@@ -29,7 +24,17 @@ struct SubjectsView: View {
             //                ToolbarItem(placement: .navigationBarLeading) {
             //                    EditButton()
             //                }
-            
+            Form{
+                Section{
+                    List($settings.subjects,editActions: .all){$subject in
+                        NavigationLink{
+                            SubjectDetailView(sub:$subject)
+                        }label:{
+                            Text(subject.name)
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -40,6 +45,7 @@ struct SubjectsView: View {
 
 struct SubjectsView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectsView(subjectmanager: SubjectManager())
+        SubjectsView()
+            .environmentObject(SubjectManager())
     }
 }

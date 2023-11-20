@@ -14,7 +14,7 @@ struct ContentView: View {
             //                .offset(x:-70, y:-10)
             
             TabView{
-                SubjectsView(subjectmanager: SubjectManager())
+                SubjectsView()
                     .tabItem{
                         Label("Subjects", systemImage: "books.vertical")
                             .ignoresSafeArea(.all)
