@@ -10,12 +10,22 @@ import SwiftUI
 struct SubjectDetailView: View {
     @Binding var sub: Subject
     var body: some View {
-        VStack{
-            
+        
+        NavigationStack {
+            List{
+                Section(header: Text("Important tasks")) {
+                }
+            }
+            .navigationTitle($sub.name)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
         }
+        
     }
 }
-
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
         SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [])))
