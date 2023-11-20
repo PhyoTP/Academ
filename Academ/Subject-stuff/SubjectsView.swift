@@ -29,7 +29,7 @@ struct SubjectsView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .navigationBarLeading){
+                ToolbarItem(placement: .navigationBarTrailing){
                     Button{
                         
                     } label: {
