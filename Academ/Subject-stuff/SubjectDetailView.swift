@@ -35,11 +35,6 @@ struct SubjectDetailView: View {
             }
         }
         .sheet(isPresented: $displaySheet) {
-            List{
-                Section(header: Text("Assessment info")) {
-                    
-                }
-            }
         }
         
         
