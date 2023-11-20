@@ -13,6 +13,8 @@ struct NewAssessmentView: View {
     @State private var totalMarks = 0
     @State private var targetMarks = 0
     @State private var examDone = false
+    @State private var marksAttained = 0
+    @State private var date = Date()
     var body: some View {
         Form{
             Section("Assessment Info"){
@@ -39,16 +41,29 @@ struct NewAssessmentView: View {
                     Toggle(isOn: $examDone){
                         Text("")
                     }
-
+                    
                 }
+                if examDone {
+                    HStack{
+                        Text("Marks attaineed:")
+                        TextField("Marks", value: $marksAttained, formatter: NumberFormatter())
+                    }
+                } else{
+                        DatePicker(
+                            "Start Date",
+                            selection: $date,
+                            displayedComponents: [.date]
+                        )
+                    }
+                }
+                
             }
-            
         }
     }
-    
-    struct NewAssessmentView_Previews: PreviewProvider {
-        static var previews: some View {
-            NewAssessmentView()
+struct NewAssessmentView_Previews: PreviewProvider {
+            static var previews: some View {
+                NewAssessmentView()
         }
     }
-}
+
+
