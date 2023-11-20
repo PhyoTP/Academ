@@ -18,7 +18,11 @@ struct SubjectDetailView: View {
                     Text("")
                 }
                 Section(header: Text("Assessments")) {
-                    
+                    Button {
+                        print("swifso")
+                    } label: {
+                        Text("+  Add an assessment")
+                    }
                 }
             }
             .navigationTitle($sub.name)
