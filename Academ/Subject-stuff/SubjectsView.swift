@@ -39,8 +39,8 @@ struct SubjectsView: View {
                 }
             }
             .sheet(isPresented: $displaySheet) {
-                Text("Test")
-                    .presentationDetents([.fraction(0.7)])
+                SubjectSheets()
+                    .presentationDetents([.fraction(0.8)])
                     .presentationDragIndicator(.visible)
             }
         }
