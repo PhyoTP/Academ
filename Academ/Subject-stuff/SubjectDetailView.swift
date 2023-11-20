@@ -20,7 +20,7 @@ struct SubjectDetailView: View {
                 }
                 Section(header: Text("Assessments")) {
                     Button {
-                        print("swifso")
+                        print("sooon")
                         displaySheet = true
                     } label: {
                         Text("+  Add an assessment")
@@ -34,6 +34,14 @@ struct SubjectDetailView: View {
                 }
             }
         }
+        .sheet(isPresented: $displaySheet) {
+            List{
+                Section(header: Text("Assessment info")) {
+                    
+                }
+            }
+        }
+        
         
     }
 }
