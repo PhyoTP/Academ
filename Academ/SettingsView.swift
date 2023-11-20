@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var selection = GradeTypes.al
-    var body: some View {
-        NavigationStack{
-            Form{
-                Section{
-                    Picker("Grading System", selection: $selection){
-                        ForEach(GradeTypes.allCases, id: \.self) {
+    var systems = ["default", "gpa", "msg", "al"]
+    @AppStorage("gradeType") var selection = 0
 
-                            Text("\($0.rawValue.uppercased())")
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Picker("Grading System", selection: $selection) {
+                        ForEach(systems.indices, id: \.self) { index in
+                            Text(systems[index].capitalized)
                         }
                     }
                     .pickerStyle(.menu)
@@ -26,6 +27,7 @@ struct SettingsView: View {
         }
     }
 }
+
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

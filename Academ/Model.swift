@@ -25,9 +25,7 @@ struct Subject: Identifiable, Codable{
     var assessments: [Assessment]
     var credits: Int
 }
-enum GradeTypes: String,CaseIterable{
-    case gpa, msg, al
-}
+
 struct GradeSystem{
     var grades: Grade
 }
