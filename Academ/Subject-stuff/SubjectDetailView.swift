@@ -13,12 +13,15 @@ struct SubjectDetailView: View {
     var body: some View {
         
         NavigationStack {
-            List{
+            Form{
                 Section(header: Text("subject info")) {
                     Text(sub.name)
                     Text("")
                 }
                 Section(header: Text("Assessments")) {
+                    List($sub.assessments,editActions:.all){$assessment in
+                        Text(assessment.name)
+                    }
                     Button {
                         print("sooon")
                         displaySheet = true
@@ -27,6 +30,7 @@ struct SubjectDetailView: View {
                     }
                 }
             }
+            
             .navigationTitle($sub.name)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
