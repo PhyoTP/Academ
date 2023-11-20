@@ -11,7 +11,7 @@ struct SubjectsView: View {
     @EnvironmentObject var settings: SubjectManager
     
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             
             Form{
                 Section{
@@ -29,7 +29,7 @@ struct SubjectsView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .navigationBarTrailing){
+                ToolbarItem(placement: .navigationBarLeading){
                     Button{
                         
                     } label: {
