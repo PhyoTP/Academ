@@ -15,6 +15,7 @@ struct SubjectsView: View {
             Form{
                 Section{
                     List($settings.subjects,editActions: .all){$subject in
+                            
                         NavigationLink{
                             SubjectDetailView(sub:$subject)
                         }label:{

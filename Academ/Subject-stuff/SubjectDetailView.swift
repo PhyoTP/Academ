@@ -12,21 +12,22 @@ struct SubjectDetailView: View {
     var body: some View {
         
         NavigationStack {
-            VStack{
-                
+            List{
+                Section(header: Text("Important tasks")) {
+                }
+            }
+            .navigationTitle($sub.name)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
             }
         }
-        .navigationTitle($sub.name)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-        }
+        
     }
-    
-    struct SubjectDetailView_Previews: PreviewProvider {
-        static var previews: some View {
-            SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [])))
-        }
+}
+struct SubjectDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [])))
     }
 }
