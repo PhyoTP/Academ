@@ -53,6 +53,6 @@ struct SubjectsView: View {
 struct SubjectsView_Previews: PreviewProvider {
     static var previews: some View {
         SubjectsView()
-            .environmentObject(SubjectManager())
+            
     }
 }
