@@ -35,7 +35,7 @@ struct SubjectDetailView: View {
             }
         }
         .sheet(isPresented: $displaySheet) {
-            NewAssessmentView()
+            NewAssessmentView(sub:$sub)
         }
         
         
