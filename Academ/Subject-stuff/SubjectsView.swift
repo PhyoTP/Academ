@@ -27,7 +27,7 @@ struct SubjectsView: View {
             }
             .navigationTitle("Subjects")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -40,6 +40,8 @@ struct SubjectsView: View {
             }
             .sheet(isPresented: $displaySheet) {
                 Text("Test")
+                    .presentationDetents([.fraction(0.7)])
+                    .presentationDragIndicator(.visible)
             }
         }
     }
