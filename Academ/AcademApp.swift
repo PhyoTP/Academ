@@ -17,6 +17,6 @@ struct AcademApp: App {
         }
     }
 }
-class UserData: ObservableObject {
+class UserData: ObservableObject{
     @AppStorage("gradeType") var selection = 0
 }
