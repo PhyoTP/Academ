@@ -19,12 +19,12 @@ struct SubjectOverallView: View {
             Form{
                 HStack{
                     Text("Average:")
-                    Text("\(Int(average(floatArray:arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                    Text("\(Int(subje.average()))")
                     Text("%")
                 }
                 HStack{
                     Text("Highest:")
-                    Text("\(Int(highest(floatArray: arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                    Text("\(Int(subje.highest()))")
                 Text("%")
                 }
             }
@@ -38,7 +38,7 @@ struct SubjectOverallView: View {
 struct SubjectOverallView_Previews: PreviewProvider {
     static var previews: some View {
 
-        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(), targetMarks: 60, haveReminder: false, reminder: Date()),Assessment(name: "WA2", percentageValue: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(), targetMarks: 60, haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0)))
+        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", percentageValue: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0)))
 
     }
 }
