@@ -25,7 +25,22 @@ struct Subject: Identifiable, Codable{
     var assessments: [Assessment]
     var targetGrade: Float
     var credits: Int
+    
+//    func getFloatAsssessment(total: Bool) -> [Float] {
+//        var numArray:[Float] = []
+//        for i in assessments {
+//            if i.examDone {
+//                if total {
+//                    numArray.append(i.totalMarks)
+//                }else{
+//                    numArray.append(i.markAttained)
+//                }
+//            }
+//        }
+//        return numArray
+//    }
 }
+  // redesign average function 
 
 struct GradeSystem{
     var grades: Grade

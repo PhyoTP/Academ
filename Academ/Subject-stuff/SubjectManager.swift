@@ -14,7 +14,7 @@ class SubjectManager: ObservableObject {
             save()
         }
     }
-        
+    
     init() {
         load()
     }
