@@ -21,7 +21,7 @@ struct AssessmentDetailView: View {
     @Binding var assess: Assessment
     var body: some View {
         NavigationStack{
-            List{
+            Form{
                 TextField("Name",text: $assess.name)
                 //TextField()
                 HStack{
