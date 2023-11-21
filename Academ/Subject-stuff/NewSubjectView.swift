@@ -10,7 +10,7 @@ import SwiftUI
 struct NewSubjectView: View {
     @State private var placeholderText = ""
     @EnvironmentObject var subjectmanager: SubjectManager
-    @State private var subjected:Subject = Subject(name: "", assessments: [], credits: 0)
+    @State private var subjected:Subject = Subject(name: "", assessments: [], targetGrade: 70, credits: 0)
 //    @State pri
     var body: some View {
         NavigationStack {

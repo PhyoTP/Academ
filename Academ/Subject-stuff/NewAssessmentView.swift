@@ -70,7 +70,7 @@ struct NewAssessmentView: View {
             }
             Section {
                 Button("Save", role: .none) {
-                    let newAssessment = Assessment(name: assessmentName, percentageValue: Float(assessmentPercentage), totalMarks: Float(totaledMarks), examDone: examDoneness, markAttained: examDoneness ? Float(marksAttain) : 0, examDate: examDoneness ? Date() : examsDate, targetMarks: Float(examDoneness ? 0 : targetedMarks), haveReminder: hasReminder, reminder: hasReminder ? reminderDate : Date())
+                    let newAssessment = Assessment(name: assessmentName, percentageValue: Float(assessmentPercentage), totalMarks: Float(totaledMarks), examDone: examDoneness, markAttained: examDoneness ? Float(marksAttain) : 0, examDate: examDoneness ? Date() : examsDate, haveReminder: hasReminder, reminder: hasReminder ? reminderDate : Date())
                     sub.assessments.append(newAssessment)
                     dismiss()
                 }
@@ -85,7 +85,7 @@ struct NewAssessmentView: View {
 }
 struct NewAssessmentView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], credits: 0)))
+        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetGrade: 75, credits: 0)))
             
     }
 }
