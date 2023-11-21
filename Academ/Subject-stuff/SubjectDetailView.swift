@@ -16,7 +16,11 @@ struct SubjectDetailView: View {
             Form{
                 Section(header: Text("subject info")) {
                     Text(sub.name)
-                    Text("")
+                    NavigationLink{
+                        SubjectOverallView(subje: $sub)
+                    }label: {
+                        Text("Overall")
+                    }
                 }
                 Section(header: Text("Assessments")) {
                     List($sub.assessments,editActions:.all){$assessment in
