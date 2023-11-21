@@ -18,9 +18,12 @@ struct SubjectOverallView: View {
         NavigationStack{
             Form{
                 HStack{
-                    Text("Average")
+                    Text("Average:")
                     Text("\(Int(average(floatArray:arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
                     Text("%")
+                }
+                HStack{
+                    Text("Highest:")
                 }
             }
             .navigationTitle(subje.name)

@@ -66,10 +66,12 @@ func arrayPercentage(amountArray:[Float],totaledArray:[Float])->[Float]{
 func assessmentArray(arrayAssessment:[Assessment],total:Bool)->[Float]{
     var numArray:[Float] = []
     for i in arrayAssessment{
-        if total{
-            numArray.append(i.totalMarks)
-        }else{
-            numArray.append(i.markAttained)
+        if i.examDone{
+            if total{
+                numArray.append(i.totalMarks)
+            }else{
+                numArray.append(i.markAttained)
+            }
         }
     }
     return numArray
