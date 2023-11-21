@@ -13,6 +13,7 @@ struct AcademApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(SubjectManager())
         }
     }
 }
