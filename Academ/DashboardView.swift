@@ -23,10 +23,11 @@ struct DonutChartView: View {
                     .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                     .foregroundColor(Color.blue)
                     .rotationEffect(Angle(degrees: -90))
+                Text("\(percentage)")
             }
-            ForEach(subjectmanager.subjects){ subject in
-                Text(subject.name)
-            }
+//            ForEach(subjectmanager.subjects){ subject in
+//                Text(subject.name)
+//            }
         }
     }
 }
@@ -38,25 +39,11 @@ struct DashboardView: View {
             VStack{
                 ZStack {
                     HStack {
-                        ForEach(subjectmanager.subjects.indices){ index in
-                            if index<4{
+                        ForEach(subjectmanager.subjects.count ..< 6, id: \.self){ index in
                                 DonutChartView(percentage: 75)
                                     .frame(width: 50, height: 50)
                                     .padding(4)
-                                //                            DonutChartView(percentage: 75)
-                                //                                .frame(width: 50, height: 50)
-                                //                                .padding(4)
-                                //                            DonutChartView(percentage: 75)
-                                //                                .frame(width: 50, height: 50)
-                                //                                .padding(4)
-                                //                            DonutChartView(percentage: 75)
-                                //                                .frame(width: 50, height: 50)
-                                //                                .padding(4)
-                                //                            DonutChartView(percentage: 75)
-                                //                                .frame(width: 50, height: 50)
-                                //                            .padding(4)
-                            }
-                            
+                                Text("")
                         }
                         
                     }
