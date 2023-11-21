@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DonutChartView: View {
-    var percentage: CGFloat    
+    var percentage: CGFloat
     var body: some View {
         VStack{
             ZStack {
@@ -37,47 +37,48 @@ struct DashboardView: View {
                     HStack {
                         ForEach(subjectmanager.subjects.indices){ index in
                             if index<4{
-                            DonutChartView(percentage: 75)
-                                .frame(width: 50, height: 50)
-                                .padding(4)
-//                            DonutChartView(percentage: 75)
-//                                .frame(width: 50, height: 50)
-//                                .padding(4)
-//                            DonutChartView(percentage: 75)
-//                                .frame(width: 50, height: 50)
-//                                .padding(4)
-//                            DonutChartView(percentage: 75)
-//                                .frame(width: 50, height: 50)
-//                                .padding(4)
-//                            DonutChartView(percentage: 75)
-//                                .frame(width: 50, height: 50)
-//                            .padding(4)
-                        }
-
-                    }
-                    
-                }
-                List {
-                    Section(header: Text("Subjects")) {
-                        List($subjectmanager.subjects,editActions:.all){ $subject in
-                            VStack {
-                                Text(subject.name)
-                                //Text("%")
+                                DonutChartView(percentage: 75)
+                                    .frame(width: 50, height: 50)
+                                    .padding(4)
+                                //                            DonutChartView(percentage: 75)
+                                //                                .frame(width: 50, height: 50)
+                                //                                .padding(4)
+                                //                            DonutChartView(percentage: 75)
+                                //                                .frame(width: 50, height: 50)
+                                //                                .padding(4)
+                                //                            DonutChartView(percentage: 75)
+                                //                                .frame(width: 50, height: 50)
+                                //                                .padding(4)
+                                //                            DonutChartView(percentage: 75)
+                                //                                .frame(width: 50, height: 50)
+                                //                            .padding(4)
                             }
                             
                         }
+                        
                     }
+                    List {
+                        Section(header: Text("Subjects")) {
+                            List($subjectmanager.subjects,editActions:.all){ $subject in
+                                VStack {
+                                    Text(subject.name)
+                                    //Text("%")
+                                }
+                                
+                            }
+                        }
+                    }
+                    .navigationTitle("Dashboard")
+                    //.offset(y:100)
                 }
-                .navigationTitle("Dashboard")
-                //.offset(y:100)
             }
         }
     }
 }
-
 struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView()
-            .environmentObject(SubjectManager())
+        static var previews: some View {
+            DashboardView()
+                .environmentObject(SubjectManager())
+        }
     }
-}
+
