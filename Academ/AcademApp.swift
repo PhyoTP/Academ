@@ -9,11 +9,14 @@ import SwiftUI
 
 @main
 struct AcademApp: App {
-    @AppStorage("gradeType") var selection = 0
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(SubjectManager())
         }
     }
+}
+class UserData: ObservableObject{
+    @AppStorage("gradeType") var selection = 0
 }
