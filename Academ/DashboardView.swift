@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -28,8 +29,10 @@ struct DashboardView: View {
                     .padding()
                     List {
                         Section(header: Text("Subjects")) {
-                            List($subjectmanager.subjects,editActions:.all){$subject in
+                            List(subjectmanager.subjects,editActions:.all){subject in
                                 Text(subject.name)
+                                Text("\(Int(average(floatArray: subject.assessments, arrayPercentage(amountArray: assessmentArray(arrayAssessment: subject.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subject.assessments, total: true)))))")
+                                Text("%")
                             }
                         }
                     }
