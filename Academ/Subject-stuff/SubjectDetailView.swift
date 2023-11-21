@@ -26,7 +26,7 @@ struct SubjectDetailView: View {
                 }
                 Section(header: Text("Assessments")) {
                     List($sub.assessments,editActions:.all){$assessment in
-                        NavigationLink(destination: AssessmentDetailView(subber: $sub)){
+                        NavigationLink(destination: AssessmentDetailView(assess: $assessment)){
                             Text(assessment.name)
                         }
                     }
@@ -38,7 +38,6 @@ struct SubjectDetailView: View {
                     }
                 }
             }
-            
             .navigationTitle($sub.name)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
