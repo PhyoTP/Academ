@@ -43,18 +43,7 @@ struct DashboardView: View {
                                 .frame(width: 50, height: 50)
                                 .padding(4)
                             
-                    List {
-                        Section(header: Text("Subjects")) {
-                            List($subjectmanager.subjects,editActions:.all){ $subject in
-                                VStack {
-                                    Text(subject.name)
-                                    //Text("%")
-                                    if ($subjectmanager.subjects.count == 0 ) {
-                                        Text("There are no subjects. Try making one to track your marks!")
-                                    }
-                                }
-                                
-                            }
+                            Text(subjectmanager.subjects[index].name)
                         }
                     }
                     
@@ -85,4 +74,3 @@ struct DashboardView_Previews: PreviewProvider {
             .environmentObject(SubjectManager())
     }
 }
-
