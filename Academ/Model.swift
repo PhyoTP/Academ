@@ -58,11 +58,21 @@ func highest(floatArray:[Float])->Float{
 }
 func arrayPercentage(amountArray:[Float],totaledArray:[Float])->[Float]{
     var percentageArray:[Float] = []
-    for i in 0...amountArray.count{
+    for i in 0..<amountArray.count{
         percentageArray.append(percentage(amount: amountArray[i], total: totaledArray[i]))
     }
     return percentageArray
 }
-
+func assessmentArray(arrayAssessment:[Assessment],total:Bool)->[Float]{
+    var numArray:[Float] = []
+    for i in arrayAssessment{
+        if total{
+            numArray.append(i.totalMarks)
+        }else{
+            numArray.append(i.markAttained)
+        }
+    }
+    return numArray
+}
 
 
