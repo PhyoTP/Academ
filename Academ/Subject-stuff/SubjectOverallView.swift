@@ -19,12 +19,12 @@ struct SubjectOverallView: View {
             Form{
                 HStack{
                     Text("Average:")
-                    Text("\(Int(average(floatArray:arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                    Text("\(Int(subje.average()))")
                     Text("%")
                 }
                 HStack{
                     Text("Highest:")
-                    Text("\(Int(highest(floatArray: arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                    Text("\(Int(subje.highest()))")
                 Text("%")
                 }
             }

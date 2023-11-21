@@ -23,7 +23,7 @@ struct ContentView: View {
                 }.tag(1)
             DashboardView()
                 .tabItem{
-                    Label("Dashboard", systemImage: "house")
+                    Label("Dashboard", systemImage: "speedometer")
                         .ignoresSafeArea(.all)
                 }.tag(2)
             SettingsView(userData: UserData())

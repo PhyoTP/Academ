@@ -16,7 +16,7 @@ struct SubjectDetailView: View {
             Form{
                 Section(header: Text("subject info")) {
                     TextField("Name",text:$sub.name)
-                    if assessmentArray(arrayAssessment: sub.assessments, total: false).count>1{
+                    if sub.assessmentArray(total: false).count>1{
                         NavigationLink{
                             SubjectOverallView(subje: $sub)
                         }label: {
