@@ -1,5 +1,5 @@
 //
-//  SubjectOverallview.swift
+//  SubjectOverallView.swift
 //  Academ
 //
 //  Created by yoeh iskandar on 18/11/23.
@@ -19,7 +19,8 @@ struct SubjectOverallView: View {
             Form{
                 HStack{
                     Text("Average")
-//                    Text("\(arrayPercentage(amountArray:subje.assessments. totaledArray:))")
+                    Text("\(Int(average(floatArray:arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                    Text("%")
                 }
             }
             .navigationTitle(subje.name)
