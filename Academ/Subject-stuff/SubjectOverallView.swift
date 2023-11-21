@@ -24,7 +24,8 @@ struct SubjectOverallView: View {
                 }
                 HStack{
                     Text("Highest:")
-                    
+                    Text("\(Int(highest(floatArray: arrayPercentage(amountArray: assessmentArray(arrayAssessment: subje.assessments, total: false), totaledArray: assessmentArray(arrayAssessment: subje.assessments, total: true)))))")
+                Text("%")
                 }
             }
             .navigationTitle(subje.name)
