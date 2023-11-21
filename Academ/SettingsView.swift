@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SettingsView: View {
     var systems = ["default", "gpa", "msg", "al"]
-    @AppStorage("gradeType") var selection = 0
+    @ObservedObject var userData: UserData
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Picker("Grading System", selection: $selection) {
+                    Picker("Grading System", selection: $userData.selection) {
                         ForEach(systems.indices, id: \.self) { index in
                             Text(systems[index].capitalized)
                         }
@@ -31,6 +31,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(userData: UserData())
+            
     }
 }
