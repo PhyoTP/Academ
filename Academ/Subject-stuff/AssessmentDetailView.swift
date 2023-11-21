@@ -73,7 +73,7 @@ struct AssessmentDetailView: View {
     }
     struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            AssessmentDetailView(assess: .constant(Assessment(name: "wa1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(), targetMarks: 0, haveReminder: false, reminder: Date())))
+            AssessmentDetailView(assess: .constant(Assessment(name: "wa1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(),  haveReminder: false, reminder: Date())))
                 .environmentObject(SubjectManager())
         }
     }

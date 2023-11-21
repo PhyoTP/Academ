@@ -15,7 +15,7 @@ struct Assessment: Identifiable, Codable{
     var examDone: Bool
     var markAttained: Float
     var examDate: Date
-    var targetMarks: Float
+    
     var haveReminder: Bool
     var reminder: Date
 }
@@ -23,6 +23,7 @@ struct Subject: Identifiable, Codable{
     var id = UUID()
     var name: String
     var assessments: [Assessment]
+    var targetGrade: Float
     var credits: Int
 }
 
