@@ -12,17 +12,31 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                List {
-                    Section(header: Text("Subjects")) {
-                        List($subjectmanager.subjects,editActions:.all){$subject in
-                            Text(subject.name)
-                            
+                ZStack {
+                    HStack {
+                        Circle()
+                            .size(width: 50,height: 50)
+                        Circle()
+                            .size(width: 50,height: 50)
+                        Circle()
+                            .size(width: 50,height: 50)
+                        Circle()
+                            .size(width: 50,height: 50)
+                        Circle()
+                            .size(width: 50,height: 50)
+                    }
+                    .padding()
+                    List {
+                        Section(header: Text("Subjects")) {
+                            List($subjectmanager.subjects,editActions:.all){$subject in
+                                Text(subject.name)
+                                
+                            }
                         }
                     }
-                    
-                    
+                    .navigationTitle("Dashboard")
+                    .offset(y:100)
                 }
-                .navigationTitle("Dashboard")
             }
         }
     }
