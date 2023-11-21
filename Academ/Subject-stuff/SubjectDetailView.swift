@@ -15,11 +15,13 @@ struct SubjectDetailView: View {
         NavigationStack {
             Form{
                 Section(header: Text("subject info")) {
-                    Text(sub.name)
-                    NavigationLink{
-                        SubjectOverallView(subje: $sub)
-                    }label: {
-                        Text("Overall")
+                    TextField("Name",text:$sub.name)
+                    if assessmentArray(arrayAssessment: sub.assessments, total: false).count>1{
+                        NavigationLink{
+                            SubjectOverallView(subje: $sub)
+                        }label: {
+                            Text("Overall")
+                        }
                     }
                 }
                 Section(header: Text("Assessments")) {
