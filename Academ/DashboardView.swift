@@ -30,7 +30,6 @@ struct DashboardView: View {
                         Section(header: Text("Subjects")) {
                             List($subjectmanager.subjects,editActions:.all){$subject in
                                 Text(subject.name)
-                                
                             }
                         }
                     }
