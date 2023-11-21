@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DonutChartView: View {
     var percentage: CGFloat
+    @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
         VStack{
             ZStack {
@@ -23,7 +24,9 @@ struct DonutChartView: View {
                     .foregroundColor(Color.blue)
                     .rotationEffect(Angle(degrees: -90))
             }
-            Text("")
+            ForEach(subjectmanager.subjects){ subject in
+                Text(subject.name)
+            }
         }
     }
 }
