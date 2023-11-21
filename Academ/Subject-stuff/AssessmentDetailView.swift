@@ -18,11 +18,11 @@ struct AssessmentDetailView: View {
     @State private var examsDate = Date()
     @State private var hasReminder = false
     @State private var reminderDate = Date()
-    @Binding var subber: Subject
+    @Binding var assess: Assessment
     var body: some View {
         NavigationStack{
             List{
-                TextField("Name",text: $assessmentName)
+                TextField("Name",text: $assess.name)
                 //TextField()
                 HStack{
                     Text("Percentage value:")
@@ -68,12 +68,12 @@ struct AssessmentDetailView: View {
                 } // else bracket
                     
             }
-            .navigationTitle("")
+            .navigationTitle(assessmentName)
         }
     }
     struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            AssessmentDetailView(subber: .constant(Subject(name: "Math", assessments: [], credits: 0)))
+            AssessmentDetailView(assess: .constant(Assessment(name: "wa1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(), targetMarks: 0, haveReminder: false, reminder: Date())))
                 .environmentObject(SubjectManager())
         }
     }
