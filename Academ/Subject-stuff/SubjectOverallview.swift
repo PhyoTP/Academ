@@ -24,6 +24,7 @@ struct SubjectOverallView: View {
                 }
                 HStack{
                     Text("Highest:")
+                    
                 }
             }
             .navigationTitle(subje.name)
