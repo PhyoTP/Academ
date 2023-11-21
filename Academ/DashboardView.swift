@@ -49,6 +49,9 @@ struct DashboardView: View {
                                 VStack {
                                     Text(subject.name)
                                     //Text("%")
+                                    if ($subjectmanager.subjects.count == 0 ) {
+                                        Text("There are no subjects. Try making one to track your marks!")
+                                    }
                                 }
                                 
                             }
