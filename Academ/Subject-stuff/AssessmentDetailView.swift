@@ -48,6 +48,7 @@ struct AssessmentDetailView: View {
                     HStack{
                         Text("Marks attained:")
                         TextField("Marks", value: $marksAttain, formatter: NumberFormatter())
+                        //Text($totaledMarks)
                     }
                 } else{
                     HStack{
@@ -68,12 +69,12 @@ struct AssessmentDetailView: View {
                 } // else bracket
                     
             }
-            .navigationTitle(assessmentName)
+            .navigationTitle($assess.name)
         }
     }
     struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            AssessmentDetailView(assess: .constant(Assessment(name: "wa1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(), targetMarks: 0, haveReminder: false, reminder: Date())))
+            AssessmentDetailView(assess: .constant(Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(), targetMarks: 0, haveReminder: false, reminder: Date())))
                 .environmentObject(SubjectManager())
         }
     }
