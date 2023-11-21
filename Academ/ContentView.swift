@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection = 2
+    @StateObject private var userData = UserData()
     var body: some View {
         
         
@@ -25,7 +26,7 @@ struct ContentView: View {
                     Label("Dashboard", systemImage: "house")
                         .ignoresSafeArea(.all)
                 }.tag(2)
-            SettingsView()
+            SettingsView(userData: UserData())
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                         .ignoresSafeArea(.all)
