@@ -11,6 +11,7 @@ struct NewSubjectView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0)
     @State private var showNewAssessmentSheet = false
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack {
             Form{
@@ -36,6 +37,12 @@ struct NewSubjectView: View {
                         }
                     }
                     
+                }
+                Section{
+                    Button("Save"){
+                        subjectmanager.subjects.append(newSubject)
+                        dismiss()
+                    }
                 }
             }
             .sheet(isPresented: $showNewAssessmentSheet){

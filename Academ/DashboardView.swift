@@ -33,40 +33,45 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack{
             
-             
-                    VStack {
-                        ForEach(subjectmanager.subjects.indices, id: \.self){ index in
-                                DonutChartView(percentage: 75)
-                                    .frame(width: 50, height: 50)
-                                    .padding(4)
-                            if index < 5 {
-                                Text(subjectmanager.subjects[index].name)
-                            }
+            
+            HStack {
+                
+                ForEach(subjectmanager.subjects.indices, id: \.self){ index in
+                    if index < 5 {
+                        VStack{
+                            DonutChartView(percentage: 75)
+                                .frame(width: 50, height: 50)
+                                .padding(4)
                             
-                    List {
-                        Section(header: Text("Subjects")) {
-                            List($subjectmanager.subjects,editActions:.all){ $subject in
-                                VStack {
-                                    Text(subject.name)
-                                    //Text("%")
-                                }
-                                
-                            }
+                            Text(subjectmanager.subjects[index].name)
                         }
                     }
-                    .navigationTitle("Dashboard")
-                    //.offset(y:100)
-                }
-               // DonutChartView(percentage: 75)
                     
+                    
+                    
+                }
+                
+                
+                
             }
+            List {
+                Section(header: Text("Subjects")) {
+                    List($subjectmanager.subjects){ $subject in
+                        
+                        Text(subject.name)
+                        
+                        
+                    }
+                }
+            }
+            .navigationTitle("Dashboard")
         }
     }
 }
 struct DashboardView_Previews: PreviewProvider {
-        static var previews: some View {
-            DashboardView()
-                .environmentObject(SubjectManager())
-        }
+    static var previews: some View {
+        DashboardView()
+            .environmentObject(SubjectManager())
     }
+}
 
