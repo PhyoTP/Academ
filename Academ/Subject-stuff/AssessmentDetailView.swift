@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AssessmentDetailView: View {
-//    @EnvironmentObject var subjectmanager: SubjectManager
+    //    @EnvironmentObject var subjectmanager: SubjectManager
     //@State private var assessmentName = ""
     @State private var assessmentPercentage = 0
     @State private var totaledMarks = 0
@@ -19,27 +19,28 @@ struct AssessmentDetailView: View {
     @State private var hasReminder = false
     @State private var reminderDate = Date()
     @Binding var assess: Assessment
+    // all data has to be binding or else it would refresh
     var body: some View {
         NavigationStack{
-            Form{
+            List{
                 TextField("Name",text: $assess.name)
                 //TextField()
                 HStack{
                     Text("Percentage value:")
-                    TextField("Percentage", value: $assessmentPercentage, formatter: NumberFormatter())
+                    TextField("Percentage", value: $assess.percentageValue, formatter: NumberFormatter())
                     Text("%")
                     
                     
                 }
                 HStack{
                     Text("Total marks:")
-                    TextField("Marks", value: $totaledMarks, formatter: NumberFormatter())
+                    TextField("Marks", value: $assess.totalMarks, formatter: NumberFormatter())
                     
                 }
                 
                 HStack{
                     Text("Exam done?")
-                    Toggle(isOn: $examDoneness){
+                    Toggle(isOn: $assess.examDone){
                         Text("")
                     }
                     
@@ -47,35 +48,38 @@ struct AssessmentDetailView: View {
                 if examDoneness {
                     HStack{
                         Text("Marks attained:")
-                        TextField("Marks", value: $marksAttain, formatter: NumberFormatter())
+                        TextField("Marks", value: $assess.markAttained, formatter: NumberFormatter())
                         //Text($totaledMarks)
                     }
                 } else{
                     HStack{
                         Text("Target marks:")
-                        TextField("Marks", value: $targetedMarks, formatter: NumberFormatter())
+                        TextField("Marks", value: $assess.targetMarks, formatter: NumberFormatter())
                     }
                     DatePicker(
                         "Start Date",
-                        selection: $examsDate,
+                        selection: $assess.examDate,
                         displayedComponents: [.date]
                     )
                     HStack{
                         Text("Reminder:")
-                        Toggle(isOn: $hasReminder){
+                        Toggle(isOn: $assess.haveReminder){
                             Text("")
                         }
                     }
                 } // else bracket
-                    
+                
             }
             .navigationTitle($assess.name)
         }
     }
-    struct AssessmentDetailView_Previews: PreviewProvider {
+}
+struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            AssessmentDetailView(assess: .constant(Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(),  haveReminder: false, reminder: Date())))
-                .environmentObject(SubjectManager())
+            NavigationStack{
+                AssessmentDetailView(assess: .constant(Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(),  targetMarks: 80, haveReminder: false, reminder: Date())))
+                    .environmentObject(SubjectManager())
+            }
         }
     }
-}
+

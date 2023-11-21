@@ -73,7 +73,7 @@ struct NewAssessmentView: View {
             }
             Section {
                 Button("Save", role: .none) {
-                    let newAssessment = Assessment(name: assessmentName, percentageValue: Float(assessmentPercentage), totalMarks: Float(totaledMarks), examDone: examDoneness, markAttained: examDoneness ? Float(marksAttain) : 0, examDate: examDoneness ? Date() : examsDate, haveReminder: hasReminder, reminder: hasReminder ? reminderDate : Date())
+                    let newAssessment = Assessment(name: assessmentName, percentageValue: Float(assessmentPercentage), totalMarks: Float(totaledMarks), examDone: examDoneness, markAttained: examDoneness ? Float(marksAttain) : 0, examDate: examDoneness ? Date() : examsDate, targetMarks: 70, haveReminder: hasReminder, reminder: hasReminder ? reminderDate : Date())
                     sub.assessments.append(newAssessment)
                     dismiss()
                 }

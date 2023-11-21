@@ -15,6 +15,7 @@ struct Assessment: Identifiable, Codable{
     var examDone: Bool
     var markAttained: Float
     var examDate: Date
+    var targetMarks: Int
     
     var haveReminder: Bool
     var reminder: Date
