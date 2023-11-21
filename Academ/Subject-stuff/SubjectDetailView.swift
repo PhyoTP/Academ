@@ -24,7 +24,9 @@ struct SubjectDetailView: View {
                 }
                 Section(header: Text("Assessments")) {
                     List($sub.assessments,editActions:.all){$assessment in
-                        Text(assessment.name)
+                        NavigationLink(destination: AssessmentDetailView(subber: $sub)){
+                            Text(assessment.name)
+                        }
                     }
                     Button {
                         print("sooon")

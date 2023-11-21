@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AssessmentDetailView: View {
-    @EnvironmentObject var subjectmanager: SubjectManager
+//    @EnvironmentObject var subjectmanager: SubjectManager
     @State private var assessmentName = ""
     @State private var assessmentPercentage = 0
     @State private var totaledMarks = 0
@@ -18,6 +18,7 @@ struct AssessmentDetailView: View {
     @State private var examsDate = Date()
     @State private var hasReminder = false
     @State private var reminderDate = Date()
+    @Binding var subber: Subject
     var body: some View {
         NavigationStack{
             List{
@@ -45,7 +46,7 @@ struct AssessmentDetailView: View {
                 }
                 if examDoneness {
                     HStack{
-                        Text("Marks attaineed:")
+                        Text("Marks attained:")
                         TextField("Marks", value: $marksAttain, formatter: NumberFormatter())
                     }
                 } else{
@@ -65,12 +66,14 @@ struct AssessmentDetailView: View {
                         }
                     }
                 } // else bracket
+                    
             }
+            .navigationTitle("")
         }
     }
     struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            AssessmentDetailView()
+            AssessmentDetailView(subber: .constant(Subject(name: "Math", assessments: [], credits: 0)))
                 .environmentObject(SubjectManager())
         }
     }
