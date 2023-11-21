@@ -28,6 +28,8 @@ struct SubjectDetailView: View {
                     List($sub.assessments,editActions:.all){$assessment in
                         NavigationLink(destination: AssessmentDetailView(assess: $assessment)){
                             Text(assessment.name)
+                            Text("")
+                                .font(.caption)
                         }
                     }
                     Button {

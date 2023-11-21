@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AssessmentDetailView: View {
 //    @EnvironmentObject var subjectmanager: SubjectManager
-    @State private var assessmentName = ""
+    //@State private var assessmentName = ""
     @State private var assessmentPercentage = 0
     @State private var totaledMarks = 0
     @State private var targetedMarks = 0
@@ -75,6 +75,7 @@ struct AssessmentDetailView: View {
     struct AssessmentDetailView_Previews: PreviewProvider {
         static var previews: some View {
             AssessmentDetailView(assess: .constant(Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 13, examDate: Date(), targetMarks: 0, haveReminder: false, reminder: Date())))
+
                 .environmentObject(SubjectManager())
         }
     }
