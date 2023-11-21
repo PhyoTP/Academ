@@ -11,7 +11,7 @@ struct NewAssessmentView: View {
     @State private var assessmentName = ""
     @State private var assessmentPercentage = 0
     @State private var totaledMarks = 0
-    @State private var targetedMarks = 0
+//    @State private var targetedMarks = 0
     @State private var examDoneness = false
     @State private var marksAttain = 0
     @State private var examsDate = Date()
@@ -50,10 +50,10 @@ struct NewAssessmentView: View {
                         TextField("Marks", value: $marksAttain, formatter: NumberFormatter())
                     }
                 } else{
-                    HStack{
-                        Text("Target marks:")
-                        TextField("Marks", value: $targetedMarks, formatter: NumberFormatter())
-                    }
+//                    HStack{
+//                        Text("Target marks:")
+//                        TextField("Marks", value: $targetedMarks, formatter: NumberFormatter())
+//                    }
                     DatePicker(
                         "Start Date",
                         selection: $examsDate,
