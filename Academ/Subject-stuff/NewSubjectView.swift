@@ -8,37 +8,47 @@
 import SwiftUI
 
 struct NewSubjectView: View {
-    @State private var placeholderText = ""
     @EnvironmentObject var subjectmanager: SubjectManager
-    @State private var subjected:Subject = Subject(name: "", assessments: [], targetGrade: 70, credits: 0)
-//    @State pri
+    @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0)
+    @State private var showNewAssessmentSheet = false
     var body: some View {
         NavigationStack {
-            List{
+            Form{
                 Section(header: Text("SUBJECT INFO")) {
-                    TextField("Subject", text:$placeholderText)
+                    TextField("Subject", text:$newSubject.name)
                 }
-                Section(header: Text("ASSESSMENTS")) {
-                    //help idk what to do here also i left cuz cannot do pm session ok bye
-                }
-                Section() {
+                
+                Section("ASSESSMENTS") {
+                    List($newSubject.assessments){$assessm in
+                        NavigationLink{
+                            AssessmentDetailView(assess: $assessm)
+                        }label: {
+                            Text(assessm.name)
+                        }
+                    }
+                    
                     Button {
-//                        NavigationLink{
-//                            NewAssessmentView(sub: $subjected)
-//                        }label:{
-//                            Text("Test")
-//                        }
+                        showNewAssessmentSheet = true
                     } label: {
-                        Text("+   Add an assessment")
+                        HStack{
+                            Image(systemName: "plus")
+                            Text("Add an assessment")
+                        }
                     }
-                        
-                    }
+                    
                 }
             }
+            .sheet(isPresented: $showNewAssessmentSheet){
+                NewAssessmentView(sub: $newSubject)
+            }
+            
         }
+        
     }
-        
-        
+    
+}
+
+
 struct NewSubjectView_Previews: PreviewProvider {
     static var previews: some View {
         NewSubjectView()
