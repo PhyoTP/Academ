@@ -24,7 +24,7 @@ struct SettingsView: View {
                 }
                 if userData.selection == 1{
                     Section("GPA Settings"){
-                        
+                        Toggle(isOn: $userData.haveCredits, label: {Text("Have credits?")})
                     }
                 }else if userData.selection == 3{
                     Section("AL settings"){

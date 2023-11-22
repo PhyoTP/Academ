@@ -15,8 +15,6 @@ struct Assessment: Identifiable, Codable{
     var examDone: Bool
     var markAttained: Float
     var examDate: Date
-    
-    
     var haveReminder: Bool
     var reminder: Date
 }
@@ -76,7 +74,11 @@ struct Subject: Identifiable, Codable{
 
 
 struct GradeSystem{
-    var grades: Grade
+    var type: Int
+    var grades: [Grade]
+//    func gpaCalculate(){
+//
+//    }
 }
 struct Grade{
     var name: String
@@ -91,6 +93,25 @@ func percentage(amount:Float,total:Float)->Float{
     return amount/total*100
 }
 
+var gradingSystems = [
+    GradeSystem(type: 1, grades: [
+        //user input here
+    ]),
+    GradeSystem(type: 2, grades: [
+        Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
+        Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 2.0),
+        Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 3.0),
+        Grade(name: "B4", minMark: 60, maxMark: 64, gradePoint: 4.0),
+        Grade(name: "C5", minMark: 55, maxMark: 59, gradePoint: 5.0),
+        Grade(name: "C6", minMark: 50, maxMark: 54, gradePoint: 6.0),
+        Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 7.0),
+        Grade(name: "D8", minMark: 40, maxMark: 44, gradePoint: 8.0),
+        Grade(name: "F9", minMark: 0, maxMark: 39, gradePoint: 9.0)
+    ]),
+    GradeSystem(type: 3, grades: [
+        Grade(name: "AL1", minMark: 90, maxMark: 100, gradePoint: 1.0)
+    ])
+]
 
 
 

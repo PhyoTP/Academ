@@ -19,4 +19,5 @@ struct AcademApp: App {
 }
 class UserData: ObservableObject{
     @AppStorage("gradeType") var selection = 0
+    @AppStorage("gpaCredits") var haveCredits = false
 }
