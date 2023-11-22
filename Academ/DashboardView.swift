@@ -58,6 +58,9 @@ struct DashboardView: View {
                         }label: {
                             Text(subject.name)
                             Text("Average: \(subject.average(), specifier: "%.0f") %")
+                            if ($subjectmanager.subjects.count == 0) {
+                                Text("No subjects available. Go add some in the subjects tab!")
+                            }
                         }
                         
                            
@@ -76,6 +79,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(SubjectManager())
-            .preferredColorScheme(.dark)
+            //.preferredColorScheme(.dark)
     }
 }
