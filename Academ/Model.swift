@@ -40,8 +40,7 @@ struct Subject: Identifiable, Codable{
             }
         }
         return numArray
-    }
-    
+    }//gets a value from the assessments array (type 0 is marksAttained, 1 is totalMarks, and 2 is percentageValue)
     func arrayPercentage()->[Float]{
         let amountArray = assessmentArray(type:1) // marks attained
         let totaledArray = assessmentArray(type:0) // max marks
@@ -50,7 +49,7 @@ struct Subject: Identifiable, Codable{
             percentageArray.append(percentage(amount: amountArray[i], total: totaledArray[i]))
         }
         return percentageArray
-    }
+    }//calculates percentage and puts it in an array
     func highest()->Float{
         let floatArray = arrayPercentage()
         var high:Float=0
@@ -60,7 +59,7 @@ struct Subject: Identifiable, Codable{
             }
         }
         return high
-    }
+    }//finds the highest value in an array
     func average()->Float{
         let floatArray = arrayPercentage()
         var sum:Float = 0
@@ -70,15 +69,7 @@ struct Subject: Identifiable, Codable{
         sum/=Float(floatArray.count)
         return sum
         
-    }
-    //    func currentOverall()->Float{
-    //        var total: Float = 0
-    //
-    //        for i in assessmentArray(type: 2).indices{
-    //            total+=assessmentArray(type: 2)[i]*arrayPercentage()[i]
-    //        }
-    //        return total/100.0
-    //    }
+    }//finds the average of floats in an array (will be deprecated)
     func currentOverall() -> Float {
         let examPercentages = assessmentArray(type: 2)
         let arrayPercentages = arrayPercentage()
@@ -98,13 +89,18 @@ struct Subject: Identifiable, Codable{
         return totalExamPercentages != 0 ? total / totalExamPercentages : 0.0
         
         
-    }
+    }//finds the current overall based on the percentage
     func weightedGoal()->Float{
-        var floatArray:[Float]=[]
-        for i in 0...arrayPercentage().count{
-            floatArray.append(arrayPercentage()[i]/100*assessmentArray(type: 2)[i])
+        var percentageSum:Float=0
+        for i in 0..<arrayPercentage().count{
+            percentageSum+=arrayPercentage()[i]/100*assessmentArray(type: 2)[i]
         }
-        var sum:Float = 0
+        var valueSum:Float = 0
+        for i in assessmentArray(type: 2){
+            valueSum+=i
+        }
+        valueSum=100-valueSum
+        let sum = (targetGrade-percentageSum)/valueSum*100
         return sum
     }
     
