@@ -11,10 +11,6 @@ struct ContentView: View {
     @State private var selection = 2
     @StateObject private var userData = UserData()
     var body: some View {
-        
-        
-        //                .offset(x:-70, y:-10)
-        
         TabView(selection: $selection){
             SubjectsView()
                 .tabItem{
