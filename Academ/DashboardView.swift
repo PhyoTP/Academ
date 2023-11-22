@@ -32,10 +32,7 @@ struct DashboardView: View {
     
     var body: some View {
         NavigationStack{
-            
-            
             HStack {
-                
                 ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                     if index < 5 {
                         VStack{
