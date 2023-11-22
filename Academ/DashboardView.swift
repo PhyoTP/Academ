@@ -48,9 +48,10 @@ struct DashboardView: View {
                 }
             }
             List {
+            //    Text("Test") works 👍🏻
                 Section(header: Text("Subjects")) {
-                    List($subjectmanager.subjects){ $subject in
-                        
+                    //Text("Test") works 👍🏻
+                    ForEach($subjectmanager.subjects){ $subject in
                         Text(subject.name)
                        // Text("Hello world")
                         
