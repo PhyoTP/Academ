@@ -73,9 +73,9 @@ struct DashboardView: View {
                         }label: {
                             Text(subject.name)
                             if (subject.average().isNaN) {
-                                Text("-")
+                                Text("Average: --%")
                             } else {
-                                Text("Average: \(subject.average(), specifier: "%.0f") %")
+                                Text("Average: \(subject.average(), specifier: "%.0f")%")
                             }
                             
                             if ($subjectmanager.subjects.count == 0) {
@@ -86,7 +86,7 @@ struct DashboardView: View {
                         
                         
                     }
-                    // Text("baller")
+//                     Text("baller")
                 }
             }
             .navigationTitle("Dashboard")
