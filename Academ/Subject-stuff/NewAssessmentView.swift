@@ -11,6 +11,7 @@ struct NewAssessmentView: View {
     @State private var newAssessment = Assessment(name: "", percentageValue: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
+    @State private var markCheck:Float = 0.0
     var body: some View {
         Form{
             Section("Assessment Info"){
