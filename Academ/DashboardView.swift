@@ -10,6 +10,9 @@ import SwiftUI
 struct DonutChartView: View {
     var percentage: CGFloat
     @EnvironmentObject var subjectmanager: SubjectManager
+    var formattedResult: String {
+            return (percentage.isNaN || percentage.isSignalingNaN) ? "--" : String(format: "%.0f", percentage)
+    }
     var body: some View {
         VStack{
             ZStack {
@@ -23,7 +26,7 @@ struct DonutChartView: View {
                     .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                     .foregroundColor(Color.blue)
                     .rotationEffect(Angle(degrees: -90))
-                Text("\(percentage, specifier: "%.0f")%")
+                Text("\(formattedResult)%")
                 
             }
             //.padding()
@@ -60,7 +63,6 @@ struct DashboardView: View {
                         }
                     }
                 }
-                .padding()
                 .background(Color(red: 255/255, green: 255/255, blue: 255/255))
                 .cornerRadius(4)
                 Section(header: Text("Subjects")) {
