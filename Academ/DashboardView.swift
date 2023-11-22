@@ -17,15 +17,23 @@ struct DonutChartView: View {
                     .stroke(lineWidth: 6)
                     .opacity(0.3)
                     .foregroundColor(Color.gray)
+                
                 Circle()
                     .trim(from: 0.0, to: percentage / 100.0)
                     .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                     .foregroundColor(Color.blue)
                     .rotationEffect(Angle(degrees: -90))
-                Text("\(Int(percentage))%")
+                Text("\(percentage, specifier: "%.0f")%")
+                
             }
+            //.padding()
+            
+            
         }
+        
+        
     }
+    
 }
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
@@ -38,16 +46,23 @@ struct DashboardView: View {
                             DonutChartView(percentage: CGFloat(subjectmanager.subjects[index].average()))
                                 .frame(width: 50, height: 50)
                                 .padding(4)
-                            
+                                
                             Text(subjectmanager.subjects[index].name)
 //                            Text(subjectmanager.subjects[index].average())
+                            
                         }
+                        
                     }
                     
                     
                     
                 }
             }
+            .padding()
+            .background(Color(red: 242/255, green: 242/255, blue: 247/255))
+            .cornerRadius(4)
+            
+            
             List {
             //    Text("Test") works 👍🏻
                 Section(header: Text("Subjects")) {
