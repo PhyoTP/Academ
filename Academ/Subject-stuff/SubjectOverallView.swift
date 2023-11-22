@@ -19,8 +19,8 @@ struct SubjectOverallView: View {
         NavigationStack{
             Form{
                 HStack{
-                    Text("Average:")
-                    Text("\(Int(subje.average()))")
+                    Text("Current Overall")
+                    Text("\(Int(subje.currentOverall()))")
                     Text("%")
                 }
                 HStack{

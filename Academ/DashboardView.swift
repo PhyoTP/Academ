@@ -72,7 +72,7 @@ struct DashboardView: View {
                         }
                     }
                 }
-                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
+//                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
                 .cornerRadius(4)
                 Section(header: Text("Subjects")) {
                     //Text("Test") works 👍🏻
