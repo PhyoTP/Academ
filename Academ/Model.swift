@@ -72,8 +72,8 @@ struct Subject: Identifiable, Codable{
     }
     func totalPercentageValue()->Float{
         var total: Float = 0
-        for i in assessmentArray(type: 2){
-            total += i
+        for i in assessmentArray(type: 2).indices{
+            total+=(assessmentArray(type: 2)[i]*assessmentArray(type: 0)[i])
         }
         return total
     }

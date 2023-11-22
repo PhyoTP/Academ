@@ -43,9 +43,11 @@ struct SubjectOverallView: View {
                     
                 } else {
                     HStack{
-                        Text("Marks needed to achieve goal marks:")
+                        Text("Marks needed:")
+                        Text("insert number here")
+                        Text("%")
                     }
-                    Text("")
+                    
                 }
           
             }
