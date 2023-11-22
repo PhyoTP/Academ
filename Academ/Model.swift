@@ -71,6 +71,31 @@ struct Subject: Identifiable, Codable{
         return sum
         
     }
+//    func currentOverall()->Float{
+//        var total: Float = 0
+//
+//        for i in assessmentArray(type: 2).indices{
+//            total+=assessmentArray(type: 2)[i]*arrayPercentage()[i]
+//        }
+//        return total/100.0
+//    }
+    func currentOverall() -> Float {
+        let examPercentages = assessmentArray(type: 2)
+        let arrayPercentages = arrayPercentage()
+
+        guard !examPercentages.isEmpty && examPercentages.count == arrayPercentages.count else {
+            // Handle the case where either examPercentages is empty or its count is different from arrayPercentages count.
+            return 0.0
+        }
+
+        var total: Float = 0
+
+        for i in examPercentages.indices {
+            total += examPercentages[i] * arrayPercentages[i]
+        }
+
+        let totalExamPercentages = examPercentages.reduce(0, +)
+        return totalExamPercentages != 0 ? total / totalExamPercentages : 0.0
     func weightedGoal()->Float{
         var floatArray:[Float]=[]
         for i in 0...arrayPercentage().count{

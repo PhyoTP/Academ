@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL"]
     @ObservedObject var userData: UserData
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -31,9 +31,14 @@ struct SettingsView: View {
                         
                     }
                 }
+                Button("test"){
+                    
+                }
+                
             }
             .navigationTitle("Settings")
         }
+        
     }
 }
 
@@ -41,6 +46,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(userData: UserData())
-            
+        
     }
 }

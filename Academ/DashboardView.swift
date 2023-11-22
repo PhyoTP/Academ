@@ -24,7 +24,7 @@ struct DonutChartView: View {
                 Circle()
                     .trim(from: 0.0, to: percentage / 100.0)
                     .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color.accentColor)
                     .rotationEffect(Angle(degrees: -90))
                 Text("\(formattedResult)%")
                 
@@ -72,7 +72,7 @@ struct DashboardView: View {
                         }
                     }
                 }
-                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
+//                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
                 .cornerRadius(4)
                 Section(header: Text("Subjects")) {
                     //Text("Test") works 👍🏻

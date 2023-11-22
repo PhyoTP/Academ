@@ -19,8 +19,8 @@ struct SubjectOverallView: View {
         NavigationStack{
             Form{
                 HStack{
-                    Text("Average:")
-                    Text("\(Int(subje.average()))")
+                    Text("Current Overall:")
+                    Text("\(Int(subje.currentOverall()))")
                     Text("%")
                 }
                 HStack{
@@ -58,6 +58,7 @@ struct SubjectOverallView: View {
                        // the goal percentage is 100 out of the remaining weightage available times the percentage of the assessment
 
                     }
+                    
                 }
           
             }
