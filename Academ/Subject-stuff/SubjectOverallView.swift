@@ -46,9 +46,9 @@ struct SubjectOverallView: View {
                 } else {
                     HStack{
                         Text("Percentage for goal marks:")
-                        let AverageMarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
-                        Text("\(AverageMarkGoal) %")
-                        var WeightedMarkGoal = 0
+//                        let AverageMarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
+                        Text("\(subje.weightedGoal()) %")
+//                        var WeightedMarkGoal = 0
                         
                         
                         
