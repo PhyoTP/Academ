@@ -39,32 +39,30 @@ struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
         NavigationStack{
-            HStack {
-                ForEach(subjectmanager.subjects.indices, id: \.self){ index in
-                    if index < 5 {
-                        VStack{
-                            DonutChartView(percentage: CGFloat(subjectmanager.subjects[index].average()))
-                                .frame(width: 50, height: 50)
-                                .padding(4)
-                                
-                            Text(subjectmanager.subjects[index].name)
-//                            Text(subjectmanager.subjects[index].average())
-                            
-                        }
-                        
-                    }
-                    
-                    
-                    
-                }
-            }
-            .padding()
-            .background(Color(red: 242/255, green: 242/255, blue: 247/255))
-            .cornerRadius(4)
+            
             
             
             List {
-            //    Text("Test") works 👍🏻
+                //    Text("Test") works 👍🏻
+                ScrollView{
+                    HStack {
+                        ForEach(subjectmanager.subjects.indices, id: \.self){ index in
+                            
+                            VStack{
+                                DonutChartView(percentage: CGFloat(subjectmanager.subjects[index].average()))
+                                    .frame(width: 50, height: 50)
+                                    .padding(4)
+                                
+                                Text(subjectmanager.subjects[index].name)
+                                
+                            }
+                            
+                        }
+                    }
+                }
+                .padding()
+                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
+                .cornerRadius(4)
                 Section(header: Text("Subjects")) {
                     //Text("Test") works 👍🏻
                     ForEach($subjectmanager.subjects){ $subject in
@@ -78,12 +76,12 @@ struct DashboardView: View {
                             }
                         }
                         
-                           
+                        
                         //Text()
                         
                         
                     }
-                   // Text("baller")
+                    // Text("baller")
                 }
             }
             .navigationTitle("Dashboard")
@@ -94,6 +92,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(SubjectManager())
-            //.preferredColorScheme(.dark)
+        //.preferredColorScheme(.dark)
     }
 }
