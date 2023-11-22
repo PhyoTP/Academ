@@ -17,6 +17,11 @@ struct NewSubjectView: View {
             Form{
                 Section(header: Text("SUBJECT INFO")) {
                     TextField("Subject", text:$newSubject.name)
+                    HStack{
+                        Text("Target Grade")
+                        TextField("Number", value: $newSubject.targetGrade, formatter: NumberFormatter())
+                        Text("")
+                    }
                 }
                 
                 Section("ASSESSMENTS") {
