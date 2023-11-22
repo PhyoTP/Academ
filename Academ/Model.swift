@@ -70,7 +70,6 @@ struct Subject: Identifiable, Codable{
     }
     
 }
-  // redesign average function 
 
 
 
