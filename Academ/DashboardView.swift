@@ -53,8 +53,13 @@ struct DashboardView: View {
                 Section(header: Text("Subjects")) {
                     //Text("Test") works 👍🏻
                     ForEach($subjectmanager.subjects){ $subject in
-                        Text(subject.name)
-                        Text("\(subject.average(), specifier: "%.0f") %")
+                        NavigationLink{
+                            SubjectDetailView(sub: $subject)
+                        }label: {
+                            Text(subject.name)
+                            Text("Average: \(subject.average(), specifier: "%.0f") %")
+                        }
+                        
                            
                         //Text()
                         
@@ -71,5 +76,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(SubjectManager())
+            .preferredColorScheme(.dark)
     }
 }
