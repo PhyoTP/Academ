@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SubjectOverallView: View {
     @Binding var subje: Subject
+    @State private var MarkGoal = 0
+    //MarkGoal = subje.targetGrade - subje.average() + subje.targetGrade
 //    @State var highestMark = 0
 //    @State var lowestMark = 0
 //    @State var averageMark = 0
@@ -43,9 +45,11 @@ struct SubjectOverallView: View {
                     
                 } else {
                     HStack{
-                        Text("Marks needed to achieve goal marks:")
+                        Text("Percentage for goal marks:")
+                        var MarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
+                        Text("\(MarkGoal) %")
+
                     }
-                    Text("")
                 }
           
             }

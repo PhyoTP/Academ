@@ -41,6 +41,13 @@ struct Subject: Identifiable, Codable{
         }
         return numArray
     }
+//    func GoalPercentageRequired()->Float{
+//        let a = subject.targetGrade
+//        let b = subject.average()
+//        let c = subject.targetGrade - subject.average()
+//        let d = subject.targetGrade + c
+//        // d is the target grade to get the goal
+//    }
     func arrayPercentage()->[Float]{
         let amountArray = assessmentArray(type:1)
         let totaledArray = assessmentArray(type:0)
@@ -70,13 +77,7 @@ struct Subject: Identifiable, Codable{
         return sum
         
     }
-    func totalPercentageValue()->Float{
-        var total: Float = 0
-        for i in assessmentArray(type: 2){
-            total += i
-        }
-        return total
-    }
+
 }
 
 
