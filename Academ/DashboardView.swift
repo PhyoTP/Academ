@@ -29,14 +29,13 @@ struct DonutChartView: View {
 }
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
-    
     var body: some View {
         NavigationStack{
             HStack {
                 ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                     if index < 5 {
                         VStack{
-                            DonutChartView(percentage: 75)
+                            DonutChartView(percentage: CGFloat(subjectmanager.subjects[index].average()))
                                 .frame(width: 50, height: 50)
                                 .padding(4)
                             
@@ -47,18 +46,17 @@ struct DashboardView: View {
                     
                     
                 }
-                
-                
-                
             }
             List {
                 Section(header: Text("Subjects")) {
                     List($subjectmanager.subjects){ $subject in
                         
                         Text(subject.name)
+                       // Text("Hello world")
                         
                         
                     }
+                   // Text("baller")
                 }
             }
             .navigationTitle("Dashboard")
