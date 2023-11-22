@@ -40,6 +40,7 @@ struct DashboardView: View {
                                 .padding(4)
                             
                             Text(subjectmanager.subjects[index].name)
+//                            Text(subjectmanager.subjects[index].average())
                         }
                     }
                     
@@ -53,7 +54,9 @@ struct DashboardView: View {
                     //Text("Test") works 👍🏻
                     ForEach($subjectmanager.subjects){ $subject in
                         Text(subject.name)
-                       // Text("Hello world")
+                        Text("\(subject.average(), specifier: "%.0f") %")
+                           
+                        //Text()
                         
                         
                     }
