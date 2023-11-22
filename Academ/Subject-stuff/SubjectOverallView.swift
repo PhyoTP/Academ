@@ -46,8 +46,16 @@ struct SubjectOverallView: View {
                 } else {
                     HStack{
                         Text("Percentage for goal marks:")
-                        var MarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
-                        Text("\(MarkGoal) %")
+                        let AverageMarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
+                        Text("\(AverageMarkGoal) %")
+                        var WeightedMarkGoal = 0
+                        
+                        
+                        
+                        // get all the weightages and assume the next assessment has all the weightage
+                        // calculate the actual percentages of the assessment like WA1 10% weighted and scored 15/20 is equal is actually 7.5% of the whole grade
+                        // afterward calculate the difference between the overall percentage and the actual percentage
+                       // the goal percentage is 100 out of the remaining weightage available times the percentage of the assessment
 
                     }
                 }

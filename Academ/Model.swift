@@ -31,26 +31,20 @@ struct Subject: Identifiable, Codable{
         for i in assessments{
             if i.examDone{
                 if type == 0{
-                    numArray.append(i.totalMarks)
+                    numArray.append(i.totalMarks) // maximum number of marks
                 }else if type == 1{
-                    numArray.append(i.markAttained)
+                    numArray.append(i.markAttained) // number of marks attained
                 }else if type == 2{
-                    numArray.append(i.percentageValue)
+                    numArray.append(i.percentageValue) // weightage
                 }
             }
         }
         return numArray
     }
-//    func GoalPercentageRequired()->Float{
-//        let a = subject.targetGrade
-//        let b = subject.average()
-//        let c = subject.targetGrade - subject.average()
-//        let d = subject.targetGrade + c
-//        // d is the target grade to get the goal
-//    }
+    
     func arrayPercentage()->[Float]{
-        let amountArray = assessmentArray(type:1)
-        let totaledArray = assessmentArray(type:0)
+        let amountArray = assessmentArray(type:1) // marks attained
+        let totaledArray = assessmentArray(type:0) // max marks
         var percentageArray:[Float] = []
         for i in 0..<amountArray.count{
             percentageArray.append(percentage(amount: amountArray[i], total: totaledArray[i]))
@@ -77,7 +71,15 @@ struct Subject: Identifiable, Codable{
         return sum
         
     }
-
+    func weightedGoal()->Float{
+        var floatArray:[Float]=[]
+        for i in 0...arrayPercentage().count{
+            floatArray.append(arrayPercentage()[i]/100*assessmentArray(type: 2)[i])
+        }
+        var sum:Float = 0
+        return sum
+    }
+  
 }
 
 
