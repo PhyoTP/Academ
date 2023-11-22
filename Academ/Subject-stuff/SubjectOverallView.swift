@@ -38,11 +38,16 @@ struct SubjectOverallView: View {
                         Text("❌")
                     }
                 }
-                HStack{
-                    Text("Marks needed to achieve goal marks:")
+                if subje.average() >= subje.targetGrade {
+                    Text("Goal already achieved. Well done! 😁")
                     
+                } else {
+                    HStack{
+                        Text("Marks needed to achieve goal marks:")
+                    }
+                    Text("")
                 }
-                Text("")
+          
             }
             .navigationTitle(subje.name)
 
