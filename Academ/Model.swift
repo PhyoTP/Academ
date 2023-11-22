@@ -23,6 +23,7 @@ struct Subject: Identifiable, Codable{
     var name: String
     var assessments: [Assessment]
     var targetGrade: Float
+   // var hasGoal: Bool
     var credits: Int
     
     func assessmentArray(total:Bool)->[Float]{

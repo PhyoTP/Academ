@@ -13,7 +13,6 @@ struct SubjectOverallView: View {
 //    @State var highestMark = 0
 //    @State var lowestMark = 0
 //    @State var averageMark = 0
-    
     var body: some View {
         NavigationStack{
             Form{
@@ -28,7 +27,16 @@ struct SubjectOverallView: View {
                 Text("%")
                 }
                 HStack{
-                    
+                    Text("Overall Goal:")
+                    Text("\(Int(subje.targetGrade))%")
+                }
+                HStack{
+                    Text("Goal achieved?")
+                    if subje.average() >= subje.targetGrade {
+                        Text("✅")
+                    } else {
+                        Text("❌")
+                    }
                 }
             }
             .navigationTitle(subje.name)
