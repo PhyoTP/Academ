@@ -58,6 +58,6 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [],targetGrade:75,credits: 0)))
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0)))
     }
 }

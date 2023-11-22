@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var systems = ["default", "gpa", "msg", "al"]
+    var systems = ["default", "GPA", "MSG", "AL"]
     @ObservedObject var userData: UserData
 
     var body: some View {
