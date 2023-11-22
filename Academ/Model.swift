@@ -26,22 +26,24 @@ struct Subject: Identifiable, Codable{
    // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
-    func assessmentArray(total:Bool)->[Float]{
+    func assessmentArray(type:Int)->[Float]{
         var numArray:[Float] = []
         for i in assessments{
             if i.examDone{
-                if total{
+                if type == 0{
                     numArray.append(i.totalMarks)
-                }else{
+                }else if type == 1{
                     numArray.append(i.markAttained)
+                }else if type == 2{
+                    numArray.append(i.percentageValue)
                 }
             }
         }
         return numArray
     }
     func arrayPercentage()->[Float]{
-        let amountArray = assessmentArray(total: false)
-        let totaledArray = assessmentArray(total: true)
+        let amountArray = assessmentArray(type:1)
+        let totaledArray = assessmentArray(type:0)
         var percentageArray:[Float] = []
         for i in 0..<amountArray.count{
             percentageArray.append(percentage(amount: amountArray[i], total: totaledArray[i]))
@@ -68,7 +70,13 @@ struct Subject: Identifiable, Codable{
         return sum
         
     }
-    
+    func totalPercentageValue()->Float{
+        var total: Float = 0
+        for i in assessmentArray(type: 2){
+            total += i
+        }
+        return total
+    }
 }
 
 

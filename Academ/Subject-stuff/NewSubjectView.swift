@@ -18,10 +18,16 @@ struct NewSubjectView: View {
                 Section(header: Text("SUBJECT INFO")) {
                     TextField("Subject", text:$newSubject.name)
                     HStack{
-                        Text("Target Grade")
-                        TextField("Number", value: $newSubject.targetGrade, formatter: NumberFormatter())
-                        Text("")
+                        Text("Overall Goal")
+                        TextField("Percentage", value: $newSubject.targetGrade, formatter: NumberFormatter())
+                        Text("%")
                     }
+                    HStack{
+                        Text("No. of assessments")
+                        TextField("Percentage", value: $newSubject.numOfAssessments, formatter: NumberFormatter())
+                        
+                    }
+                    
                 }
                 
                 Section("ASSESSMENTS") {
