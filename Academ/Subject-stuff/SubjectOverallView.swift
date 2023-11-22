@@ -27,6 +27,9 @@ struct SubjectOverallView: View {
                     Text("\(Int(subje.highest()))")
                 Text("%")
                 }
+                HStack{
+                    
+                }
             }
             .navigationTitle(subje.name)
 

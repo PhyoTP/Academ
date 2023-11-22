@@ -52,11 +52,20 @@ struct DashboardView: View {
                         ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                             
                             VStack{
-                                DonutChartView(percentage: CGFloat(subjectmanager.subjects[index].average()))
-                                    .frame(width: 50, height: 50)
-                                    .padding(4)
+                                if subjectmanager.subjects[index].average().isNaN {
+                                    DonutChartView(percentage:CGFloat(0))
+                                        .frame(width: 50, height: 50)
+                                        .padding(4)
+                                    
+                                    Text(subjectmanager.subjects[index].name)
+                                } else {
+                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].average()))
+                                        .frame(width: 50, height: 50)
+                                        .padding(4)
+                                    
+                                    Text(subjectmanager.subjects[index].name)
+                                }
                                 
-                                Text(subjectmanager.subjects[index].name)
                                 
                             }
                             
