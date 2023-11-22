@@ -75,7 +75,7 @@ struct NewAssessmentView: View {
 }
 struct NewAssessmentView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetGrade: 75, credits: 0)))
+        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetGrade: 75, credits: 0, numOfAssessments: 4)))
             
     }
 }

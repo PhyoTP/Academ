@@ -24,7 +24,7 @@ struct Subject: Identifiable, Codable{
     var assessments: [Assessment]
     var targetGrade: Float
     var credits: Int
-    
+    var numOfAssessments: Int
     func assessmentArray(total:Bool)->[Float]{
         var numArray:[Float] = []
         for i in assessments{
