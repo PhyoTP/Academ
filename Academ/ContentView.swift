@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//to clean file errors just do command + shift + k
 
 struct ContentView: View {
     @State private var selection = 2

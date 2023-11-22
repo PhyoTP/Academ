@@ -38,6 +38,11 @@ struct SubjectOverallView: View {
                         Text("❌")
                     }
                 }
+                HStack{
+                    Text("Marks needed to achieve goal marks:")
+                    
+                }
+                Text("")
             }
             .navigationTitle(subje.name)
 
