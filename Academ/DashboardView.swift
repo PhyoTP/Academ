@@ -72,7 +72,12 @@ struct DashboardView: View {
                             SubjectDetailView(sub: $subject)
                         }label: {
                             Text(subject.name)
-                            Text("Average: \(subject.average(), specifier: "%.0f") %")
+                            if (subject.average().isNaN) {
+                                Text("-")
+                            } else {
+                                Text("Average: \(subject.average(), specifier: "%.0f") %")
+                            }
+                            
                             if ($subjectmanager.subjects.count == 0) {
                                 Text("No subjects available. Go add some in the subjects tab!")
                             }
