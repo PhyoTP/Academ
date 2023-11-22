@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewSubjectView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
-    @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0)
+    @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0, numOfAssessments: 4)
     @State private var showNewAssessmentSheet = false
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -46,6 +46,9 @@ struct NewSubjectView: View {
                 Section{
                     Button("Save"){
                         subjectmanager.subjects.append(newSubject)
+                        dismiss()
+                    }
+                    Button("Cancel", role:.destructive){
                         dismiss()
                     }
                 }
