@@ -44,7 +44,7 @@ struct DashboardView: View {
             
             List {
                 //    Text("Test") works 👍🏻
-                ScrollView{
+                ScrollView(.horizontal){
                     HStack {
                         ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                             
@@ -75,8 +75,6 @@ struct DashboardView: View {
                                 Text("No subjects available. Go add some in the subjects tab!")
                             }
                         }
-                        
-                        
                         //Text()
                         
                         
