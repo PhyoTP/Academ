@@ -19,7 +19,7 @@ struct SubjectOverallView: View {
         NavigationStack{
             Form{
                 HStack{
-                    Text("Current Overall")
+                    Text("Current Overall:")
                     Text("\(Int(subje.currentOverall()))")
                     Text("%")
                 }
@@ -46,7 +46,7 @@ struct SubjectOverallView: View {
                 } else {
                     HStack{
                         Text("Percentage for goal marks:")
-                        var MarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
+                        let MarkGoal = Int(subje.targetGrade - subje.average() + subje.targetGrade)
                         Text("\(MarkGoal) %")
 
                     }
