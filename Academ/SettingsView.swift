@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var systems = ["default", "GPA", "MSG", "AL"]
+    var systems = ["Default", "GPA", "MSG", "AL"]
     @ObservedObject var userData: UserData
 
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    Picker("Grading System", selection: $userData.selection) {
+                Section("Grading system") {
+                    Picker("Grading System Type", selection: $userData.selection) {
                         ForEach(systems.indices, id: \.self) { index in
-                            Text(systems[index].capitalized)
+                            Text(systems[index])
                         }
                     }
                     .pickerStyle(.menu)
+                }
+                if userData.selection == 1{
+                    Section("GPA Settings"){
+                        
+                    }
+                }else if userData.selection == 3{
+                    Section("AL settings"){
+                        
+                    }
                 }
             }
             .navigationTitle("Settings")
