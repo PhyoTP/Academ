@@ -20,7 +20,8 @@ struct ContentView: View {
                 }.tag(1)
             DashboardView()
                 .tabItem{
-                    Label("Dashboard", systemImage: "steeringwheel.road.lane.dashed")
+                    Label("Dashboard", image: "gauge.open.with.lines.needle.33percent")
+                        
                         .ignoresSafeArea(.all)
                 }.tag(2)
             SettingsView(userData: UserData())

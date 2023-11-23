@@ -15,12 +15,16 @@ struct SubjectsView: View {
             
             Form{
                 Section{
-                    List($settings.subjects,editActions: .all){$subject in
-                            
-                        NavigationLink{
-                            SubjectDetailView(sub:$subject)
-                        }label:{
-                            Text(subject.name)
+                    if settings.subjects.count == 0 {
+                        Text("No subjects")
+                            .foregroundColor(.gray)
+                    }else{
+                        List($settings.subjects,editActions: .all){$subject in
+                            NavigationLink{
+                                SubjectDetailView(sub:$subject)
+                            }label:{
+                                Text(subject.name)
+                            }
                         }
                     }
                 }
