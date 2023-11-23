@@ -63,6 +63,9 @@ struct NewAssessmentView: View {
             Section {
                 Button("Save", role: .none) {
                     sub.assessments.append(newAssessment)
+                    if sub.checkIfSubjectGradeExceeds100() == true {
+                        
+                    }
                     dismiss()
                 }
                 Button("Cancel", role: .destructive) {

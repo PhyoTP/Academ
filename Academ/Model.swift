@@ -104,13 +104,19 @@ struct Subject: Identifiable, Codable{
         return sum
     }
     
-    func checkIfSubjectGradeExceeds100() {
+    func checkIfSubjectGradeExceeds100() -> Bool{
         
         var finalGradeForSubject:Float = 0.0
-        
+        var exceeds100 = false
         for test in  (assessments) {
             finalGradeForSubject += test.percentageValue
+            
+            if finalGradeForSubject >= 100.0 {
+                var exceeds100 = true
+        
+            }
         }
+        return exceeds100
     }
 }
 
