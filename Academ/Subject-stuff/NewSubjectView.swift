@@ -24,7 +24,7 @@ struct NewSubjectView: View {
                     }
                     HStack{
                         Text("No. of assessments")
-                        TextField("Percentage", value: $newSubject.numOfAssessments, formatter: NumberFormatter())
+                        TextField("Number", value: $newSubject.numOfAssessments, formatter: NumberFormatter())
                         
                     }
                     

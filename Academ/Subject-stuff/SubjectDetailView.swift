@@ -23,6 +23,10 @@ struct SubjectDetailView: View {
                             Text("Overall")
                         }
                     }
+                    HStack{
+                        Text("No. of Assessments")
+                        TextField("Num",value:$sub.numOfAssessments, formatter: NumberFormatter())
+                    }
                 }
                 Section(header: Text("Assessments")) {
                     List($sub.assessments,editActions:.all){$assessment in

@@ -11,7 +11,7 @@ struct DonutChartView: View {
     var percentage: CGFloat
     @EnvironmentObject var subjectmanager: SubjectManager
     var formattedResult: String {
-            return (percentage.isNaN || percentage.isSignalingNaN) ? "--" : String(format: "%.0f", percentage)
+        return (percentage.isNaN || percentage.isSignalingNaN) ? "--" : String(format: "%.0f", percentage)
     }
     var body: some View {
         VStack{
@@ -42,60 +42,58 @@ struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     var body: some View {
         NavigationStack{
-            
-            
-            
             List {
-                //    Text("Test") works 👍🏻
-                ScrollView(.horizontal){
-                    HStack {
-                        ForEach(subjectmanager.subjects.indices, id: \.self){ index in
-                            
-                            VStack{
-                                if subjectmanager.subjects[index].average().isNaN {
-                                    DonutChartView(percentage:CGFloat(0))
-                                        .frame(width: 50, height: 50)
-                                        .padding(4)
-                                    
-                                    Text(subjectmanager.subjects[index].name)
-                                } else {
-                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].average()))
-                                        .frame(width: 50, height: 50)
-                                        .padding(4)
-                                    
-                                    Text(subjectmanager.subjects[index].name)
+                if subjectmanager.subjects.count == 0 {
+                    Text("No subjects")
+                        .foregroundColor(.gray)
+                }else{
+                    ScrollView(.horizontal){
+                        HStack {
+                            ForEach(subjectmanager.subjects.indices, id: \.self){ index in
+                                
+                                VStack{
+                                    if subjectmanager.subjects[index].average().isNaN {
+                                        DonutChartView(percentage:CGFloat(0))
+                                            .frame(width: 50, height: 50)
+                                            .padding(4)
+                                        Text(subjectmanager.subjects[index].name)
+                                    } else {
+                                        DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].average()))
+                                            .frame(width: 50, height: 50)
+                                            .padding(4)
+                                        Text(subjectmanager.subjects[index].name)
+                                    }
                                 }
-                                
-                                
                             }
-                            
                         }
                     }
+                    .cornerRadius(4)
                 }
-//                .background(Color(red: 255/255, green: 255/255, blue: 255/255))
-                .cornerRadius(4)
                 Section(header: Text("Subjects")) {
-                    //Text("Test") works 👍🏻
-                    ForEach($subjectmanager.subjects){ $subject in
-                        NavigationLink{
-                            SubjectDetailView(sub: $subject)
-                        }label: {
-                            Text(subject.name)
-                            if (subject.average().isNaN) {
-                                Text("Average: --%")
-                            } else {
-                                Text("Average: \(subject.average(), specifier: "%.0f")%")
-                            }
-                            
-                            if ($subjectmanager.subjects.count == 0) {
-                                Text("No subjects available. Go add some in the subjects tab!")
+                    if subjectmanager.subjects.count == 0 {
+                        Text("No subjects available. Go add some in the subjects tab!")
+                            .foregroundColor(.gray)
+                    }else{
+                        ForEach($subjectmanager.subjects){ $subject in
+                            NavigationLink{
+                                SubjectDetailView(sub: $subject)
+                            }label: {
+                                VStack{
+                                    
+                                    Text(subject.name)
+                                    if (subject.currentOverall().isNaN) {
+                                        Text("Current Overall: --%")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    } else {
+                                        Text("Current Overall: \(subject.currentOverall(), specifier: "%.2f")%")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                }
                             }
                         }
-                        //Text()
-                        
-                        
                     }
-//                     Text("baller")
                 }
             }
             .navigationTitle("Dashboard")

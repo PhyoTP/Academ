@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class SubjectManager: ObservableObject {
-    @Published var subjects: [Subject] = [Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)] {
+    @Published var subjects: [Subject] = [] {
         didSet {
             save()
         }
