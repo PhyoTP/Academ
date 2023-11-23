@@ -112,7 +112,7 @@ struct Subject: Identifiable, Codable{
             finalGradeForSubject += test.percentageValue
             
             if finalGradeForSubject >= 100.0 {
-                var exceeds100 = true
+                exceeds100 = true
         
             }
         }
