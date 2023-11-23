@@ -63,7 +63,7 @@ struct NewAssessmentView: View {
             }
             Section {
                 Button("Save", role: .none) {
-                    if sub.checkIfSubjectGradeExceeds100() + newAssessment.percentageValue >= 100 {
+                    if sub.checkIfSubjectGradeExceeds100() + newAssessment.percentageValue > 100 {
                         alert = true
                         
                     } else {
