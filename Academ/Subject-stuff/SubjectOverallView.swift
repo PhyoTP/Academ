@@ -16,7 +16,7 @@ struct SubjectOverallView: View {
             Form{
                 HStack{
                     Text("Current Overall:")
-                    Text("\(String(format: "%.2f",subje.currentOverall()))")
+                    Text("\(String(format: "%.0f",subje.currentOverall()))")
                     Text("%")
                 }//current overall
                 HStack{
@@ -46,8 +46,8 @@ struct SubjectOverallView: View {
                     }
                 }else {
                     HStack{
-                        Text("Percentage for goal marks:")
-                        Text("\(subje.weightedGoal()) %")
+                        Text("Percentage needed to get goal marks:")
+                        Text("\(Int(subje.weightedGoal())) %")
                     }
                 }
             }

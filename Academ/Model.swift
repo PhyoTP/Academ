@@ -107,19 +107,18 @@ struct Subject: Identifiable, Codable{
         let sum = (targetGrade-percentageSum)/valueSum*100
         return sum
     }//finds the percentage needed to achieve the goal
-    func checkIfSubjectGradeExceeds100() -> Bool{
+    func checkIfSubjectGradeExceeds100() -> Float{
         
         var finalGradeForSubject:Float = 0.0
-        var exceeds100 = false
+       // var exceeds100 = false
         for test in  (assessments) {
             finalGradeForSubject += test.percentageValue
             
-            if finalGradeForSubject >= 100.0 {
-                exceeds100 = true
-        
-            }
+    //        if finalGradeForSubject >= 100.0 {
+   //             exceeds100 = true        
+   //         }
         }
-        return exceeds100
+        return finalGradeForSubject
     }//pretty self explanatory
 }
 struct GradeSystem: Codable{

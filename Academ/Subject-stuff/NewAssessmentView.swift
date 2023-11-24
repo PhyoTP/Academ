@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewAssessmentView: View {
     @State private var newAssessment = Assessment(name: "", percentageValue: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
+    @State var alert = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Float = 0.0
@@ -62,11 +63,13 @@ struct NewAssessmentView: View {
             }
             Section {
                 Button("Save", role: .none) {
-                    sub.assessments.append(newAssessment)
-                    if sub.checkIfSubjectGradeExceeds100() == true {
+                    if sub.checkIfSubjectGradeExceeds100() + newAssessment.percentageValue > 100 {
+                        alert = true
                         
+                    } else {
+                        sub.assessments.append(newAssessment)
+                        dismiss()
                     }
-                    dismiss()
                 }
                 Button("Cancel", role: .destructive) {
                     // code to cancel
@@ -74,7 +77,9 @@ struct NewAssessmentView: View {
                 }
             }
         }
-        
+        .alert("The weightage of all assessments in a subject can only be 100%",isPresented: $alert){
+            
+        }
     }
 }
 struct NewAssessmentView_Previews: PreviewProvider {
