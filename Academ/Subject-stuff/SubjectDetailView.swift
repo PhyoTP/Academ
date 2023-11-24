@@ -10,6 +10,8 @@ import SwiftUI
 struct SubjectDetailView: View {
     @Binding var sub: Subject
     @State private var displaySheet = false
+    @State private var showAlert = false
+    @ObservedObject var userData: UserData
     var body: some View {
         
         NavigationStack {
@@ -25,6 +27,12 @@ struct SubjectDetailView: View {
                             SubjectOverallView(subje: $sub)
                         }label: {
                             Text("Overall")
+                        }
+                    }
+                    if userData.haveCredits{
+                        HStack{
+                            Text("Credit")
+                            TextField("Hours",value: $sub.credits, formatter: NumberFormatter())
                         }
                     }
                 }
@@ -52,6 +60,16 @@ struct SubjectDetailView: View {
                     EditButton()
                 }
             }
+            .onAppear{
+                if (sub.assessments.count == sub.numOfAssessments)&&(sub.checkIfSubjectGradeExceeds100()>Float(100)){
+                    showAlert=true
+                }
+            }
+            .alert("Your inputted percentage value is higher than 100%.",isPresented: $showAlert){
+                
+            }message: {
+                Text("Please change your assessment's percentage value")
+            }
         }
         .sheet(isPresented: $displaySheet) {
             NewAssessmentView(sub:$sub)
@@ -64,6 +82,6 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)))
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)),userData: UserData())
     }
 }

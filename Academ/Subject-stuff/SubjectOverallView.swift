@@ -11,10 +11,11 @@ import SwiftUI
 struct SubjectOverallView: View {
     @Binding var subje: Subject
     @State private var MarkGoal = 0
+    @State private var showAlert = false
     var body: some View {
         NavigationStack{
             Form{
-                Section{
+                Section("Statistics"){
                     HStack{
                         Text("Current Overall:")
                         Text("\(String(format: "%.0f",subje.currentOverall()))")
@@ -30,7 +31,7 @@ struct SubjectOverallView: View {
                         Text("\(Int(subje.targetGrade))%")
                     }//overall goal
                 }
-                Section{
+                Section("Goals"){
                     if subje.assessmentArray(type: 1).count == subje.numOfAssessments{
                         HStack{
                             Text("Goal achieved?")
@@ -45,7 +46,7 @@ struct SubjectOverallView: View {
                         }//goal message
                     }else {
                         HStack{
-                            Text("Percentage needed to achieve goal:")
+                            Text("Percentage needed:")
                             Spacer()
                             Text("\(Int(subje.weightedGoal())) %")
                         }
@@ -61,6 +62,16 @@ struct SubjectOverallView: View {
                 }
             }
             .navigationTitle(subje.name)
+            .onAppear{
+                if (subje.assessments.count == subje.numOfAssessments)&&(subje.checkIfSubjectGradeExceeds100()>Float(100)){
+                    showAlert=true
+                }
+            }
+            .alert("Your inputted percentage value is higher than 100%.",isPresented: $showAlert){
+                
+            }message: {
+                Text("Please change your assessment's percentage value")
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ struct NewSubjectView: View {
     @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0, numOfAssessments: 4)
     @State private var showNewAssessmentSheet = false
     @Environment(\.dismiss) var dismiss
+    @StateObject var userData: UserData
     var body: some View {
         NavigationStack {
             Form{
@@ -26,6 +27,12 @@ struct NewSubjectView: View {
                         Text("No. of assessments")
                         TextField("Number", value: $newSubject.numOfAssessments, formatter: NumberFormatter())
                         
+                    }
+                    if userData.haveCredits{
+                        HStack{
+                            Text("Credit")
+                            TextField("Hours",value: $newSubject.credits, formatter: NumberFormatter())
+                        }
                     }
                     
                 }
@@ -72,7 +79,7 @@ struct NewSubjectView: View {
 
 struct NewSubjectView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSubjectView()
+        NewSubjectView(userData: UserData())
             .environmentObject(SubjectManager())
     }
 }
