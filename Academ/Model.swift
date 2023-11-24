@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Assessment: Identifiable, Codable{
     var id = UUID()
@@ -177,7 +178,8 @@ var gradingSystems = [
     ])
 ]
 
-
+//var mainColor : Color = .green
+//var secondColor : Color = .blue
 
 
 
