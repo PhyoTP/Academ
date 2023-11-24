@@ -113,6 +113,17 @@
 			path = "Subject-stuff";
 			sourceTree = "<group>";
 		};
+		D93ABB062B10843300A396FD /* Grading-stuff */ = {
+			isa = PBXGroup;
+			children = (
+				D93ABAFE2B10752700A396FD /* SystemManager.swift */,
+				D965469A2B08478F00FEA173 /* SettingsView.swift */,
+				D93ABB042B107CB200A396FD /* GradeDetailView.swift */,
+				D93ABB022B1079F100A396FD /* NewGradeView.swift */,
+			);
+			path = "Grading-stuff";
+			sourceTree = "<group>";
+		};
 		D9D44DA22AC97FA20093096A = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +150,8 @@
 				8946E0322B0DB6D600445833 /* Info.plist */,
 				D9D44DAE2AC97FA20093096A /* AcademApp.swift */,
 				D965469E2B086D6900FEA173 /* Model.swift */,
-				D93ABAFE2B10752700A396FD /* SystemManager.swift */,
+				D93ABB062B10843300A396FD /* Grading-stuff */,
 				D9D44DB02AC97FA20093096A /* ContentView.swift */,
-				D965469A2B08478F00FEA173 /* SettingsView.swift */,
-				D93ABB042B107CB200A396FD /* GradeDetailView.swift */,
-				D93ABB022B1079F100A396FD /* NewGradeView.swift */,
 				D965469C2B0847B900FEA173 /* DashboardView.swift */,
 				89FD18E32B0871970054609D /* Subject-stuff */,
 				D9D44DB22AC97FA50093096A /* Assets.xcassets */,
