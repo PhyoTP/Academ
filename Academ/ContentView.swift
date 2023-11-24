@@ -21,7 +21,7 @@ struct ContentView: View {
             DashboardView()
                 .tabItem{
                     Label("Dashboard", image: "gauge.open.with.lines.needle.33percent")
-                        
+                    
                         .ignoresSafeArea(.all)
                 }.tag(2)
             SettingsView(userData: UserData())
@@ -31,7 +31,6 @@ struct ContentView: View {
                 }.tag(3)
             
         }
-        
     }
 }
 

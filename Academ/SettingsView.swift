@@ -48,6 +48,8 @@ struct SettingsView: View {
                     }
                 }
             }
+//            .background(.blue)
+//            .scrollContentBackground(.hidden)
             .navigationTitle("Settings")
             .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
                 Button("Confirm", role: .destructive){

@@ -178,8 +178,8 @@ var gradingSystems = [
     ])
 ]
 
-//var mainColor : Color = .green
-//var secondColor : Color = .blue
+var mainColor : Color = .green
+var secondColor : Color = .blue
 
 
 

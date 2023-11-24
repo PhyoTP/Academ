@@ -98,6 +98,8 @@ struct AssessmentDetailView: View {
                 
             }
             .navigationTitle($assess.name)
+//            .background(.green)
+//            .scrollContentBackground(.hidden)
         }
     }
 }
