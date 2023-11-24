@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL"]
-//    var themes = [[mainColor = .green,secondColor = .blue],[mainColor = .red,secondColor = .orange]]
-//    var themelist = ["blue", "red", "green", "orange"]
+    var themes = [[mainColor = .gray,secondColor = .white],[mainColor = .blue,secondColor = .green],[mainColor = .red,secondColor = .orange]]
+    var themelist = ["default", "blue", "red", "green", "orange"]
     @ObservedObject var userData: UserData
     @State private var showAlert = false
     @EnvironmentObject var subjectmanager: SubjectManager
@@ -34,14 +34,14 @@ struct SettingsView: View {
                         
                     }
                 }
-//                Section("Themes") {
-//                    Picker("Set Theme", selection: $userData.selection) {
-//                        ForEach(themes.indices, id: \.self) { index in
-//                            Text(themelist[index])
-//                        }
-//                    }
-//                    .pickerStyle(.menu)
-//                }
+                Section("Themes") {
+                    Picker("Set Theme", selection: $userData.selection) {
+                        ForEach(themes.indices, id: \.self) { index in
+                            Text(themelist[index])
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
                 Section{
                     Button("Reset to new year", role: .destructive){
                         showAlert = true
