@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AssessmentDetailView: View {
     @Binding var assess: Assessment
+    @State private var isDisplayed = false
     // all data has to be binding or else it would refresh
     func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -84,6 +85,10 @@ struct AssessmentDetailView: View {
                         Toggle(isOn: $assess.haveReminder){
                             Text("")
                         }
+                    }
+                    .onChange(of: assess.haveReminder) {newValue in
+                        requestNotificationAuthorization()
+                        scheduleNotification(at: assess.reminder, body: "Your exam is on \(assess.examDate)", title: assess.name)
                     }
                     if assess.haveReminder{
                         DatePicker("Reminder:",selection: $assess.reminder,displayedComponents: [.date])
