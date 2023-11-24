@@ -41,7 +41,7 @@ struct NewAssessmentView: View {
                 print("Error scheduling notification: \(error.localizedDescription)")
             } else {
                 print("Notification scheduled successfully")
-                scheduleNotification(at: Date().addingTimeInterval(60), body: "Your notification body", title: newAssessment.name)
+                scheduleNotification(at: Date().addingTimeInterval(60), body: "Your exam is on \(newAssessment.examDate)", title: newAssessment.name)
             }
         }
     }
