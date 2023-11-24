@@ -36,11 +36,13 @@ struct SubjectDetailView: View {
                                 .font(.caption)
                         }
                     }
-                    Button {
-                        print("sooon")
-                        displaySheet = true
-                    } label: {
-                        Text("+  Add an assessment")
+                    if !(sub.assessments.count >= sub.numOfAssessments){
+                        Button {
+                            print("sooon")
+                            displaySheet = true
+                        } label: {
+                            Text("+  Add an assessment")
+                        }
                     }
                 }
             }

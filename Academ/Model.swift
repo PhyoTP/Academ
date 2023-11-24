@@ -44,7 +44,7 @@ struct Subject: Identifiable, Codable{
             }
         }
         return numArray
-    }//gets a value from the assessments array (type 0 is marksAttained, 1 is totalMarks, and 2 is percentageValue)
+    }//gets a value from the assessments array (type 0 is totalMarks for done assessments, 1 is marksAttained, 2 is percentageValue, 3 is totalMarks for not done exams)
     func arrayPercentage()->[Float]{
         let amountArray = assessmentArray(type:1) // marks attained
         let totaledArray = assessmentArray(type:0) // max marks
@@ -120,6 +120,15 @@ struct Subject: Identifiable, Codable{
         }
         return finalGradeForSubject
     }//pretty self explanatory
+    func getUnfinishedAssessments()->[Assessment]{
+    var unfinishedArray:[Assessment]=[]
+        for i in assessments{
+            if !i.examDone{
+                unfinishedArray.append(i)
+            }
+        }
+        return unfinishedArray
+    }
 }
 struct GradeSystem: Codable{
     var type: Int
