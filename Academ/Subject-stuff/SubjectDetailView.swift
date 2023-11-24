@@ -10,6 +10,7 @@ import SwiftUI
 struct SubjectDetailView: View {
     @Binding var sub: Subject
     @State private var displaySheet = false
+    @State private var showAlert = false
     var body: some View {
         
         NavigationStack {
@@ -51,6 +52,16 @@ struct SubjectDetailView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
+            }
+            .onAppear{
+                if (sub.assessments.count == sub.numOfAssessments)&&(sub.checkIfSubjectGradeExceeds100()>Float(100)){
+                    showAlert=true
+                }
+            }
+            .alert("Your inputted percentage value is higher than 100%.",isPresented: $showAlert){
+                
+            }message: {
+                Text("Please change your assessment's percentage value")
             }
         }
         .sheet(isPresented: $displaySheet) {
