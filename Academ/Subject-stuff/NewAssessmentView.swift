@@ -6,6 +6,17 @@
 //
 
 import SwiftUI
+import UserNotifications
+func requestNotificationAuthorization() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        if granted {
+            print("Notification authorization granted")
+        } else {
+            print("Notification authorization denied")
+        }
+    }
+}
+
 
 struct NewAssessmentView: View {
     @State private var newAssessment = Assessment(name: "", percentageValue: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
@@ -13,6 +24,27 @@ struct NewAssessmentView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Float = 0.0
+    func scheduleNotification(at date: Date, body: String, title: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully")
+                scheduleNotification(at: Date().addingTimeInterval(60), body: "Your exam is on \(newAssessment.examDate)", title: newAssessment.name)
+            }
+        }
+    }
     var body: some View {
         Form{
             Section("Assessment Info"){
@@ -57,6 +89,7 @@ struct NewAssessmentView: View {
                         
                     }
                     if newAssessment.haveReminder{
+                        
                         DatePicker("Reminder Date",selection: $newAssessment.reminder, displayedComponents: [.date])
                     }
                 }
@@ -69,6 +102,11 @@ struct NewAssessmentView: View {
                     } else {
                         sub.assessments.append(newAssessment)
                         dismiss()
+                        if newAssessment.haveReminder{
+                            requestNotificationAuthorization()
+                            scheduleNotification(at: $newAssessment.reminder.wrappedValue, body: "Your exam is on \($newAssessment.examDate)", title: $newAssessment.name.wrappedValue)
+                            
+                        }
                     }
                 }
                 Button("Cancel", role: .destructive) {
