@@ -37,6 +37,10 @@ struct Subject: Identifiable, Codable{
                 }else if type == 2{
                     numArray.append(i.percentageValue) // weightage
                 }
+            }else{
+                if type == 3{
+                    numArray.append(i.totalMarks)
+                }
             }
         }
         return numArray
@@ -60,7 +64,7 @@ struct Subject: Identifiable, Codable{
         }
         return high
     }//finds the highest value in an array
-    func average()->Float{
+    /*func average()->Float{
         let floatArray = arrayPercentage()
         var sum:Float = 0
         for i in floatArray{
@@ -69,7 +73,7 @@ struct Subject: Identifiable, Codable{
         sum/=Float(floatArray.count)
         return sum
         
-    }//finds the average of floats in an array (will be deprecated)
+    }*///finds the average of floats in an array (deprecated)
     func currentOverall() -> Float {
         let examPercentages = assessmentArray(type: 2)
         let arrayPercentages = arrayPercentage()
@@ -102,8 +106,7 @@ struct Subject: Identifiable, Codable{
         valueSum=100-valueSum
         let sum = (targetGrade-percentageSum)/valueSum*100
         return sum
-    }
-    
+    }//finds the percentage needed to achieve the goal
     func checkIfSubjectGradeExceeds100() -> Bool{
         
         var finalGradeForSubject:Float = 0.0
@@ -117,10 +120,8 @@ struct Subject: Identifiable, Codable{
             }
         }
         return exceeds100
-    }
+    }//pretty self explanatory
 }
-
-
 struct GradeSystem: Codable{
     var type: Int
     var grades: [Grade]

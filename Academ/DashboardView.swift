@@ -11,7 +11,7 @@ struct DonutChartView: View {
     var percentage: CGFloat
     @EnvironmentObject var subjectmanager: SubjectManager
     var formattedResult: String {
-        return (percentage.isNaN || percentage.isSignalingNaN) ? "--" : String(format: "%.0f", percentage)
+        return percentage.isNaN || percentage.isSignalingNaN ? "--" : String(format: "%.0f", percentage)
     }
     var body: some View {
         VStack{
@@ -52,17 +52,17 @@ struct DashboardView: View {
                             ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                                 
                                 VStack{
-                                    if subjectmanager.subjects[index].average().isNaN {
-                                        DonutChartView(percentage:CGFloat(0))
+//                                    if subjectmanager.subjects[index].currentOverall().isNaN {
+//                                        DonutChartView(percentage:CGFloat(0))
+//                                            .frame(width: 50, height: 50)
+//                                            .padding(4)
+//                                        Text(subjectmanager.subjects[index].name)
+//                                    } else {
+                                        DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()))
                                             .frame(width: 50, height: 50)
                                             .padding(4)
                                         Text(subjectmanager.subjects[index].name)
-                                    } else {
-                                        DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].average()))
-                                            .frame(width: 50, height: 50)
-                                            .padding(4)
-                                        Text(subjectmanager.subjects[index].name)
-                                    }
+//                                    }
                                 }
                             }
                         }
@@ -79,17 +79,16 @@ struct DashboardView: View {
                                 SubjectDetailView(sub: $subject)
                             }label: {
                                 VStack{
-                                    
                                     Text(subject.name)
-                                    if (subject.currentOverall().isNaN) {
-                                        Text("Current Overall: --%")
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                    } else {
-                                        Text("Current Overall: \(subject.currentOverall(), specifier: "%.2f")%")
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                    }
+//                                    if (subject.currentOverall().isNaN) {
+//                                        Text("Current Overall: --%")
+//                                            .font(.subheadline)
+//                                            .foregroundColor(.gray)
+//                                    } else {
+//                                        Text("Current Overall: \(subject.currentOverall(), specifier: "%.2f")%")
+//                                            .font(.subheadline)
+//                                            .foregroundColor(.gray)
+//                                    }
                                 }
                             }
                         }

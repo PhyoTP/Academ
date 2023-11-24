@@ -11,10 +11,6 @@ import SwiftUI
 struct SubjectOverallView: View {
     @Binding var subje: Subject
     @State private var MarkGoal = 0
-    //MarkGoal = subje.targetGrade - subje.average() + subje.targetGrade
-    //    @State var highestMark = 0
-    //    @State var lowestMark = 0
-    //    @State var averageMark = 0
     var body: some View {
         NavigationStack{
             Form{

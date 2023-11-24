@@ -16,16 +16,16 @@ struct SubjectDetailView: View {
             Form{
                 Section(header: Text("subject info")) {
                     TextField("Name",text:$sub.name)
+                    HStack{
+                        Text("No. of Assessments")
+                        TextField("Num",value:$sub.numOfAssessments, formatter: NumberFormatter())
+                    }
                     if sub.assessmentArray(type: 1).count>1{
                         NavigationLink{
                             SubjectOverallView(subje: $sub)
                         }label: {
                             Text("Overall")
                         }
-                    }
-                    HStack{
-                        Text("No. of Assessments")
-                        TextField("Num",value:$sub.numOfAssessments, formatter: NumberFormatter())
                     }
                 }
                 Section(header: Text("Assessments")) {
