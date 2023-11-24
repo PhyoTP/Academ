@@ -76,7 +76,7 @@ struct DashboardView: View {
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
                             NavigationLink{
-                                SubjectDetailView(sub: $subject)
+                                SubjectDetailView(sub: $subject,userData: UserData())
                             }label: {
                                 VStack{
                                     Text(subject.name)

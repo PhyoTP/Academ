@@ -11,7 +11,9 @@ struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL"]
     @ObservedObject var userData: UserData
     @State private var showAlert = false
+    @State private var showSheet = false
     @EnvironmentObject var subjectmanager: SubjectManager
+    @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
             Form {
@@ -26,6 +28,29 @@ struct SettingsView: View {
                 if userData.selection == 1{
                     Section("GPA Settings"){
                         Toggle(isOn: $userData.haveCredits, label: {Text("Have credits?")})
+                        List($systemmanager.systems[0].grades){$grade in
+                            NavigationLink{
+                                GradeDetailView(grade: $grade)
+                            }label: {
+                                VStack(alignment: .leading){
+                                    Text(grade.name)
+                                    Text("Grade Point: \(String(format:"%.1f",grade.gradePoint))")
+                                        .foregroundColor(.gray)
+                                        .font(.system(size: 15))
+                                }
+                            }
+                        }
+                        Button{
+                            showSheet = true
+                        }label: {
+                            HStack{
+                                Image(systemName: "plus")
+                                Text("Add a grade")
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $showSheet){
+                        NewGradeView()
                     }
                 }else if userData.selection == 3{
                     Section("AL settings"){
@@ -56,6 +81,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(userData: UserData())
             .environmentObject(SubjectManager())
-        
+            .environmentObject(SystemManager())
     }
 }
