@@ -8,14 +8,21 @@
 import SwiftUI
 import UserNotifications
 func requestNotificationAuthorization() {
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-        if granted {
-            print("Notification authorization granted")
-        } else {
-            print("Notification authorization denied")
-        }
-    }
+  print("glory to soon")
+  let center = UNUserNotificationCenter.current()
+  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+      if granted {
+          print("Notification authorization granted")
+          DispatchQueue.main.async {
+              UIApplication.shared.registerForRemoteNotifications()
+          }
+      } else {
+          print("Notification authorization denied")
+      }
+  }
 }
+
+
 
 
 struct NewAssessmentView: View {
@@ -26,26 +33,31 @@ struct NewAssessmentView: View {
     @State private var markCheck:Float = 0.0
     @State var NotificationSet =  true
     func scheduleNotification(at date: Date, body: String, title: String) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
+       // Remove all pending notifications
+       
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+       UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+       let content = UNMutableNotificationContent()
+       content.title = title
+       content.body = body
 
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+       let calendar = Calendar.current
+       let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
 
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling notification: \(error.localizedDescription)")
-            } else {
-                print("Notification scheduled successfully")
-                scheduleNotification(at: Date().addingTimeInterval(60), body: "Your exam is on \(newAssessment.examDate)", title: newAssessment.name)
-            }
-        }
+       let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+       UNUserNotificationCenter.current().add(request) { error in
+           if let error = error {
+               print("Error scheduling notification: \(error.localizedDescription)")
+           } else {
+               print("Notification scheduled successfully")
+           }
+       }
     }
+
     var body: some View {
         Form{
             Section("Assessment Info"){
