@@ -25,7 +25,7 @@ struct ContentView: View {
                     
                         .ignoresSafeArea(.all)
                 }.tag(2)
-            SettingsView()
+            SettingsView(userData: UserData())
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                         .ignoresSafeArea(.all)

@@ -149,8 +149,8 @@ func percentage(amount:Float,total:Float)->Float{
     return amount/total*100
 }
 
-struct themeColors: Identifiable, Decodable{
-    
+struct themeColors: Identifiable{
+    var id = UUID()
     var themeName: String
     var hideBackground : Bool
     var mainColor : Color
