@@ -152,9 +152,12 @@ func percentage(amount:Float,total:Float)->Float{
     return amount/total*100
 }
 
-
-var mainColor : Color = .green
-var secondColor : Color = .blue
-
+struct themeColors: Identifiable, Decodable{
+    
+    var themeName: String
+    var hideBackground : Bool
+    var mainColor : Color
+    var secondColor : Color
+}
 
 

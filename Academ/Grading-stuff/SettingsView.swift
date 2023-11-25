@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL"]
-    var themes = [[mainColor = .gray,secondColor = .white],[mainColor = .blue,secondColor = .green],[mainColor = .red,secondColor = .orange]]
-    var themelist = ["default", "blue", "red", "green",  "orange"]
+    var themelist = ["Default", "Manual Light", "Manual Dark", "Beach",  "Winter", "Lemon", "Minty", "Salmon", "Custom"]
+    var themelists = [themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: .black),themeColors(themeName: "Manual Light", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),themeColors(themeName: "Manual Dark", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),themeColors(themeName: "Beach", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "739bdo"), secondColor: Color(hex: "bddeec")),themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff00"), secondColor: Color(hex: "ffffff")),themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),themeColors(themeName: "Salmon", hideBackground: true, mainColor: Color(hex: "ffdbe3"), secondColor: Color(hex: "c9343c")),themeColors(themeName: "Custom", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "ffffff"))]
     @ObservedObject var userData: UserData
+    @State private var hideBackground = false
     @State private var showAlert = false
     @State private var showSheet = false
     @EnvironmentObject var subjectmanager: SubjectManager
@@ -61,33 +62,50 @@ struct SettingsView: View {
                 }
                 Section("Themes") {
                     Picker("Set Theme", selection: $userData.colorSelect) {
-                        ForEach(themes.indices, id: \.self) { index in
+                        ForEach(themelist.indices, id: \.self) { index in
                             Text(themelist[index])
                         }
                     }
                     .pickerStyle(.menu)
+                }
+                if userData.colorSelect == 0 {
+                    
+                } else if userData.colorSelect == 1 {
+                    hideBackground = true
+//                    mainColor = .white
+//                    secondColor = .gray
+                } else if userData.colorSelect == 2 {
+                    hideBackground = true
+                } else if userData.colorSelect == 3 {
+                    hideBackground = true
+                } else if userData.colorSelect == 4 {
+                    hideBackground = true
+                } else if userData.colorSelect == 5 {
+                    hideBackground = true
+                } else if userData.colorSelect == 6 {
+                    hideBackground = true
                 }
                 Section{
                     Button("Reset to new year", role: .destructive){
                         showAlert = true
                     }
                 }
-            }
-//            .background(.blue)
-//            .scrollContentBackground(.hidden)
-            .navigationTitle("Settings")
-            .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
-                Button("Confirm", role: .destructive){
-                    subjectmanager.subjects = []
+                .navigationTitle("Settings")
+                .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
+                    Button("Confirm", role: .destructive){
+                        subjectmanager.subjects = []
+                    }
+                    Button("Cancel", role: .cancel){}
+                }message: {
+                    Text("This cannot be undone.")
                 }
-                Button("Cancel", role: .cancel){}
-            }message: {
-                Text("This cannot be undone.")
             }
+            .background(.green)
+            .scrollContentBackground(hideBackground ? .visible : .hidden)
         }
+
     }
 }
-
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
