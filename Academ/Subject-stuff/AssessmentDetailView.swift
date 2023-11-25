@@ -13,14 +13,17 @@ struct AssessmentDetailView: View {
     @State var NotificationSet =  true
     // all data has to be binding or else it would refresh
     func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                print("Notification authorization granted")
-            } else {
-                print("Notification authorization denied")
-            }
-        }
+       let center = UNUserNotificationCenter.current()
+       center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+           if granted {
+               print("Notification authorization granted")
+               UIApplication.shared.registerForRemoteNotifications()
+           } else {
+               print("Notification authorization denied")
+           }
+       }
     }
+
 
     func scheduleNotification(at date: Date, body: String, title: String) {
        // Remove all pending notifications
