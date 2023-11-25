@@ -1,9 +1,3 @@
-//
-//  AssessmentDetailView.swift
-//  Academ
-//
-//  Created by yoeh iskandar on 20/11/23.
-//
 
 import SwiftUI
 

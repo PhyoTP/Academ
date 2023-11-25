@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL","Overall Grade"]
     var themes = [[mainColor = .gray,secondColor = .white],[mainColor = .blue,secondColor = .green],[mainColor = .red,secondColor = .orange]]
-    var themelist = ["default", "blue", "red", "green",  "orange"]
+    var themelist = ["Default", "Bluee", "Red", "Green",  "Orange"]
     @StateObject private var userData = UserData()
     @State private var showAlert = false
     @State private var showSheet = false
