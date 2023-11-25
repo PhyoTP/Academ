@@ -25,11 +25,12 @@ struct AssessmentDetailView: View {
     }
 
 
+
     func scheduleNotification(at date: Date, body: String, title: String) {
        // Remove all pending notifications
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-           UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-       UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+
 
        let content = UNMutableNotificationContent()
        content.title = title

@@ -8,16 +8,20 @@
 import SwiftUI
 import UserNotifications
 func requestNotificationAuthorization() {
-   let center = UNUserNotificationCenter.current()
-   center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-       if granted {
-           print("Notification authorization granted")
-           UIApplication.shared.registerForRemoteNotifications()
-       } else {
-           print("Notification authorization denied")
-       }
-   }
+  print("glory to soon")
+  let center = UNUserNotificationCenter.current()
+  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+      if granted {
+          print("Notification authorization granted")
+          DispatchQueue.main.async {
+              UIApplication.shared.registerForRemoteNotifications()
+          }
+      } else {
+          print("Notification authorization denied")
+      }
+  }
 }
+
 
 
 
@@ -30,8 +34,8 @@ struct NewAssessmentView: View {
     @State var NotificationSet =  true
     func scheduleNotification(at date: Date, body: String, title: String) {
        // Remove all pending notifications
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-           UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+       
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 
        let content = UNMutableNotificationContent()
