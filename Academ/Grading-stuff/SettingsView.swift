@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var systems = ["Default", "GPA", "MSG", "AL"]
+    var systems = ["Default", "GPA", "MSG", "AL","Overall Grade"]
     @ObservedObject var userData: UserData
     @State private var showAlert = false
     @State private var showSheet = false

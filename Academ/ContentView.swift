@@ -18,7 +18,7 @@ struct ContentView: View {
                     Label("Subjects", systemImage: "books.vertical")
                         .ignoresSafeArea(.all)
                 }.tag(1)
-            DashboardView()
+            DashboardView(userData: UserData())
                 .tabItem{
                     Label("Dashboard", image: "gauge.open.with.lines.needle.33percent")
                         
