@@ -134,9 +134,15 @@ struct Subject: Identifiable, Codable{
 struct GradeSystem: Codable{
     var type: Int
     var grades: [Grade]
-//    func gpaCalculate(){
-//
-//    }
+    func gradeCalculate(mark:Float)->String{
+        var resultGrade = ""
+        for i in grades{
+            if mark > i.minMark{
+                resultGrade = i.name
+            }
+        }
+        return resultGrade
+    }
 }
 struct Grade: Codable, Identifiable{
     var id = UUID()

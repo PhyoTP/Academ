@@ -109,7 +109,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(userData: UserData())
+        SettingsView()
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
     }

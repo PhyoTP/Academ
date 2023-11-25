@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DonutChartView: View {
     var percentage: CGFloat
-    @EnvironmentObject var subjectmanager: SubjectManager
+    //    @EnvironmentObject var subjectmanager: SubjectManager
+    @StateObject private var userData = UserData()
+    @EnvironmentObject var systemmanager: SystemManager
     var formattedResult: String {
         return percentage.isNaN || percentage.isSignalingNaN ? "--" : String(format: "%.0f", percentage)
     }
@@ -40,6 +42,8 @@ struct DonutChartView: View {
 }
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
+    @StateObject private var userData = UserData()
+    @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
             List {
@@ -50,19 +54,11 @@ struct DashboardView: View {
                     ScrollView(.horizontal){
                         HStack {
                             ForEach(subjectmanager.subjects.indices, id: \.self){ index in
-                                
                                 VStack{
-//                                    if subjectmanager.subjects[index].currentOverall().isNaN {
-//                                        DonutChartView(percentage:CGFloat(0))
-//                                            .frame(width: 50, height: 50)
-//                                            .padding(4)
-//                                        Text(subjectmanager.subjects[index].name)
-//                                    } else {
-                                        DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()))
-                                            .frame(width: 50, height: 50)
-                                            .padding(4)
-                                        Text(subjectmanager.subjects[index].name)
-//                                    }
+                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()))
+                                        .frame(width: 50, height: 50)
+                                        .padding(4)
+                                    Text(subjectmanager.subjects[index].name)
                                 }
                             }
                         }
@@ -76,19 +72,10 @@ struct DashboardView: View {
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
                             NavigationLink{
-                                SubjectDetailView(sub: $subject,userData: UserData())
+                                SubjectDetailView(sub: $subject)
                             }label: {
                                 VStack{
                                     Text(subject.name)
-//                                    if (subject.currentOverall().isNaN) {
-//                                        Text("Current Overall: --%")
-//                                            .font(.subheadline)
-//                                            .foregroundColor(.gray)
-//                                    } else {
-//                                        Text("Current Overall: \(subject.currentOverall(), specifier: "%.2f")%")
-//                                            .font(.subheadline)
-//                                            .foregroundColor(.gray)
-//                                    }
                                 }
                             }
                         }
@@ -103,6 +90,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(SubjectManager())
-        //.preferredColorScheme(.dark)
+            .environmentObject(SystemManager())
     }
 }

@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selection = 2
     @StateObject private var userData = UserData()
+    
     var body: some View {
         TabView(selection: $selection){
             SubjectsView()
@@ -24,7 +25,7 @@ struct ContentView: View {
                     
                         .ignoresSafeArea(.all)
                 }.tag(2)
-            SettingsView(userData: UserData())
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                         .ignoresSafeArea(.all)
@@ -38,6 +39,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(SubjectManager())
+            .environmentObject(SystemManager())
     }
 }
 
