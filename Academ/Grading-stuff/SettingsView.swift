@@ -68,22 +68,24 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.menu)
                 }
-                if userData.colorSelect == 0 {
-                    
-                } else if userData.colorSelect == 1 {
-                    hideBackground = true
-//                    mainColor = .white
-//                    secondColor = .gray
-                } else if userData.colorSelect == 2 {
-                    hideBackground = true
-                } else if userData.colorSelect == 3 {
-                    hideBackground = true
-                } else if userData.colorSelect == 4 {
-                    hideBackground = true
-                } else if userData.colorSelect == 5 {
-                    hideBackground = true
-                } else if userData.colorSelect == 6 {
-                    hideBackground = true
+                .onTapGesture(){
+                    if userData.colorSelect == 0 {
+                        
+                    } else if userData.colorSelect == 1 {
+                        hideBackground = true
+                        //                    mainColor = .white
+                        //                    secondColor = .gray
+                    } else if userData.colorSelect == 2 {
+                        hideBackground = true
+                    } else if userData.colorSelect == 3 {
+                        hideBackground = true
+                    } else if userData.colorSelect == 4 {
+                        hideBackground = true
+                    } else if userData.colorSelect == 5 {
+                        hideBackground = true
+                    } else if userData.colorSelect == 6 {
+                        hideBackground = true
+                    }
                 }
                 Section{
                     Button("Reset to new year", role: .destructive){
@@ -103,13 +105,13 @@ struct SettingsView: View {
             .background(.green)
             .scrollContentBackground(hideBackground ? .visible : .hidden)
         }
-
+        
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
     }
