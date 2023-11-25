@@ -19,13 +19,13 @@ struct ContentView: View {
                     Label("Subjects", systemImage: "books.vertical")
                         .ignoresSafeArea(.all)
                 }.tag(1)
-            DashboardView(userData: UserData())
+            DashboardView()
                 .tabItem{
                     Label("Dashboard", image: "gauge.open.with.lines.needle.33percent")
                     
                         .ignoresSafeArea(.all)
                 }.tag(2)
-            SettingsView(userData: UserData())
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                         .ignoresSafeArea(.all)
@@ -39,6 +39,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(SubjectManager())
+            .environmentObject(SystemManager())
     }
 }
 

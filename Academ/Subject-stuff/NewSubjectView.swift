@@ -12,7 +12,7 @@ struct NewSubjectView: View {
     @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0, numOfAssessments: 4)
     @State private var showNewAssessmentSheet = false
     @Environment(\.dismiss) var dismiss
-    @StateObject var userData: UserData
+    @StateObject private var userData = UserData()
     var body: some View {
         NavigationStack {
             Form{
@@ -79,7 +79,8 @@ struct NewSubjectView: View {
 
 struct NewSubjectView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSubjectView(userData: UserData())
+        NewSubjectView()
             .environmentObject(SubjectManager())
+            .environmentObject(SystemManager())
     }
 }

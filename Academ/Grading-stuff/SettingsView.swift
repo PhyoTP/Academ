@@ -11,7 +11,7 @@ struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL","Overall Grade"]
     var themes = [[mainColor = .gray,secondColor = .white],[mainColor = .blue,secondColor = .green],[mainColor = .red,secondColor = .orange]]
     var themelist = ["default", "blue", "red", "green",  "orange"]
-    @ObservedObject var userData: UserData
+    @StateObject private var userData = UserData()
     @State private var showAlert = false
     @State private var showSheet = false
     @EnvironmentObject var subjectmanager: SubjectManager
@@ -91,7 +91,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(userData: UserData())
+        SettingsView()
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
     }

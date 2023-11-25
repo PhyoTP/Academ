@@ -11,7 +11,7 @@ struct SubjectDetailView: View {
     @Binding var sub: Subject
     @State private var displaySheet = false
     @State private var showAlert = false
-    @ObservedObject var userData: UserData
+    @StateObject private var userData = UserData()
     var body: some View {
         
         NavigationStack {
@@ -61,7 +61,7 @@ struct SubjectDetailView: View {
                 }
             }
             .onAppear{
-                if (sub.assessments.count == sub.numOfAssessments)&&(sub.checkIfSubjectGradeExceeds100()>Float(100)){
+                if (sub.assessments.count == sub.numOfAssessments || sub.numOfAssessments == 0)&&(sub.checkIfSubjectGradeExceeds100()>Float(100)){
                     showAlert=true
                 }
             }
@@ -82,6 +82,6 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)),userData: UserData())
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)))
     }
 }

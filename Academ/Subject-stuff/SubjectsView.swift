@@ -21,7 +21,7 @@ struct SubjectsView: View {
                     }else{
                         List($settings.subjects,editActions: .all){$subject in
                             NavigationLink{
-                                SubjectDetailView(sub:$subject,userData: UserData())
+                                SubjectDetailView(sub:$subject)
                             }label:{
                                 Text(subject.name)
                             }
@@ -43,7 +43,7 @@ struct SubjectsView: View {
                 }
             }
             .sheet(isPresented: $displaySheet) {
-                NewSubjectView(userData: UserData())
+                NewSubjectView()
                     .presentationDetents([.fraction(0.8)])
                     .presentationDragIndicator(.visible)
             }
@@ -58,6 +58,6 @@ struct SubjectsView_Previews: PreviewProvider {
     static var previews: some View {
         SubjectsView()
             .environmentObject(SubjectManager())
-            
+            .environmentObject(SystemManager())
     }
 }

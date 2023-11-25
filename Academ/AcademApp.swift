@@ -15,6 +15,7 @@ struct AcademApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(SubjectManager())
+                .environmentObject(SystemManager())
         }
     }
 }

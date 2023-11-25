@@ -10,7 +10,7 @@ import SwiftUI
 struct DonutChartView: View {
     var percentage: CGFloat
     //    @EnvironmentObject var subjectmanager: SubjectManager
-    @StateObject var userData: UserData
+    @StateObject private var userData = UserData()
     @EnvironmentObject var systemmanager: SystemManager
     var formattedResult: String {
         return percentage.isNaN || percentage.isSignalingNaN ? "--" : String(format: "%.0f", percentage)
@@ -42,7 +42,7 @@ struct DonutChartView: View {
 }
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
-    @StateObject var userData: UserData
+    @StateObject private var userData = UserData()
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
@@ -55,7 +55,7 @@ struct DashboardView: View {
                         HStack {
                             ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                                 VStack{
-                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()), userData: UserData())
+                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()))
                                         .frame(width: 50, height: 50)
                                         .padding(4)
                                     Text(subjectmanager.subjects[index].name)
@@ -72,7 +72,7 @@ struct DashboardView: View {
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
                             NavigationLink{
-                                SubjectDetailView(sub: $subject,userData: UserData())
+                                SubjectDetailView(sub: $subject)
                             }label: {
                                 VStack{
                                     Text(subject.name)
@@ -88,8 +88,8 @@ struct DashboardView: View {
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(userData: UserData())
+        DashboardView()
             .environmentObject(SubjectManager())
-        //.preferredColorScheme(.dark)
+            .environmentObject(SystemManager())
     }
 }
