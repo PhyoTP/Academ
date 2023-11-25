@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Assessment: Identifiable, Codable{
     var id = UUID()
@@ -158,7 +159,8 @@ func percentage(amount:Float,total:Float)->Float{
 }
 
 
-
+var mainColor : Color = .green
+var secondColor : Color = .blue
 
 
 

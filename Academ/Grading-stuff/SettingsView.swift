@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     var systems = ["Default", "GPA", "MSG", "AL","Overall Grade"]
+    var themes = [[mainColor = .gray,secondColor = .white],[mainColor = .blue,secondColor = .green],[mainColor = .red,secondColor = .orange]]
+    var themelist = ["default", "blue", "red", "green",  "orange"]
     @ObservedObject var userData: UserData
     @State private var showAlert = false
     @State private var showSheet = false
@@ -57,12 +59,22 @@ struct SettingsView: View {
                         
                     }
                 }
+                Section("Themes") {
+                    Picker("Set Theme", selection: $userData.colorSelect) {
+                        ForEach(themes.indices, id: \.self) { index in
+                            Text(themelist[index])
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
                 Section{
                     Button("Reset to new year", role: .destructive){
                         showAlert = true
                     }
                 }
             }
+//            .background(.blue)
+//            .scrollContentBackground(.hidden)
             .navigationTitle("Settings")
             .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
                 Button("Confirm", role: .destructive){
