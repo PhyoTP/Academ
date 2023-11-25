@@ -13,7 +13,7 @@ struct DonutChartView: View {
     @StateObject private var userData = UserData()
     @EnvironmentObject var systemmanager: SystemManager
     var formattedResult: String {
-        return percentage.isNaN || percentage.isSignalingNaN ? "--" : String(format: "%.0f", percentage)
+        return percentage.isNaN || percentage.isSignalingNaN ? "--" : systemmanager.gradeCalculate(mark: Float(percentage), formatt: "%.0f")
     }
     var body: some View {
         VStack{
@@ -28,7 +28,7 @@ struct DonutChartView: View {
                     .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                     .foregroundColor(Color.accentColor)
                     .rotationEffect(Angle(degrees: -90))
-                Text("\(formattedResult)%")
+                Text("\(formattedResult)")
                 
             }
             //.padding()

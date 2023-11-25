@@ -42,6 +42,21 @@ class SystemManager: ObservableObject {
     init() {
         load()
     }
+    func gradeCalculate(mark:Float,formatt:String)->String{
+        var resultGrade = ""
+        if UserData().selection>0{
+            let selectedSystem = systems[UserData().selection-1]
+            for i in selectedSystem.grades{
+                if mark > i.minMark{
+                    resultGrade = i.name
+                    break
+                }
+            }
+        }else{
+            resultGrade = "\(String(format:formatt,mark))%"
+        }
+        return resultGrade
+    }
     
     func getArchiveURL() -> URL {
         let plistName = "systems.plist"
