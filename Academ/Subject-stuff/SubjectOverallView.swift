@@ -12,19 +12,18 @@ struct SubjectOverallView: View {
     @Binding var subje: Subject
     @State private var MarkGoal = 0
     @State private var showAlert = false
+    @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
             Form{
                 Section("Statistics"){
                     HStack{
                         Text("Current Overall:")
-                        Text("\(String(format: "%.0f",subje.currentOverall()))")
-                        Text("%")
+                        Text("\(systemmanager.gradeCalculate(mark: subje.currentOverall(), formatt: "%.2f"))")
                     }//current overall
                     HStack{
                         Text("Highest:")
-                        Text("\(Int(subje.highest()))")
-                        Text("%")
+                        Text("\(systemmanager.gradeCalculate(mark: subje.highest(), formatt: "%.2f"))")
                     }//highest
                     HStack{
                         Text("Overall Goal:")
@@ -82,6 +81,6 @@ struct SubjectOverallView_Previews: PreviewProvider {
     static var previews: some View {
         
         SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", percentageValue: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA3", percentageValue: 15, totalMarks: 45, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date()),Assessment(name: "EYE", percentageValue: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0, numOfAssessments: 4)))
-        
+            .environmentObject(SystemManager())
     }
 }

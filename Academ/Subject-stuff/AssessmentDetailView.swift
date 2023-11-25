@@ -12,47 +12,47 @@ struct AssessmentDetailView: View {
     @State private var isDisplayed = false
     @State var NotificationSet =  true
     // all data has to be binding or else it would refresh
-    func requestNotificationAuthorization() {
-       let center = UNUserNotificationCenter.current()
-       center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-           if granted {
-               print("Notification authorization granted")
-               UIApplication.shared.registerForRemoteNotifications()
-           } else {
-               print("Notification authorization denied")
-           }
-       }
-    }
-
-
-
+//    func requestNotificationAuthorization() {
+//        let center = UNUserNotificationCenter.current()
+//        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+//            if granted {
+//                print("Notification authorization granted")
+//            } else {
+//                print("Notification authorization denied")
+//            }
+//        }
+//    }
+    
+    
+    
     func scheduleNotification(at date: Date, body: String, title: String) {
-       // Remove all pending notifications
+        // Remove all pending notifications
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-
-
-       let content = UNMutableNotificationContent()
-       content.title = title
-       content.body = body
-
-       let calendar = Calendar.current
-       let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-
-       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-
-       let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-       UNUserNotificationCenter.current().add(request) { error in
-           if let error = error {
-               print("Error scheduling notification: \(error.localizedDescription)")
-           } else {
-               print("Notification scheduled successfully")
-           }
-       }
+        
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully")
+            }
+        }
     }
-
-
+    
+    
     var body: some View {
         NavigationStack{
             List{
@@ -85,11 +85,11 @@ struct AssessmentDetailView: View {
                         //Text($totaledMarks)
                     }
                 } else{
-
+                    
                     DatePicker(
                         "Exam Date:",
                         selection: $assess.examDate,
-                        displayedComponents: [.date]
+                        displayedComponents: [.date, .hourAndMinute]
                     )
                     HStack{
                         Text("Have reminder?")
@@ -98,19 +98,19 @@ struct AssessmentDetailView: View {
                         }
                     }
                     .onChange(of: assess.haveReminder) {newValue in
-                        requestNotificationAuthorization()
+//                        requestNotificationAuthorization()
                         scheduleNotification(at: assess.reminder, body: "Your exam is on \(assess.examDate)", title: assess.name)
                     }
                     if assess.haveReminder && NotificationSet{
                         DatePicker("Reminder:",selection: $assess.reminder,displayedComponents: [.date])
-                    //    requestNotificationAuthorization()
+                        //    requestNotificationAuthorization()
                     }
                 } // else bracket
                 
             }
             .navigationTitle($assess.name)
-//            .background(.green)
-//            .scrollContentBackground(.hidden)
+            //            .background(.green)
+            //            .scrollContentBackground(.hidden)
         }
     }
 }
