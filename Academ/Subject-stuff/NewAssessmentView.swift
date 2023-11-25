@@ -24,6 +24,7 @@ struct NewAssessmentView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Float = 0.0
+    @State var NotificationSet =  true
     func scheduleNotification(at date: Date, body: String, title: String) {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -102,10 +103,10 @@ struct NewAssessmentView: View {
                     } else {
                         sub.assessments.append(newAssessment)
                         dismiss()
-                        if newAssessment.haveReminder{
+                        if newAssessment.haveReminder && NotificationSet{
                             requestNotificationAuthorization()
-                            scheduleNotification(at: $newAssessment.reminder.wrappedValue, body: "Your exam is on \($newAssessment.examDate)", title: $newAssessment.name.wrappedValue)
-                            
+                            scheduleNotification(at: $newAssessment.reminder.wrappedValue, body: "Your exam is on \($newAssessment.examDate)h", title: $newAssessment.name.wrappedValue)
+                            NotificationSet = false
                         }
                     }
                 }
