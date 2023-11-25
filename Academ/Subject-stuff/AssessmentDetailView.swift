@@ -83,7 +83,7 @@ struct AssessmentDetailView: View {
                     DatePicker(
                         "Exam Date:",
                         selection: $assess.examDate,
-                        displayedComponents: [.date, .hourAndMinute]
+                        displayedComponents: [.date]
                     )
                     HStack{
                         Text("Have reminder?")
@@ -96,7 +96,7 @@ struct AssessmentDetailView: View {
                         scheduleNotification(at: assess.reminder, body: "Your exam is on \(assess.examDate)", title: assess.name)
                     }
                     if assess.haveReminder && NotificationSet{
-                        DatePicker("Reminder:",selection: $assess.reminder,displayedComponents: [.date])
+                        DatePicker("Reminder:",selection: $assess.reminder,displayedComponents: [.date, .hourAndMinute])
                         //    requestNotificationAuthorization()
                     }
                 } // else bracket

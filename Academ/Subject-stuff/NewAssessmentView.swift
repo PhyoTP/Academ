@@ -7,20 +7,20 @@
 
 import SwiftUI
 import UserNotifications
-func requestNotificationAuthorization() {
-  print("glory to soon")
-  let center = UNUserNotificationCenter.current()
-  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-      if granted {
-          print("Notification authorization granted")
-          DispatchQueue.main.async {
-              UIApplication.shared.registerForRemoteNotifications()
-          }
-      } else {
-          print("Notification authorization denied")
-      }
-  }
-}
+//func requestNotificationAuthorization() {
+//  print("glory to soon")
+//  let center = UNUserNotificationCenter.current()
+//  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+//      if granted {
+//          print("Notification authorization granted")
+//          DispatchQueue.main.async {
+//              UIApplication.shared.registerForRemoteNotifications()
+//          }
+//      } else {
+//          print("Notification authorization denied")
+//      }
+//  }
+//}
 
 
 
@@ -103,7 +103,7 @@ struct NewAssessmentView: View {
                     }
                     if newAssessment.haveReminder{
                         
-                        DatePicker("Reminder Date",selection: $newAssessment.reminder, displayedComponents: [.date])
+                        DatePicker("Reminder Date",selection: $newAssessment.reminder, displayedComponents: [.date, .hourAndMinute])
                     }
                 }
             }
@@ -116,7 +116,7 @@ struct NewAssessmentView: View {
                         sub.assessments.append(newAssessment)
                         dismiss()
                         if newAssessment.haveReminder && NotificationSet{
-                            requestNotificationAuthorization()
+//                            requestNotificationAuthorization()
                             scheduleNotification(at: $newAssessment.reminder.wrappedValue, body: "Your exam is on \($newAssessment.examDate)h", title: $newAssessment.name.wrappedValue)
                             NotificationSet = false
                         }
