@@ -51,7 +51,18 @@ class SystemManager: ObservableObject {
             Grade(name: "D", minMark: 50, maxMark: 59, gradePoint: 4.0),
             Grade(name: "U", minMark: 0, maxMark: 49, gradePoint: 5.0),
             Grade(name: "N", minMark: 0, maxMark: 0, gradePoint: 6.0), //idk how to define N
-            ])] {
+        ]),
+        GradeSystem(type:6, grades: [ // O levels grades
+            Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
+            Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 2.0),
+            Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 3.0),
+            Grade(name: "B4", minMark: 60, maxMark: 64, gradePoint: 4.0),
+            Grade(name: "C5", minMark: 55, maxMark: 59, gradePoint: 5.0),
+            Grade(name: "C6", minMark: 50, maxMark: 54, gradePoint: 6.0),
+            Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 3.0),
+            Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 3.0),
+            Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 3.0)//idk how to define N
+        ])]{
             didSet {
                 save()
             }
