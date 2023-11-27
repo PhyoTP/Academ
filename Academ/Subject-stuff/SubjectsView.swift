@@ -27,9 +27,11 @@ struct SubjectsView: View {
                             }label:{
                                 Text(subject.name)
                             }
+                            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         }
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
@@ -43,14 +45,18 @@ struct SubjectsView: View {
                         displaySheet = true
                     } label: {
                         Image(systemName: "plus")
+                        
                     }
+             
                 }
             }
             .sheet(isPresented: $displaySheet) {
                 NewSubjectView()
                     .presentationDetents([.fraction(0.8)])
                     .presentationDragIndicator(.visible)
+                    .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
+            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
         }
     }
 }

@@ -25,6 +25,7 @@ struct SettingsView: View {
                             Text(systemmanager.getNames()[index])
                         }
                     }
+                    .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                     .pickerStyle(.menu)
                 }
                 if userData.selection == 1{
@@ -67,11 +68,13 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.menu)
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section{
                     Button("Reset to new year", role: .destructive){
                         showAlert = true
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 .navigationTitle("Settings")
                 .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
                     Button("Confirm", role: .destructive){

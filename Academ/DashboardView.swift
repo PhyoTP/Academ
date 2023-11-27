@@ -50,6 +50,7 @@ struct DashboardView: View {
                 if subjectmanager.subjects.count == 0 {
                     Text("No subjects")
                         .foregroundColor(.gray)
+                        .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 }else{
                     ScrollView(.horizontal){
                         HStack {
@@ -60,9 +61,12 @@ struct DashboardView: View {
                                         .padding(4)
                                     Text(subjectmanager.subjects[index].name)
                                 }
+                                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                             }
                         }
+                        
                     }
+                    
                     .cornerRadius(4)
                 }
                 Section(header: Text("Subjects")) {
@@ -81,12 +85,16 @@ struct DashboardView: View {
                         }
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle("Dashboard")
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
     }
+    
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {

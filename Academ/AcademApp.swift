@@ -41,16 +41,25 @@ class UserData: ObservableObject{
     @AppStorage("gpaCredits") var haveCredits = false
     @AppStorage("themes") var colorSelect = 0
     
-    var themelists = [
-        themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: .black),
-        themeColors(themeName: "Manual Light", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),
-        themeColors(themeName: "Manual Dark", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),
-        themeColors(themeName: "Beach", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),
-        themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "739bdo"), secondColor: Color(hex: "bddeec")),
-        themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff00"), secondColor: Color(hex: "ffffff")),
-        themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),
-        themeColors(themeName: "Salmon", hideBackground: true, mainColor: Color(hex: "ffdbe3"), secondColor: Color(hex: "c9343c")),
-        themeColors(themeName: "Custom", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "ffffff"))
+    let themelists = [
+        themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: .black),
+     //   textColor: .white
+     
+        themeColors(themeName: "Minty (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),
+        // textColor: .white
+        themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),
+        // textColor: .white
+        themeColors(themeName: "Light (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),
+                    //textColor: .black)
+        themeColors(themeName: "Beach (For Light Mode)", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),
+        // textColor: .black)
+        themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff")),
+        // textColor: .black
+        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff00"), secondColor: Color(hex: "ffffff")),
+       // textColor: .black
+       
+        themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3")),
+        //textColor: .black
     ]
 
 }
