@@ -41,7 +41,7 @@ class UserData: ObservableObject{
     @AppStorage("gpaCredits") var haveCredits = false
     @AppStorage("themes") var colorSelect = 0
     
-    let themelists = [
+    var themelists = [
         themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: .black),
         themeColors(themeName: "Manual Light", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),
         themeColors(themeName: "Manual Dark", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),
