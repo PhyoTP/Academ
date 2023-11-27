@@ -10,10 +10,10 @@ import SwiftUI
 
 class SystemManager: ObservableObject {
     @Published var systems: [GradeSystem] = [
-        GradeSystem(type: 1, grades: [ // GPA
+        GradeSystem(type: 1, grades: [
             //user input here
-        ]),
-        GradeSystem(type: 2, grades: [ // MSG
+        ]),// GPA
+        GradeSystem(type: 2, grades: [
             Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
             Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 2.0),
             Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 3.0),
@@ -23,8 +23,8 @@ class SystemManager: ObservableObject {
             Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 7.0),
             Grade(name: "D8", minMark: 40, maxMark: 44, gradePoint: 8.0),
             Grade(name: "F9", minMark: 0, maxMark: 39, gradePoint: 9.0),
-        ]),
-        GradeSystem(type: 3, grades: [ // AL
+        ]),// MSG
+        GradeSystem(type: 3, grades: [
             Grade(name: "AL1", minMark: 90, maxMark: 100, gradePoint: 1.0),
             Grade(name: "AL2", minMark: 85, maxMark: 89, gradePoint: 2.0),
             Grade(name: "AL3", minMark: 80, maxMark: 84, gradePoint: 3.0),
@@ -33,40 +33,51 @@ class SystemManager: ObservableObject {
             Grade(name: "AL6", minMark: 45, maxMark: 64, gradePoint: 6.0),
             Grade(name: "AL7", minMark: 20, maxMark: 44, gradePoint: 7.0),
             Grade(name: "AL8", minMark: 0, maxMark: 19, gradePoint: 8.0),
-        ]),
-        GradeSystem(type:4, grades: [ // Overall grade
-            Grade(name: "AL1", minMark: 90, maxMark: 100, gradePoint: 1.0),
-            Grade(name: "AL2", minMark: 85, maxMark: 89, gradePoint: 2.0),
-            Grade(name: "AL3", minMark: 80, maxMark: 84, gradePoint: 3.0),
-            Grade(name: "AL4", minMark: 75, maxMark: 79, gradePoint: 4.0),
-            Grade(name: "AL5", minMark: 65, maxMark: 74, gradePoint: 5.0),
-            Grade(name: "AL6", minMark: 45, maxMark: 64, gradePoint: 6.0),
-            Grade(name: "AL7", minMark: 20, maxMark: 44, gradePoint: 7.0),
-            Grade(name: "AL8", minMark: 0, maxMark: 19, gradePoint: 8.0),
-        ]),
-        GradeSystem(type:5, grades: [ // N(T)/N(A) levels grades
+        ]),// AL
+        GradeSystem(type:4, grades: [
+            Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
+            Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 1.0),
+            Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 2.0),
+            Grade(name: "B4", minMark: 60, maxMark: 64, gradePoint: 2.0),
+            Grade(name: "C5", minMark: 55, maxMark: 59, gradePoint: 3.0),
+            Grade(name: "C6", minMark: 50, maxMark: 54, gradePoint: 3.0),
+            Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 4.0),
+            Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 5.0),
+            Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 5.0),
+        ]),// Overall grade (1 is distinction, 2 is merit, 3 is credit, 4 is sub-pass and 5 is fail for grade points)
+        GradeSystem(type: 5, grades: [
+            Grade(name: "1", minMark: 75, maxMark: 100, gradePoint: 1.0),
+            Grade(name: "2", minMark: 70, maxMark: 74, gradePoint: 2.0),
+            Grade(name: "3", minMark: 65, maxMark: 69, gradePoint: 3.0),
+            Grade(name: "4", minMark: 60, maxMark: 64, gradePoint: 4.0),
+            Grade(name: "5", minMark: 50, maxMark: 59, gradePoint: 5.0),
+            Grade(name: "U", minMark: 0, maxMark: 49, gradePoint: 6.0),
+        ]),//N(A) levels grades (no grade point)
+        GradeSystem(type:6, grades: [
             Grade(name: "A", minMark: 70, maxMark: 100, gradePoint: 1.0),
             Grade(name: "B", minMark: 65, maxMark: 69, gradePoint: 2.0),
             Grade(name: "C", minMark: 60, maxMark: 64, gradePoint: 3.0),
             Grade(name: "D", minMark: 50, maxMark: 59, gradePoint: 4.0),
             Grade(name: "U", minMark: 0, maxMark: 49, gradePoint: 5.0),
-            Grade(name: "N", minMark: 0, maxMark: 0, gradePoint: 6.0), //idk how to define N
-        ]),
-        GradeSystem(type:6, grades: [ // O levels grades
+            //            Grade(name: "N", minMark: 0, maxMark: 0, gradePoint: 6.0), //idk how to define N
+        ]),// N(T) levels grades (no grade point)
+        GradeSystem(type:7, grades: [
             Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
             Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 2.0),
             Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 3.0),
             Grade(name: "B4", minMark: 60, maxMark: 64, gradePoint: 4.0),
             Grade(name: "C5", minMark: 55, maxMark: 59, gradePoint: 5.0),
             Grade(name: "C6", minMark: 50, maxMark: 54, gradePoint: 6.0),
-            Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 3.0),
-            Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 3.0),
-            Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 3.0)//idk how to define N
-        ])]{
-            didSet {
-                save()
-            }
+            Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 7.0),
+            Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 8.0),
+            Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 9.0)
+        ]),// O levels grades (no grade point)
+    ]
+    {
+        didSet {
+            save()
         }
+    }
     
     init() {
         load()
