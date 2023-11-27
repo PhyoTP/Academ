@@ -34,7 +34,18 @@ struct NewSubjectView: View {
                             TextField("Hours",value: $newSubject.credits, formatter: NumberFormatter())
                         }
                     }
-                    
+                    if userData.selection==3{
+                        
+                        Toggle("Foundation Subject?", isOn: $newSubject.isFoundation)
+                        
+                        
+                        Toggle("Higher Mother Tongue?", isOn: $newSubject.isHMT)
+                        
+                    }
+                    if userData.selection==7{
+                        Toggle("Mother Tongue Syllabus B?", isOn:$newSubject.isMTSB)
+                        
+                    }
                 }
                 
                 Section("ASSESSMENTS") {

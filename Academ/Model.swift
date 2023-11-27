@@ -27,6 +27,9 @@ struct Subject: Identifiable, Codable{
     // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
+    var isHMT = false
+    var isFoundation = false
+    var isMTSB = false
     func assessmentArray(type:Int)->[Float]{
         var numArray:[Float] = []
         for i in assessments{
