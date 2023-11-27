@@ -56,16 +56,16 @@ struct NewSubjectView: View {
                             Text(assessm.name)
                         }
                     }
-                    
-                    Button {
-                        showNewAssessmentSheet = true
-                    } label: {
-                        HStack{
-                            Image(systemName: "plus")
-                            Text("Add an assessment")
+                    if newSubject.numOfAssessments>newSubject.assessments.count{
+                        Button {
+                            showNewAssessmentSheet = true
+                        } label: {
+                            HStack{
+                                Image(systemName: "plus")
+                                Text("Add an assessment")
+                            }
                         }
                     }
-                    
                 }
                 Section{
                     Button("Save"){

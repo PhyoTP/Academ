@@ -82,8 +82,8 @@ struct SettingsView: View {
                     Text("This cannot be undone.")
                 }
             }
-         //   .background()
-          //  .scrollContentBackground(hideBackground ? .visible : .hidden)
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
 
     }

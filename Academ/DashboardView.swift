@@ -83,6 +83,8 @@ struct DashboardView: View {
                 }
             }
             .navigationTitle("Dashboard")
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
     }
 }
