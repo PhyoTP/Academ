@@ -6,18 +6,9 @@
 //
 
 import SwiftUI
-extension Color {
-    init(hex: UInt, alpha: Double = 1) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xff) / 255,
-            green: Double((hex >> 08) & 0xff) / 255,
-            blue: Double((hex >> 00) & 0xff) / 255,
-            opacity: alpha
-        )
-    }
-}
+
 struct SettingsView: View {
+    
     var systems = ["Default", "GPA", "MSG", "AL"]
     var themelist = ["Default", "Manual Light", "Manual Dark", "Beach",  "Winter", "Lemon", "Minty", "Salmon", "Custom"]
     var themelists = [themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: .black),themeColors(themeName: "Manual Light", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),themeColors(themeName: "Manual Dark", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),themeColors(themeName: "Beach", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "739bdo"), secondColor: Color(hex: "bddeec")),themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff00"), secondColor: Color(hex: "ffffff")),themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),themeColors(themeName: "Salmon", hideBackground: true, mainColor: Color(hex: "ffdbe3"), secondColor: Color(hex: "c9343c")),themeColors(themeName: "Custom", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "ffffff"))]
@@ -28,6 +19,7 @@ struct SettingsView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
+        //Color(hex:0xf2f2f7)
         NavigationStack{
             Form {
                 Section("Grading system") {
@@ -112,11 +104,12 @@ struct SettingsView: View {
                     Text("This cannot be undone.")
                 }
             }
-            .background()
-            .scrollContentBackground(hideBackground ? .visible : .hidden)
+         //   .background()
+          //  .scrollContentBackground(hideBackground ? .visible : .hidden)
         }
-        .background(Color(hex:"F2F2F7"))
+
     }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
