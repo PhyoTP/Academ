@@ -6,18 +6,9 @@
 //
 
 import SwiftUI
-extension Color {
-    init(hex: UInt, alpha: Double = 1) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xff) / 255,
-            green: Double((hex >> 08) & 0xff) / 255,
-            blue: Double((hex >> 00) & 0xff) / 255,
-            opacity: alpha
-        )
-    }
-}
+
 struct SettingsView: View {
+    
     var systems = ["Default", "GPA", "MSG", "AL"]
     var themelist = ["Default", "Manual Light", "Manual Dark", "Beach",  "Winter", "Lemon", "Minty", "Salmon", "Custom"]
     var themelists = [
@@ -38,6 +29,7 @@ struct SettingsView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
+        //Color(hex:0xf2f2f7)
         NavigationStack{
             Form {
                 Section("Grading system") {
@@ -122,11 +114,12 @@ struct SettingsView: View {
                     Text("This cannot be undone.")
                 }
             }
-            .background()
-            .scrollContentBackground(hideBackground ? .visible : .hidden)
+         //   .background()
+          //  .scrollContentBackground(hideBackground ? .visible : .hidden)
         }
-        .background(Color(hex:"F2F2F7"))
+
     }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
