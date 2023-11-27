@@ -132,7 +132,7 @@ struct Subject: Identifiable, Codable{
     }
 }
 struct GradeSystem: Codable{
-    var type: Int
+    var name: String
     var grades: [Grade]
 }
 struct Grade: Codable, Identifiable{
