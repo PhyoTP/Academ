@@ -10,6 +10,7 @@ import SwiftUI
 
 class SystemManager: ObservableObject {
     @Published var systems: [GradeSystem] = [
+        GradeSystem(name: "Default", grades: []),
         GradeSystem(name: "GPA", grades: [
             //user input here
         ]),// GPA
@@ -34,7 +35,7 @@ class SystemManager: ObservableObject {
             Grade(name: "AL7", minMark: 20, maxMark: 44, gradePoint: 7.0),
             Grade(name: "AL8", minMark: 0, maxMark: 19, gradePoint: 8.0),
         ]),// AL
-        GradeSystem(name:"OG", grades: [
+        GradeSystem(name:"Overall Grade", grades: [
             Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
             Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 1.0),
             Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 2.0),
@@ -45,7 +46,7 @@ class SystemManager: ObservableObject {
             Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 5.0),
             Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 5.0),
         ]),// Overall grade (1 is distinction, 2 is merit, 3 is credit, 4 is sub-pass and 5 is fail for grade points)
-        GradeSystem(name: "NA", grades: [
+        GradeSystem(name: "N(A)", grades: [
             Grade(name: "1", minMark: 75, maxMark: 100, gradePoint: 1.0),
             Grade(name: "2", minMark: 70, maxMark: 74, gradePoint: 2.0),
             Grade(name: "3", minMark: 65, maxMark: 69, gradePoint: 3.0),
@@ -53,7 +54,7 @@ class SystemManager: ObservableObject {
             Grade(name: "5", minMark: 50, maxMark: 59, gradePoint: 5.0),
             Grade(name: "U", minMark: 0, maxMark: 49, gradePoint: 6.0),
         ]),//N(A) levels grades (no grade point)
-        GradeSystem(name:"NT", grades: [
+        GradeSystem(name:"N(T)", grades: [
             Grade(name: "A", minMark: 70, maxMark: 100, gradePoint: 1.0),
             Grade(name: "B", minMark: 65, maxMark: 69, gradePoint: 2.0),
             Grade(name: "C", minMark: 60, maxMark: 64, gradePoint: 3.0),
@@ -61,7 +62,7 @@ class SystemManager: ObservableObject {
             Grade(name: "U", minMark: 0, maxMark: 49, gradePoint: 5.0),
             //            Grade(name: "N", minMark: 0, maxMark: 0, gradePoint: 6.0), //idk how to define N
         ]),// N(T) levels grades (no grade point)
-        GradeSystem(name:"OL", grades: [
+        GradeSystem(name:"O Levels", grades: [
             Grade(name: "A1", minMark: 75, maxMark: 100, gradePoint: 1.0),
             Grade(name: "A2", minMark: 70, maxMark: 74, gradePoint: 2.0),
             Grade(name: "B3", minMark: 65, maxMark: 69, gradePoint: 3.0),
@@ -97,11 +98,12 @@ class SystemManager: ObservableObject {
         }
         return resultGrade
     }
-    func getNames(){
+    func getNames()->[String]{
         var nameArray:[String] = []
         for i in systems{
             nameArray.append(i.name)
         }
+        return nameArray
     }
     
     func getArchiveURL() -> URL {

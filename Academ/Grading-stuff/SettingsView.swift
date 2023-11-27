@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    var systems = ["Default", "GPA", "MSG", "AL"]
     var themelist = ["Default", "Manual Light", "Manual Dark", "Beach",  "Winter", "Lemon", "Minty", "Salmon", "Custom"]
     var themelists = [
         themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: .black),
@@ -34,8 +33,8 @@ struct SettingsView: View {
             Form {
                 Section("Grading system") {
                     Picker("Grading System Type", selection: $userData.selection) {
-                        ForEach(systems.indices, id: \.self) { index in
-                            Text(systems[index])
+                        ForEach(systemmanager.getNames().indices, id: \.self) { index in
+                            Text(systemmanager.getNames()[index])
                         }
                     }
                     .pickerStyle(.menu)
