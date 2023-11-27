@@ -42,7 +42,7 @@ class UserData: ObservableObject{
     @AppStorage("themes") var colorSelect = 0
     
     let themelists = [
-        themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: .black),
+        themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e")),
      //   textColor: .white
      
         themeColors(themeName: "Minty (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),

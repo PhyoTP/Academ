@@ -27,7 +27,7 @@ struct Subject: Identifiable, Codable{
     // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
-    var isHMT = false
+//    var isHMT = false
     var isFoundation = false
     var isMTSB = false
     func assessmentArray(type:Int)->[Float]{
@@ -160,4 +160,13 @@ struct themeColors: Identifiable{
     var secondColor : Color
 }
 
-
+//var HMT = GradeSystem(name: "hmt", grades: [
+//    Grade(name: "Distinction", minMark: 80, maxMark: 100, gradePoint: 0.0),
+//    Grade(name: "Merit", minMark: 65, maxMark: 79, gradePoint: 0.0),
+//    //tbc
+//])
+var foundation = GradeSystem(name: "alf", grades: [
+    Grade(name: "AL A", minMark: 75, maxMark: 100, gradePoint: 7.0),
+    Grade(name: "AL B", minMark: 30, maxMark: 74, gradePoint: 8.0),
+    Grade(name: "AL C", minMark: 0, maxMark: 29, gradePoint: 9.0)
+])

@@ -11,7 +11,7 @@ struct SubjectDetailView: View {
     @Binding var sub: Subject
     @State private var displaySheet = false
     @State private var showAlert = false
-    @StateObject private var userData = UserData()
+    @ObservedObject var userData: UserData
     var body: some View {
         
         NavigationStack {
@@ -24,7 +24,7 @@ struct SubjectDetailView: View {
                     }
                     if sub.assessmentArray(type: 1).count>1{
                         NavigationLink{
-                            SubjectOverallView(subje: $sub)
+                            SubjectOverallView(subje: $sub,userData: userData)
                         }label: {
                             Text("Overall")
                         }
@@ -36,9 +36,10 @@ struct SubjectDetailView: View {
                         }
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section(header: Text("Assessments")) {
                     List($sub.assessments,editActions:.all){$assessment in
-                        NavigationLink(destination: AssessmentDetailView(assess: $assessment)){
+                        NavigationLink(destination: AssessmentDetailView(assess: $assessment,userData: userData)){
                             Text(assessment.name)
                             Text("")
                                 .font(.caption)
@@ -53,7 +54,10 @@ struct SubjectDetailView: View {
                         }
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle($sub.name)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -72,7 +76,7 @@ struct SubjectDetailView: View {
             }
         }
         .sheet(isPresented: $displaySheet) {
-            NewAssessmentView(sub:$sub)
+            NewAssessmentView(sub:$sub,userData: userData)
         }
         
         
@@ -82,6 +86,6 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)))
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)),userData: UserData())
     }
 }

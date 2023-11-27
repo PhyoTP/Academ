@@ -31,7 +31,7 @@ struct NewAssessmentView: View {
     @Binding var sub: Subject
     @State private var markCheck:Float = 0.0
     @State var NotificationSet =  true
-    
+    @ObservedObject var userData: UserData
     func scheduleNotification(at date: Date, body: String, title: String) {
         
         requestNotificationAuthorization()
@@ -111,6 +111,7 @@ struct NewAssessmentView: View {
                     }
                 }
             }
+            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             Section {
                 Button("Save", role: .none) {
                     if sub.checkIfSubjectGradeExceeds100() + newAssessment.percentageValue > 100 {
@@ -132,7 +133,10 @@ struct NewAssessmentView: View {
                     dismiss()
                 }
             }
+            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
         }
+        .background(userData.themelists[userData.colorSelect].mainColor)
+        .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         .alert("The weightage of all assessments in a subject can only be 100%",isPresented: $alert){
             
         }
@@ -140,7 +144,7 @@ struct NewAssessmentView: View {
 }
 struct NewAssessmentView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetGrade: 75, credits: 0, numOfAssessments: 4)))
+        NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetGrade: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
             
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GradeDetailView: View {
     @Binding var grade: Grade
+    @ObservedObject var userData: UserData
     var body: some View {
         Form{
             Section("Grade Info"){
@@ -26,12 +27,15 @@ struct GradeDetailView: View {
                     TextField("Number",value: $grade.gradePoint, formatter: NumberFormatter())
                 }
             }
+            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
         }
+        .background(userData.themelists[userData.colorSelect].mainColor)
+        .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
     }
 }
 
 struct GradeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        GradeDetailView(grade: .constant(Grade(name: "A", minMark: 80, maxMark:100 , gradePoint: 4.0)))
+        GradeDetailView(grade: .constant(Grade(name: "A", minMark: 80, maxMark:100 , gradePoint: 4.0)),userData: UserData())
     }
 }

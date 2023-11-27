@@ -12,7 +12,7 @@ struct NewSubjectView: View {
     @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0, numOfAssessments: 4)
     @State private var showNewAssessmentSheet = false
     @Environment(\.dismiss) var dismiss
-    @StateObject private var userData = UserData()
+    @ObservedObject var userData: UserData
     var body: some View {
         NavigationStack {
             Form{
@@ -36,22 +36,22 @@ struct NewSubjectView: View {
                     }
                     if userData.selection==3{
                         
-                        Toggle("Foundation Subject?", isOn: $newSubject.isFoundation)
+//                        Toggle("Foundation Subject?", isOn: $newSubject.isFoundation)
                         
                         
-                        Toggle("Higher Mother Tongue?", isOn: $newSubject.isHMT)
+//                        Toggle("Higher Mother Tongue?", isOn: $newSubject.isHMT)
                         
                     }
                     if userData.selection==7{
-                        Toggle("Mother Tongue Syllabus B?", isOn:$newSubject.isMTSB)
+//                        Toggle("Mother Tongue Syllabus B?", isOn:$newSubject.isMTSB)
                         
                     }
                 }
-                
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section("ASSESSMENTS") {
                     List($newSubject.assessments){$assessm in
                         NavigationLink{
-                            AssessmentDetailView(assess: $assessm)
+                            AssessmentDetailView(assess: $assessm,userData: userData)
                         }label: {
                             Text(assessm.name)
                         }
@@ -67,6 +67,7 @@ struct NewSubjectView: View {
                         }
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section{
                     Button("Save"){
                         subjectmanager.subjects.append(newSubject)
@@ -76,9 +77,12 @@ struct NewSubjectView: View {
                         dismiss()
                     }
                 }
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .sheet(isPresented: $showNewAssessmentSheet){
-                NewAssessmentView(sub: $newSubject)
+                NewAssessmentView(sub: $newSubject,userData: userData)
             }
             
         }
@@ -90,7 +94,7 @@ struct NewSubjectView: View {
 
 struct NewSubjectView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSubjectView()
+        NewSubjectView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
     }

@@ -14,12 +14,12 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection){
-            SubjectsView()
+            SubjectsView(userData: userData)
                 .tabItem{
                     Label("Subjects", systemImage: "books.vertical")
                         .ignoresSafeArea(.all)
                 }.tag(1)
-            DashboardView()
+            DashboardView(userData:userData)
                 .tabItem{
                     Label("Dashboard", image: "gauge.open.with.lines.needle.33percent")
                     

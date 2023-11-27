@@ -10,7 +10,7 @@ import SwiftUI
 struct DonutChartView: View {
     var percentage: CGFloat
     //    @EnvironmentObject var subjectmanager: SubjectManager
-    @StateObject private var userData = UserData()
+    @ObservedObject var userData: UserData
     @EnvironmentObject var systemmanager: SystemManager
     var formattedResult: String {
         return percentage.isNaN || percentage.isSignalingNaN ? "--" : systemmanager.gradeCalculate(mark: Float(percentage), formatt: "%.0f")
@@ -42,7 +42,7 @@ struct DonutChartView: View {
 }
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
-    @StateObject private var userData = UserData()
+    @ObservedObject var userData: UserData
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
@@ -56,7 +56,7 @@ struct DashboardView: View {
                         HStack {
                             ForEach(subjectmanager.subjects.indices, id: \.self){ index in
                                 VStack{
-                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()))
+                                    DonutChartView(percentage:CGFloat(subjectmanager.subjects[index].currentOverall()),userData:userData)
                                         .frame(width: 50, height: 50)
                                         .padding(4)
                                     Text(subjectmanager.subjects[index].name)
@@ -76,7 +76,7 @@ struct DashboardView: View {
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
                             NavigationLink{
-                                SubjectDetailView(sub: $subject)
+                                SubjectDetailView(sub: $subject,userData: userData)
                             }label: {
                                 VStack{
                                     Text(subject.name)
@@ -90,15 +90,13 @@ struct DashboardView: View {
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle("Dashboard")
-            .background(userData.themelists[userData.colorSelect].mainColor)
-            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
     }
     
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
     }

@@ -30,10 +30,10 @@ struct SettingsView: View {
                 }
                 if userData.selection == 1{
                     Section("GPA Settings"){
-                        Toggle(isOn: $userData.haveCredits, label: {Text("Have credits?")})
+                        Toggle(isOn: $userData.haveCredits, label: {Text("Have credits? (work in progress)")})
                         List($systemmanager.systems[0].grades){$grade in
                             NavigationLink{
-                                GradeDetailView(grade: $grade)
+                                GradeDetailView(grade: $grade,userData: userData)
                             }label: {
                                 VStack(alignment: .leading){
                                     Text(grade.name)
@@ -43,6 +43,7 @@ struct SettingsView: View {
                                 }
                             }
                         }
+                        
                         Button{
                             showSheet = true
                         }label: {
@@ -53,13 +54,16 @@ struct SettingsView: View {
                         }
                     }
                     .sheet(isPresented: $showSheet){
-                        NewGradeView()
+                        NewGradeView(userData: userData)
                     }
-                }else if userData.selection == 3{
-                    Section("AL settings"){
-                        
-                    }
+                    .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 }
+//                }else if userData.selection == 3{
+//                    Section("AL settings"){
+//
+//                    }
+//                }
+                    
                 Section("Themes") {
                     Picker("Set Theme", selection: $userData.colorSelect) {
                         ForEach(userData.themelists.indices) { index in
@@ -85,6 +89,7 @@ struct SettingsView: View {
                     Text("This cannot be undone.")
                 }
             }
+        
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }

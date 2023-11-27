@@ -22,7 +22,7 @@ class SystemManager: ObservableObject {
             Grade(name: "C5", minMark: 55, maxMark: 59, gradePoint: 5.0),
             Grade(name: "C6", minMark: 50, maxMark: 54, gradePoint: 6.0),
             Grade(name: "D7", minMark: 45, maxMark: 49, gradePoint: 7.0),
-            Grade(name: "D8", minMark: 40, maxMark: 44, gradePoint: 8.0),
+            Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 8.0),
             Grade(name: "F9", minMark: 0, maxMark: 39, gradePoint: 9.0),
         ]),// MSG
         GradeSystem(name: "AL", grades: [
@@ -73,6 +73,14 @@ class SystemManager: ObservableObject {
             Grade(name: "E8", minMark: 40, maxMark: 44, gradePoint: 8.0),
             Grade(name: "F9", minMark: 0, maxMark: 40, gradePoint: 9.0)
         ]),// O levels grades (no grade point)
+        GradeSystem(name: "MAG", grades: [
+            Grade(name: "A", minMark: 70, maxMark: 100, gradePoint: 1.0),
+            Grade(name: "B", minMark: 60, maxMark: 69, gradePoint: 3.0),
+            Grade(name: "C", minMark: 50, maxMark: 59, gradePoint: 5.0),
+            Grade(name: "D", minMark: 45, maxMark: 49, gradePoint: 7.0),
+            Grade(name: "E", minMark: 40, maxMark: 44, gradePoint: 8.0),
+            Grade(name: "F", minMark: 0, maxMark: 39, gradePoint: 9.0),
+        ]),// MAG
     ]
     {
         didSet {
