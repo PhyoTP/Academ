@@ -7,22 +7,21 @@
 
 import SwiftUI
 import UserNotifications
-//func requestNotificationAuthorization() {
-//  print("glory to soon")
-//  let center = UNUserNotificationCenter.current()
-//  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-//      if granted {
-//          print("Notification authorization granted")
-//          DispatchQueue.main.async {
-//              UIApplication.shared.registerForRemoteNotifications()
-//          }
-//      } else {
-//          print("Notification authorization denied")
-//      }
-//  }
-//}
 
-
+func requestNotificationAuthorization() {
+  print("glory to soon")
+  let center = UNUserNotificationCenter.current()
+  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+      if granted {
+          print("Notification authorization granted")
+          DispatchQueue.main.async {
+              UIApplication.shared.registerForRemoteNotifications()
+          }
+      } else {
+          print("Notification authorization denied")
+      }
+  }
+}
 
 
 struct NewAssessmentView: View {
@@ -32,7 +31,11 @@ struct NewAssessmentView: View {
     @Binding var sub: Subject
     @State private var markCheck:Float = 0.0
     @State var NotificationSet =  true
+    
     func scheduleNotification(at date: Date, body: String, title: String) {
+        
+        requestNotificationAuthorization()
+        
        // Remove all pending notifications
        
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -46,6 +49,7 @@ struct NewAssessmentView: View {
        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
 
        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
 
        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
@@ -53,7 +57,7 @@ struct NewAssessmentView: View {
            if let error = error {
                print("Error scheduling notification: \(error.localizedDescription)")
            } else {
-               print("Notification scheduled successfully")
+               print("Notification scheduled successfully at \(components)")
            }
        }
     }
@@ -117,7 +121,8 @@ struct NewAssessmentView: View {
                         dismiss()
                         if newAssessment.haveReminder && NotificationSet{
 //                            requestNotificationAuthorization()
-                            scheduleNotification(at: $newAssessment.reminder.wrappedValue, body: "Your exam is on \($newAssessment.examDate)h", title: $newAssessment.name.wrappedValue)
+                            print("ASKING FOR NOTIFICATION")
+                            scheduleNotification(at: newAssessment.reminder, body: "Your exam is on \(newAssessment.examDate)h", title: newAssessment.name)
                             NotificationSet = false
                         }
                     }
