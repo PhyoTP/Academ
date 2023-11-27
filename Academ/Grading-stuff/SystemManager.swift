@@ -86,7 +86,7 @@ class SystemManager: ObservableObject {
     func gradeCalculate(mark:Float,formatt:String)->String{
         var resultGrade = ""
         if UserData().selection>0{
-            let selectedSystem = systems[UserData().selection-1]
+            let selectedSystem = systems[UserData().selection]
             for i in selectedSystem.grades{
                 if mark > i.minMark{
                     resultGrade = i.name
