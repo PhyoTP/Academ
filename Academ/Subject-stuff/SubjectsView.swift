@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SubjectsView: View {
     @EnvironmentObject var settings: SubjectManager
+    let userData = UserData()
+    
     @State private var displaySheet = false
     var body: some View {
         NavigationStack{
@@ -29,6 +31,8 @@ struct SubjectsView: View {
                     }
                 }
             }
+            .background(userData.themelists[userData.colorSelect].mainColor)
+            .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle("Subjects")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
