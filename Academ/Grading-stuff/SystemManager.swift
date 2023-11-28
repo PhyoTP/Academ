@@ -96,7 +96,7 @@ class SystemManager: ObservableObject {
         if UserData().selection>0{
             let selectedSystem = systems[UserData().selection]
             for i in selectedSystem.grades{
-                if mark > i.minMark{
+                if mark >= i.minMark{
                     resultGrade = i.name
                     break
                 }

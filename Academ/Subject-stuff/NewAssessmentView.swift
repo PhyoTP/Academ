@@ -25,7 +25,7 @@ func requestNotificationAuthorization() {
 
 
 struct NewAssessmentView: View {
-    @State private var newAssessment = Assessment(name: "", percentageValue: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
+    @State private var newAssessment = Assessment(name: "", weightage: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
     @State var alert = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
@@ -68,8 +68,8 @@ struct NewAssessmentView: View {
                 TextField("Name",text: $newAssessment.name)
                 //TextField()
                 HStack{
-                    Text("Percentage value:")
-                    TextField("Percentage", value: $newAssessment.percentageValue, formatter: NumberFormatter())
+                    Text("Weightage:")
+                    TextField("Percentage", value: $newAssessment.weightage, formatter: NumberFormatter())
                     Text("%")
                     
                     
@@ -114,7 +114,7 @@ struct NewAssessmentView: View {
             .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             Section {
                 Button("Save", role: .none) {
-                    if sub.checkIfSubjectGradeExceeds100() + newAssessment.percentageValue > 100 {
+                    if sub.checkIfSubjectGradeExceeds100() + newAssessment.weightage > 100 {
                         alert = true
                         
                     } else {

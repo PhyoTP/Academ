@@ -56,8 +56,8 @@ struct AssessmentDetailView: View {
                     TextField("Name",text: $assess.name)
                     //TextField()
                     HStack{
-                        Text("Percentage value:")
-                        TextField("Percentage", value: $assess.percentageValue, formatter: NumberFormatter())
+                        Text("Weightage:")
+                        TextField("Percentage", value: $assess.weightage, formatter: NumberFormatter())
                         Text("%")
                         
                         
@@ -117,7 +117,7 @@ struct AssessmentDetailView: View {
 struct AssessmentDetailView_Previews: PreviewProvider {
     static var previews: some View {
         
-        AssessmentDetailView(assess: .constant(Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 13, examDate: Date(),   haveReminder: true, reminder: Date())),userData: UserData())
+        AssessmentDetailView(assess: .constant(Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: false, markAttained: 13, examDate: Date(),   haveReminder: true, reminder: Date())),userData: UserData())
             .environmentObject(SubjectManager())
         
     }

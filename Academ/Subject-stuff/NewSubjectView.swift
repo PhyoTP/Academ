@@ -83,6 +83,7 @@ struct NewSubjectView: View {
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .sheet(isPresented: $showNewAssessmentSheet){
                 NewAssessmentView(sub: $newSubject,userData: userData)
+                    .presentationDetents([.fraction(0.6)])
             }
             
         }

@@ -69,10 +69,10 @@ struct SubjectDetailView: View {
                     showAlert=true
                 }
             }
-            .alert("Your inputted percentage value is higher than 100%.",isPresented: $showAlert){
+            .alert("Your inputted weightage is higher than 100%.",isPresented: $showAlert){
                 
             }message: {
-                Text("Please change your assessment's percentage value")
+                Text("Please change your assessment's weightage")
             }
         }
         .sheet(isPresented: $displaySheet) {
@@ -86,6 +86,6 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)),userData: UserData())
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade:75,credits: 0, numOfAssessments: 4)),userData: UserData())
     }
 }

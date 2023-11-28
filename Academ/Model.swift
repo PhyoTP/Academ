@@ -11,7 +11,7 @@ import SwiftUI
 struct Assessment: Identifiable, Codable{
     var id = UUID()
     var name: String
-    var percentageValue: Float
+    var weightage: Float
     var totalMarks: Float
     var examDone: Bool
     var markAttained: Float
@@ -39,7 +39,7 @@ struct Subject: Identifiable, Codable{
                 }else if type == 1{
                     numArray.append(i.markAttained) // number of marks attained
                 }else if type == 2{
-                    numArray.append(i.percentageValue) // weightage
+                    numArray.append(i.weightage) // weightage
                 }
             }else{
                 if type == 3{
@@ -48,7 +48,7 @@ struct Subject: Identifiable, Codable{
             }
         }
         return numArray
-    }//gets a value from the assessments array (type 0 is totalMarks for done assessments, 1 is marksAttained, 2 is percentageValue, 3 is totalMarks for not done exams)
+    }//gets a value from the assessments array (type 0 is totalMarks for done assessments, 1 is marksAttained, 2 is weightage, 3 is totalMarks for not done exams)
     func arrayPercentage()->[Float]{
         let amountArray = assessmentArray(type:1) // marks attained
         let totaledArray = assessmentArray(type:0) // max marks
@@ -79,21 +79,21 @@ struct Subject: Identifiable, Codable{
         
     }*///finds the average of floats in an array (deprecated)
     func currentOverall() -> Float {
-        let examPercentages = assessmentArray(type: 2)
+        let examWeightages = assessmentArray(type: 2)
         let arrayPercentages = arrayPercentage()
         
-        guard !examPercentages.isEmpty && examPercentages.count == arrayPercentages.count else {
+        guard !examWeightages.isEmpty && examWeightages.count == arrayPercentages.count else {
             // Handle the case where either examPercentages is empty or its count is different from arrayPercentages count.
             return 0.0
         }
         
         var total: Float = 0
         
-        for i in examPercentages.indices {
-            total += examPercentages[i] * arrayPercentages[i]
+        for i in examWeightages.indices {
+            total += examWeightages[i] * arrayPercentages[i]
         }
         
-        let totalExamPercentages = examPercentages.reduce(0, +)
+        let totalExamPercentages = examWeightages.reduce(0, +)
         return totalExamPercentages != 0 ? total / totalExamPercentages : 0.0
         
         
@@ -116,7 +116,7 @@ struct Subject: Identifiable, Codable{
         var finalGradeForSubject:Float = 0.0
        // var exceeds100 = false
         for test in  (assessments) {
-            finalGradeForSubject += test.percentageValue
+            finalGradeForSubject += test.weightage
             
     //        if finalGradeForSubject >= 100.0 {
    //             exceeds100 = true        

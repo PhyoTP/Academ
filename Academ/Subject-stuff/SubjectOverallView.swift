@@ -21,14 +21,23 @@ struct SubjectOverallView: View {
                     HStack{
                         Text("Current Overall:")
                         Text("\(systemmanager.gradeCalculate(mark: subje.currentOverall(), formatt: "%.2f"))")
+                        if userData.selection>0{
+                            Spacer()
+                            Text("\(String(format:"%.2f",subje.currentOverall()))%")
+                        }
                     }//current overall
                     HStack{
                         Text("Highest:")
                         Text("\(systemmanager.gradeCalculate(mark: subje.highest(), formatt: "%.2f"))")
+                        if userData.selection>0{
+                            Spacer()
+                            Text("\(String(format:"%.2f",subje.highest()))%")
+                        }
                     }//highest
                     HStack{
                         Text("Overall Goal:")
-                        Text("\(Int(subje.targetGrade))%")
+                        TextField("Percentage",value:$subje.targetGrade,formatter: NumberFormatter())
+                        Text("%")
                     }//overall goal
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
@@ -49,7 +58,7 @@ struct SubjectOverallView: View {
                         HStack{
                             Text("Percentage needed:")
                             Spacer()
-                            Text("\(Int(subje.weightedGoal())) %")
+                            Text("\(String(format:"%.2f",subje.weightedGoal())) %")
                         }
                         List(subje.getUnfinishedAssessments()){assessme in
                             HStack{
@@ -71,10 +80,10 @@ struct SubjectOverallView: View {
                     showAlert=true
                 }
             }
-            .alert("Your inputted percentage value is higher than 100%.",isPresented: $showAlert){
+            .alert("Your inputted weightage is higher than 100%.",isPresented: $showAlert){
                 
             }message: {
-                Text("Please change your assessment's percentage value")
+                Text("Please change your assessment's weightage")
             }
         }
     }
@@ -85,7 +94,7 @@ struct SubjectOverallView: View {
 struct SubjectOverallView_Previews: PreviewProvider {
     static var previews: some View {
         
-        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", percentageValue: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", percentageValue: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA3", percentageValue: 15, totalMarks: 45, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date()),Assessment(name: "EYE", percentageValue: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
+        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", weightage: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA3", weightage: 15, totalMarks: 45, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date()),Assessment(name: "EYE", weightage: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
             .environmentObject(SystemManager())
     }
 }

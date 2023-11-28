@@ -47,15 +47,15 @@ class UserData: ObservableObject{
      
         themeColors(themeName: "Minty (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),
         // textColor: .white
-        themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "000000"), secondColor: Color(hex: "5a5a5a")),
+        themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: .black, secondColor: Color(hex: "5a5a5a")),
         // textColor: .white
-        themeColors(themeName: "Light (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffffff"), secondColor: Color(hex: "f2f2f7")),
+        themeColors(themeName: "Light (For Light Mode)", hideBackground: true, mainColor: .white, secondColor: Color(hex: "f2f2f7")),
                     //textColor: .black)
         themeColors(themeName: "Beach (For Light Mode)", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),
         // textColor: .black)
         themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff")),
         // textColor: .black
-        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff00"), secondColor: Color(hex: "ffffff")),
+        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff")),
        // textColor: .black
        
         themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3")),
