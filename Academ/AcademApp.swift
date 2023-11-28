@@ -40,7 +40,7 @@ class UserData: ObservableObject{
     @AppStorage("gradeType") var selection = 0
     @AppStorage("gpaCredits") var haveCredits = false
     @AppStorage("themes") var colorSelect = 0
-    
+//    @AppStorage("targetOverallGrade") var targetOverallGrade = 0
     let themelists = [
         themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e")),
      //   textColor: .white

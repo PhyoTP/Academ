@@ -23,7 +23,7 @@ struct Subject: Identifiable, Codable{
     var id = UUID()
     var name: String
     var assessments: [Assessment]
-    var targetGrade: Float
+    var targetMark: Float
     // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
@@ -108,7 +108,7 @@ struct Subject: Identifiable, Codable{
             valueSum+=i
         }
         valueSum=100-valueSum
-        let sum = (targetGrade-percentageSum)/valueSum*100
+        let sum = (targetMark-percentageSum)/valueSum*100
         return sum
     }//finds the percentage needed to achieve the goal
     func checkIfSubjectGradeExceeds100() -> Float{

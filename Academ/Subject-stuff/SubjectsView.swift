@@ -19,19 +19,21 @@ struct SubjectsView: View {
 //                Section{
 //
 //                    if userData.selection==1{
-//                        HStack{
-//                            Text("Target GPA")
-//                            TextField("Number",value: $userData.targetOverall, formatter: NumberFormatter())
+//                        if userData.haveCredits{
+//                            HStack{
+//                                Text("Target GPA")
+//                                TextField("Number",value: $userData.targetOverallGrade, formatter: NumberFormatter())
+//                            }
 //                        }
 //                    }else if userData.selection==2{
 //                        HStack{
 //                            Text("Target MSG")
-//                            TextField("Number",value: $userData.targetOverall, formatter: NumberFormatter())
+//                            TextField("Number",value: $userData.targetOverallGrade, formatter: NumberFormatter())
 //                        }
 //                    }else if userData.selection==3{
 //                        HStack{
 //                            Text("Target AL")
-//                            TextField("Number",value: $userData.targetOverall, formatter: NumberFormatter())
+//                            TextField("Number",value: $userData.targetOverallGrade, formatter: NumberFormatter())
 //                        }
 //                    }
 //

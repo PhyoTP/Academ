@@ -36,7 +36,7 @@ struct SubjectOverallView: View {
                     }//highest
                     HStack{
                         Text("Overall Goal:")
-                        TextField("Percentage",value:$subje.targetGrade,formatter: NumberFormatter())
+                        TextField("Percentage",value:$subje.targetMark,formatter: NumberFormatter())
                         Text("%")
                     }//overall goal
                 }
@@ -45,13 +45,13 @@ struct SubjectOverallView: View {
                     if subje.assessmentArray(type: 1).count == subje.numOfAssessments{
                         HStack{
                             Text("Goal achieved?")
-                            if subje.currentOverall() >= subje.targetGrade {
+                            if subje.currentOverall() >= subje.targetMark {
                                 Text("✅")
                             } else {
                                 Text("❌")
                             }
                         }//goal achieved
-                        if subje.currentOverall() == subje.targetGrade {
+                        if subje.currentOverall() == subje.targetMark {
                             Text("Goal already achieved. Well done! 😁")
                         }//goal message
                     }else {
@@ -94,7 +94,7 @@ struct SubjectOverallView: View {
 struct SubjectOverallView_Previews: PreviewProvider {
     static var previews: some View {
         
-        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", weightage: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA3", weightage: 15, totalMarks: 45, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date()),Assessment(name: "EYE", weightage: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())],targetGrade: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
+        SubjectOverallView(subje: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA2", weightage: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(),  haveReminder: false, reminder: Date()),Assessment(name: "WA3", weightage: 15, totalMarks: 45, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date()),Assessment(name: "EYE", weightage: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())],targetMark: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
             .environmentObject(SystemManager())
     }
 }

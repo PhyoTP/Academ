@@ -18,7 +18,19 @@ class SubjectManager: ObservableObject {
     init() {
         load()
     }
-    
+    //    func overallGrade(){
+    //        var creditArray:[Int] = []
+    //        var overallArray:[Float] = []
+    //        for i in subjects{
+    //
+    //            creditArray.append(i.credits)
+    //            overallArray.append(i.currentOverall())
+    //        }
+    //
+    //    }
+    //    func targetOverall(){
+    //
+    //    }
     func getArchiveURL() -> URL {
         let plistName = "subjects.plist"
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -36,9 +48,9 @@ class SubjectManager: ObservableObject {
     func load() {
         let archiveURL = getArchiveURL()
         let propertyListDecoder = PropertyListDecoder()
-                
+        
         if let retrievedSubjectData = try? Data(contentsOf: archiveURL),
-            let subjectsDecoded = try? propertyListDecoder.decode([Subject].self, from: retrievedSubjectData) {
+           let subjectsDecoded = try? propertyListDecoder.decode([Subject].self, from: retrievedSubjectData) {
             subjects = subjectsDecoded
         }
     }

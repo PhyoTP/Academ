@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewSubjectView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
-    @State private var newSubject:Subject = Subject(name: "", assessments: [], targetGrade: 0, credits: 0, numOfAssessments: 4)
+    @State private var newSubject:Subject = Subject(name: "", assessments: [], targetMark: 0, credits: 0, numOfAssessments: 4)
     @State private var showNewAssessmentSheet = false
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userData: UserData
@@ -20,7 +20,7 @@ struct NewSubjectView: View {
                     TextField("Subject", text:$newSubject.name)
                     HStack{
                         Text("Overall Goal")
-                        TextField("Percentage", value: $newSubject.targetGrade, formatter: NumberFormatter())
+                        TextField("Percentage", value: $newSubject.targetMark, formatter: NumberFormatter())
                         Text("%")
                     }
                     HStack{
