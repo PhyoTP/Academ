@@ -50,11 +50,11 @@ struct SubjectsView: View {
                     }else if userData.selection==8{
                         HStack{
                             Text("Target MAG")
-                            Text(String(format:"%.0f",systemmanager.MSGtoMAG(msg: settings.compute(isTarget: true,userData:userData))))
+                            Text(systemmanager.MSGtoMAG(msg: settings.compute(isTarget: true,userData:userData)))
                         }
                         HStack{
                             Text("Current MAG")
-                            Text(String(format:"%.0f",systemmanager.MSGtoMAG(msg:settings.compute(isTarget: false,userData:userData))))
+                            Text(systemmanager.MSGtoMAG(msg:settings.compute(isTarget: false,userData:userData)))
                         }
                     }
                     
