@@ -29,7 +29,7 @@ struct NewAssessmentView: View {
     @State var alert = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
-    @State private var markCheck:Float = 0.0
+    @State private var markCheck:Double = 0.0
     @State var NotificationSet =  true
     @ObservedObject var userData: UserData
     func scheduleNotification(at date: Date, body: String, title: String) {

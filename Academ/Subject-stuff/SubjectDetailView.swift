@@ -65,7 +65,7 @@ struct SubjectDetailView: View {
                 }
             }
             .onAppear{
-                if (sub.assessments.count == sub.numOfAssessments || sub.numOfAssessments == 0)&&(sub.checkIfSubjectGradeExceeds100()>Float(100)){
+                if (sub.assessments.count == sub.numOfAssessments || sub.numOfAssessments == 0)&&(sub.checkIfSubjectGradeExceeds100()>Double(100)){
                     showAlert=true
                 }
             }

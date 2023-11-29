@@ -11,10 +11,10 @@ import SwiftUI
 struct Assessment: Identifiable, Codable{
     var id = UUID()
     var name: String
-    var weightage: Float
-    var totalMarks: Float
+    var weightage: Double
+    var totalMarks: Double
     var examDone: Bool
-    var markAttained: Float
+    var markAttained: Double
     var examDate: Date
     var haveReminder: Bool
     var reminder: Date
@@ -23,15 +23,15 @@ struct Subject: Identifiable, Codable{
     var id = UUID()
     var name: String
     var assessments: [Assessment]
-    var targetMark: Float
+    var targetMark: Double
     // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
 //    var isHMT = false
     var isFoundation = false
     var isMTSB = false
-    func assessmentArray(type:Int)->[Float]{
-        var numArray:[Float] = []
+    func assessmentArray(type:Int)->[Double]{
+        var numArray:[Double] = []
         for i in assessments{
             if i.examDone{
                 if type == 0{
@@ -49,36 +49,36 @@ struct Subject: Identifiable, Codable{
         }
         return numArray
     }//gets a value from the assessments array (type 0 is totalMarks for done assessments, 1 is marksAttained, 2 is weightage, 3 is totalMarks for not done exams)
-    func arrayPercentage()->[Float]{
+    func arrayPercentage()->[Double]{
         let amountArray = assessmentArray(type:1) // marks attained
         let totaledArray = assessmentArray(type:0) // max marks
-        var percentageArray:[Float] = []
+        var percentageArray:[Double] = []
         for i in 0..<amountArray.count{
             percentageArray.append(percentage(amount: amountArray[i], total: totaledArray[i]))
         }
         return percentageArray
     }//calculates percentage and puts it in an array
-    func highest()->Float{
-        let floatArray = arrayPercentage()
-        var high:Float=0
-        for i in floatArray{
+    func highest()->Double{
+        let doubleArray = arrayPercentage()
+        var high:Double=0
+        for i in doubleArray{
             if i > high{
                 high=i
             }
         }
         return high
     }//finds the highest value in an array
-    /*func average()->Float{
-        let floatArray = arrayPercentage()
-        var sum:Float = 0
-        for i in floatArray{
+    /*func average()->Double{
+        let doubleArray = arrayPercentage()
+        var sum:Double = 0
+        for i in doubleArray{
             sum+=i
         }
-        sum/=Float(floatArray.count)
+        sum/=Double(doubleArray.count)
         return sum
         
-    }*///finds the average of floats in an array (deprecated)
-    func currentOverall() -> Float {
+    }*///finds the average of doubles in an array (deprecated)
+    func currentOverall() -> Double {
         let examWeightages = assessmentArray(type: 2)
         let arrayPercentages = arrayPercentage()
         
@@ -87,7 +87,7 @@ struct Subject: Identifiable, Codable{
             return 0.0
         }
         
-        var total: Float = 0
+        var total: Double = 0
         
         for i in examWeightages.indices {
             total += examWeightages[i] * arrayPercentages[i]
@@ -98,12 +98,12 @@ struct Subject: Identifiable, Codable{
         
         
     }//finds the current overall based on the percentage
-    func weightedGoal()->Float{
-        var percentageSum:Float=0
+    func weightedGoal()->Double{
+        var percentageSum:Double=0
         for i in 0..<arrayPercentage().count{
             percentageSum+=arrayPercentage()[i]/100*assessmentArray(type: 2)[i]
         }
-        var valueSum:Float = 0
+        var valueSum:Double = 0
         for i in assessmentArray(type: 2){
             valueSum+=i
         }
@@ -111,9 +111,9 @@ struct Subject: Identifiable, Codable{
         let sum = (targetMark-percentageSum)/valueSum*100
         return sum
     }//finds the percentage needed to achieve the goal
-    func checkIfSubjectGradeExceeds100() -> Float{
+    func checkIfSubjectGradeExceeds100() -> Double{
         
-        var finalGradeForSubject:Float = 0.0
+        var finalGradeForSubject:Double = 0.0
        // var exceeds100 = false
         for test in  (assessments) {
             finalGradeForSubject += test.weightage
@@ -141,14 +141,14 @@ struct GradeSystem: Codable{
 struct Grade: Codable, Identifiable{
     var id = UUID()
     var name: String
-    var minMark: Float
-    var maxMark: Float
-    var gradePoint: Float
+    var minMark: Double
+    var maxMark: Double
+    var gradePoint: Double
 }
 
 
 
-func percentage(amount:Float,total:Float)->Float{
+func percentage(amount:Double,total:Double)->Double{
     return amount/total*100
 }
 

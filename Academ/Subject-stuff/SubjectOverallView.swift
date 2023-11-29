@@ -76,7 +76,7 @@ struct SubjectOverallView: View {
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle(subje.name)
             .onAppear{
-                if (subje.assessments.count == subje.numOfAssessments)&&(subje.checkIfSubjectGradeExceeds100()>Float(100)){
+                if (subje.assessments.count == subje.numOfAssessments)&&(subje.checkIfSubjectGradeExceeds100()>Double(100)){
                     showAlert=true
                 }
             }

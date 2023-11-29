@@ -91,7 +91,7 @@ class SystemManager: ObservableObject {
     init() {
         load()
     }
-    func gradeCalculate(mark:Float,formatt:String)->String{
+    func gradeCalculate(mark:Double,formatt:String)->String{
         var resultGrade = ""
         if UserData().selection>0{
             let selectedSystem = systems[UserData().selection]
@@ -113,7 +113,31 @@ class SystemManager: ObservableObject {
         }
         return nameArray
     }
-    
+    func gradePointCalculate(mark:Double)->Double{
+        var resultGradePoint:Double = 0
+        if UserData().selection>0{
+            let selectedSystem = systems[UserData().selection]
+            for i in selectedSystem.grades{
+                if mark >= i.minMark{
+                    resultGradePoint = i.gradePoint
+                    break
+                }
+            }
+        }else{
+            resultGradePoint = 0.0
+        }
+        return resultGradePoint
+    }
+    func MSGtoMAG(msg:Double)->String{
+        var resultGrade = ""
+        for i in systems[8].grades{
+            if msg<=i.gradePoint{
+                resultGrade = i.name
+                break
+            }
+        }
+        return resultGrade
+    }
     func getArchiveURL() -> URL {
         let plistName = "systems.plist"
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
