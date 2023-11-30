@@ -30,7 +30,7 @@ struct SettingsView: View {
                 }
                 if userData.selection == 1{
                     Section("GPA Settings"){
-                        Toggle(isOn: $userData.haveCredits, label: {Text("Have credits? (work in progress)")})
+                        Toggle(isOn: $userData.haveCredits, label: {Text("Have credits?")})
                         List($systemmanager.systems[0].grades){$grade in
                             NavigationLink{
                                 GradeDetailView(grade: $grade,userData: userData)
