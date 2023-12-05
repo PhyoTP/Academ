@@ -26,7 +26,8 @@ func requestNotificationAuthorization() {
 
 struct NewAssessmentView: View {
     @State private var newAssessment = Assessment(name: "", weightage: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
-    @State var alert = false
+    @State var alert1 = false
+    @State var alert2 = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Double = 0.0
@@ -115,9 +116,13 @@ struct NewAssessmentView: View {
             Section {
                 Button("Save", role: .none) {
                     if sub.checkIfSubjectGradeExceeds100() + newAssessment.weightage > 100 {
-                        alert = true
+                        alert1 = true
                         
-                    } else {
+                    }
+                    else if newAssessment.totalMarks == 0 {
+                        alert2 = true
+                    }
+                    else {
                         sub.assessments.append(newAssessment)
                         dismiss()
                         if newAssessment.haveReminder && NotificationSet{
@@ -137,7 +142,10 @@ struct NewAssessmentView: View {
         }
         .background(userData.themelists[userData.colorSelect].mainColor)
         .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
-        .alert("The weightage of all assessments in a subject can only be 100%",isPresented: $alert){
+        .alert("The weightage of all assessments in a subject can only be 100%",isPresented: $alert1){
+            
+        }
+        .alert("The total marks cannot be 0.",isPresented: $alert2){
             
         }
     }
