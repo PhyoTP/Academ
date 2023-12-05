@@ -45,7 +45,7 @@ class UserData: ObservableObject{
         themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e")),
      //   textColor: .white
      
-        themeColors(themeName: "Minty (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),
+        themeColors(themeName: "Woods (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21")),
         // textColor: .white
         themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: .black, secondColor: Color(hex: "5a5a5a")),
         // textColor: .white
@@ -53,12 +53,12 @@ class UserData: ObservableObject{
                     //textColor: .black)
         themeColors(themeName: "Beach (For Light Mode)", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff")),
         // textColor: .black)
-        themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff")),
+        themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "#e6faff")),
         // textColor: .black
-        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff")),
+        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "eeeeff")),
        // textColor: .black
        
-        themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3")),
+        themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "#ffedf4"), secondColor: Color(hex: "#ffdbe3")),
         //textColor: .black
     ]
 
