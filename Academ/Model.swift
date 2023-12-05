@@ -158,6 +158,7 @@ struct themeColors: Identifiable{
     var hideBackground : Bool
     var mainColor : Color
     var secondColor : Color
+    var LightMode : Bool
 }
 
 //var HMT = GradeSystem(name: "hmt", grades: [

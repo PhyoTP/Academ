@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+    @State private var colorScheme = true // true is for light mode
     @ObservedObject var userData: UserData
     @State private var hideBackground = false
     @State private var showAlert = false
@@ -58,16 +58,18 @@ struct SettingsView: View {
                     }
                     .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 }
-//                }else if userData.selection == 3{
-//                    Section("AL settings"){
-//
-//                    }
-//                }
-                    
+                //                }else if userData.selection == 3{
+                //                    Section("AL settings"){
+                //
+                //                    }
+                //                }
+                
                 Section("Themes") {
                     Picker("Set Theme", selection: $userData.colorSelect) {
-                        ForEach(userData.themelists.indices) { index in
-                            Text(userData.themelists[index].themeName)
+                        if 1==1{
+                            ForEach(userData.themelists.indices) { index in
+                                Text(userData.themelists[index].themeName)
+                            }
                         }
                     }
                     .pickerStyle(.menu)
@@ -89,11 +91,11 @@ struct SettingsView: View {
                     Text("This cannot be undone.")
                 }
             }
-        
+            
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
-
+        
     }
     
 }
