@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var colorScheme = true // true is for light mode
+    //@State private var isLightTheme = true // true is for light mode
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var userData: UserData
     @State private var hideBackground = false
     @State private var showAlert = false
@@ -17,7 +18,9 @@ struct SettingsView: View {
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         //Color(hex:0xf2f2f7)
+        
         NavigationStack{
+            
             Form {
                 Section("Grading system") {
                     Picker("Grading System Type", selection: $userData.selection) {
@@ -66,9 +69,20 @@ struct SettingsView: View {
                 
                 Section("Themes") {
                     Picker("Set Theme", selection: $userData.colorSelect) {
-                        if 1==1{
+
+                        if colorScheme == .light{
                             ForEach(userData.themelists.indices) { index in
-                                Text(userData.themelists[index].themeName)
+                                if userData.themelists[index].LightMode == true{
+                                    Text(userData.themelists[index].themeName)
+                                }
+                                
+                            }
+                        } else {
+                            
+                            ForEach(userData.themelists.indices) { index in
+                                if userData.themelists[index].LightMode == false{
+                                    Text(userData.themelists[index].themeName)
+                                }
                             }
                         }
                     }
@@ -105,5 +119,6 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
+            //.colorScheme(.dark)
     }
 }
