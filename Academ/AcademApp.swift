@@ -55,7 +55,7 @@ class UserData: ObservableObject{
         // textColor: .black)
         themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "#e6faff")),
         // textColor: .black
-        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "eeeeff")),
+        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "fffedf")),
        // textColor: .black
        
         themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "#ffedf4"), secondColor: Color(hex: "#ffdbe3")),
