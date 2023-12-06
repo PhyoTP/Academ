@@ -78,9 +78,13 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
-                            Chart(subject.assessments, id: \.self) { assessment in
-                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
-                                    .foregroundStyle(.red)
+                            NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                    Text(subject.name)
+                                        
+                                    Chart(subject.assessments, id: \.self) { assessment in
+                                        LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                                            .foregroundStyle(.red)
+                                    }
                             }
                         }
                     }
