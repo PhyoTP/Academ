@@ -78,7 +78,6 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
-                            
                             if subject.assessments.count > 0 {
                                // Text("\(subject.name) results")
                                 NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
@@ -101,12 +100,13 @@ struct DashboardView: View {
                                     Text("\(subject.name) has no assessments available.")
                                 }
                             }
-                            
                         }
                         
                     }
+                    
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+ 
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
