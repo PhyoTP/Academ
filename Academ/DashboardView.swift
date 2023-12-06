@@ -81,7 +81,7 @@ struct DashboardView: View {
                             
                             if subject.assessments.count > 0 {
                                 // Text("\(subject.name) results")
-                                Section{
+                                Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                         VStack{
                                             Text("\(subject.name) trends")
@@ -92,13 +92,12 @@ struct DashboardView: View {
                                                     .foregroundStyle(.red)
                                                 LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
                                                     .foregroundStyle(.green)
-                                                //                                                .annotation(position: .overlay, alignment: .bottomTrailing) {
-                                                //                                                    Text("Overall")
-                                                //                                                        .font(.system(size:10))
-                                                //                                                }
+
                                             }
+
+                                            
                                         }
-                                        
+                                        .frame(width: 300, height: 200)
                                         .chartYScale(domain:0...100)
                                     }
                                 }

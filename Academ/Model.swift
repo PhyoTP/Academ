@@ -19,7 +19,7 @@ struct Assessment: Identifiable, Codable, Hashable{
     var haveReminder: Bool
     var reminder: Date
 }
-struct Subject: Identifiable, Codable{
+struct Subject: Identifiable, Codable, Equatable{
     var id = UUID()
     var name: String
     var assessments: [Assessment]
