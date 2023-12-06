@@ -79,7 +79,7 @@ struct DashboardView: View {
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
                             
-                            if subject.assessments.count > 0 {
+                            if subject.assessments.count > 1 {
                                 // Text("\(subject.name) results")
                                 Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
@@ -107,7 +107,7 @@ struct DashboardView: View {
                             } else {
                                 Section{
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                        Text("\(subject.name) has no assessments available.")
+                                        Text("\(subject.name) needs at least two scores to see overall grades.")
                                     }
                                 }
                                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
