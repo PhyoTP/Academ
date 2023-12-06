@@ -57,8 +57,8 @@ struct SubjectDetailView: View {
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section(header: Text("Subject trends (%)")){
-                    if (sub.assessments.count == 0) {
-                        Text("No assessments available, try adding one to visualise your progress!")
+                    if (sub.assessments.count <= 1) {
+                        Text("Track two or more scores to see your grades over time!")
                     } else {
                         Chart(sub.assessments, id: \.self) { assessment in
                             LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
