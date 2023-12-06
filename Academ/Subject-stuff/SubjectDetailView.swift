@@ -56,10 +56,13 @@ struct SubjectDetailView: View {
                     
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
-                Chart(sub.assessments, id: \.self) { assessment in
-                    LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
-                        .foregroundStyle(.red)
+                Section(header: Text("Subject results")){
+                    Chart(sub.assessments, id: \.self) { assessment in
+                        LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                            .foregroundStyle(.red)
+                    }
                 }
+                
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
