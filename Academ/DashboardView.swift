@@ -83,31 +83,19 @@ struct DashboardView: View {
                                // Text("\(subject.name) results")
                                 NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                     VStack{
-                                        Text("\(subject.name) results")
+                                        Text("\(subject.name) trends")
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                            .offset(y: 8) 
+                                            .offset(y: 8)
                                         Chart(subject.assessments, id: \.self) { assessment in
                                             LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                                 .foregroundStyle(.red)
-                                            
-                                            //                                            .annotation(position: .overlay, alignment: .bottom) {
-                                            //                                                                                Text("Overall goal")
-                                            //                                                    .font(.system(size: 10))
-                                            //  }
-                                            
                                             LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
                                                 .foregroundStyle(.green)
                                         }
                                     }
                                     .chartYScale(domain:0...100)
-//                                    .overlay(
-//                                       Text("\(subject.name) results")
-//                                           .font(.title)
-//                                           .padding(),
-//                                       alignment: .top
-//                                    )
-                                    
                                 }
+                                
                             } else {
                                 NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                     Text("\(subject.name) has no assessments available.")

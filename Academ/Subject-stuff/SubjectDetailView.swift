@@ -67,6 +67,7 @@ struct SubjectDetailView: View {
                                 .foregroundStyle(.green)
 
                         }
+                        .chartYScale(domain:0...100)
                     }
                     
                 }
