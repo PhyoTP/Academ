@@ -78,7 +78,6 @@ struct SettingsView: View {
                                 
                             }
                         } else {
-                            
                             ForEach(userData.themelists.indices) { index in
                                 if userData.themelists[index].LightMode == false{
                                     Text(userData.themelists[index].themeName)

@@ -84,6 +84,9 @@ struct DashboardView: View {
                                     Chart(subject.assessments, id: \.self) { assessment in
                                         LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                             .foregroundStyle(.red)
+                                        
+                                        LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
+                                            .foregroundStyle(.green)
                                     }
                                 }
                             } else {
