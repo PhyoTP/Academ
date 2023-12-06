@@ -78,26 +78,35 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
+                            
                             if subject.assessments.count > 0 {
-                               // Text("\(subject.name) results")
-                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                    VStack{
-                                        Text("\(subject.name) trends")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .offset(y: 8)
-                                        Chart(subject.assessments, id: \.self) { assessment in
-                                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
-                                                .foregroundStyle(.red)
-                                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
-                                                .foregroundStyle(.green)
+                                // Text("\(subject.name) results")
+                                Section{
+                                    NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                        VStack{
+                                            Text("\(subject.name) trends")
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .offset(y: 8)
+                                            Chart(subject.assessments, id: \.self) { assessment in
+                                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                                                    .foregroundStyle(.red)
+                                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
+                                                    .foregroundStyle(.green)
+                                                //                                                .annotation(position: .overlay, alignment: .bottomTrailing) {
+                                                //                                                    Text("Overall")
+                                                //                                                        .font(.system(size:10))
+                                                //                                                }
+                                            }
                                         }
+                                        
+                                        .chartYScale(domain:0...100)
                                     }
-                                    .chartYScale(domain:0...100)
                                 }
-                                
                             } else {
-                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                    Text("\(subject.name) has no assessments available.")
+                                Section{
+                                    NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                        Text("\(subject.name) has no assessments available.")
+                                    }
                                 }
                             }
                         }
@@ -106,7 +115,7 @@ struct DashboardView: View {
                     
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
- 
+                
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
