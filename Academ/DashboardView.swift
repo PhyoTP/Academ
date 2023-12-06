@@ -88,7 +88,7 @@ struct DashboardView: View {
                                 }
                             } else {
                                 NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                    Text("\(subject.name) has no assessments available. Add one in the subjects tab to visualise the results!")
+                                    Text("\(subject.name) has no assessments available.")
                                 }
                             }
                             
