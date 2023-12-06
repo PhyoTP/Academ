@@ -8,9 +8,9 @@
 import SwiftUI
 import Charts
 struct ChartAssessment: Identifiable, Hashable {
-   var id = UUID()
-   var name: String
-   var mark: Int
+    var id = UUID()
+    var name: String
+    var mark: Int
 }
 struct DonutChartView: View {
     var percentage: CGFloat
@@ -78,16 +78,22 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
-                            Text("\(subject.name) results")
-                            NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                    
-                                        
+                            if subject.assessments.count > 0 {
+                                Text("\(subject.name) results")
+                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                     Chart(subject.assessments, id: \.self) { assessment in
                                         LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                             .foregroundStyle(.red)
                                     }
+                                }
+                            } else {
+                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                    Text("\(subject.name) has no assessments available. Add one in the subjects tab to visualise the results!")
+                                }
                             }
+                            
                         }
+                        
                     }
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
