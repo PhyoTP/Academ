@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Charts
 struct DonutChartView: View {
     var percentage: CGFloat
     //    @EnvironmentObject var subjectmanager: SubjectManager
