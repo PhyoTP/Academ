@@ -72,7 +72,7 @@ struct DashboardView: View {
                     }
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
-                Section(header: Text("Subjects")) {
+                
                     if subjectmanager.subjects.count == 0 {
                         Text("No subjects available. Go add some in the subjects tab!")
                             .foregroundColor(.gray)
@@ -102,19 +102,20 @@ struct DashboardView: View {
                                         .chartYScale(domain:0...100)
                                     }
                                 }
+                                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                             } else {
                                 Section{
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                         Text("\(subject.name) has no assessments available.")
                                     }
                                 }
+                                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                             }
                         }
                         
                     }
                     
-                }
-                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+   
                 
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
