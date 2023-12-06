@@ -94,7 +94,9 @@ struct DashboardView: View {
                                                     .foregroundStyle(.green)
 
                                             }
-
+                                           // .chartForegroundStyleScale(["Overall": Color.green, "Score": Color.purple])
+                                            .chartLegend(.visible)
+ 
                                             
                                         }
                                         .frame(width: 300, height: 200)
