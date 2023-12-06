@@ -7,6 +7,11 @@
 
 import SwiftUI
 import Charts
+struct ChartAssessment: Identifiable, Hashable {
+   var id = UUID()
+   var name: String
+   var mark: Int
+}
 struct DonutChartView: View {
     var percentage: CGFloat
     //    @EnvironmentObject var subjectmanager: SubjectManager
@@ -31,15 +36,10 @@ struct DonutChartView: View {
             Text("\(formattedResult)")
             
         }
-        //.padding()
-        
-        
-        
-        
         
     }
-    
 }
+
 struct DashboardView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     @ObservedObject var userData: UserData
@@ -78,12 +78,9 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
-                            NavigationLink{
-                                SubjectDetailView(sub: $subject,userData: userData)
-                            }label: {
-                                VStack{
-                                    Text(subject.name)
-                                }
+                            Chart(subject.assessments, id: \.self) { assessment in
+                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                                    .foregroundStyle(.red)
                             }
                         }
                     }

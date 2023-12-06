@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Assessment: Identifiable, Codable{
+struct Assessment: Identifiable, Codable, Hashable{
     var id = UUID()
     var name: String
     var weightage: Double
