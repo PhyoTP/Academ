@@ -78,7 +78,7 @@ struct DashboardView: View {
                             .foregroundColor(.gray)
                     }else{
                         ForEach($subjectmanager.subjects){ $subject in
-                            Text(subject.name)
+                            Text("\(subject.name) results")
                             NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                     
                                         
