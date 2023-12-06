@@ -28,6 +28,7 @@ struct NewAssessmentView: View {
     @State private var newAssessment = Assessment(name: "", weightage: 0, totalMarks: 0, examDone: false, markAttained: 0, examDate: Date(), haveReminder: false, reminder: Date())
     @State var alert1 = false
     @State var alert2 = false
+    @State var alert3 = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Double = 0.0
@@ -122,6 +123,9 @@ struct NewAssessmentView: View {
                     else if newAssessment.totalMarks == 0 {
                         alert2 = true
                     }
+                    else if newAssessment.totalMarks < newAssessment.markAttained {
+                        alert3 = true
+                    }
                     else {
                         sub.assessments.append(newAssessment)
                         dismiss()
@@ -148,6 +152,10 @@ struct NewAssessmentView: View {
         .alert("The total marks cannot be 0.",isPresented: $alert2){
             
         }
+        .alert("Marks attained cannot exceed total marks of an assessment",isPresented: $alert3){
+            
+        }
+
     }
 }
 struct NewAssessmentView_Previews: PreviewProvider {
