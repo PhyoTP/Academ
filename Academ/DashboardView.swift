@@ -109,6 +109,7 @@ struct DashboardView: View {
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.red)
                                         Text("Marks per WA")
+                                        Text("        ")
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.green)
                                         Text("Goal marks")

@@ -69,6 +69,17 @@ struct SubjectDetailView: View {
                         }
                         .chartYScale(domain:0...100)
                     }
+                    if sub.assessments.count > 1{
+                        HStack{
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.red)
+                            Text("Marks per WA")
+                            Text("        ")
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.green)
+                            Text("Goal marks")
+                        }
+                    }
                     
                 }
                 
