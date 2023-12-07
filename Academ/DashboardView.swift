@@ -87,6 +87,7 @@ struct DashboardView: View {
                                             Text("\(subject.name) overall grades")
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .offset(y: 8)
+                                                .font(.title2)
                                             Chart(subject.assessments, id: \.self) { assessment in
                                                 LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                                     .foregroundStyle(.red)
