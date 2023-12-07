@@ -23,7 +23,6 @@ class AppDelegate: NSObject, UNUserNotificationCenterDelegate, UIApplicationDele
         return true
     }
 }
-
 @main
 struct AcademApp: App {
     

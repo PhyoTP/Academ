@@ -74,19 +74,25 @@ struct SettingsView: View {
                             ForEach(userData.themelists.indices) { index in
                                 if userData.themelists[index].LightMode == true{
                                     Text(userData.themelists[index].themeName)
+                                    
                                 }
-                                
                             }
+                             //userData.colorSelect = userData.themelists[0]
+                            
                         } else {
                             ForEach(userData.themelists.indices) { index in
                                 if userData.themelists[index].LightMode == false{
                                     Text(userData.themelists[index].themeName)
+                                   
                                 }
+                                
                             }
+                           // userData.colorSelect = userData.themelists[3]
                         }
                     }
                     .pickerStyle(.menu)
                 }
+                
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section{
                     Button("Reset to new year", role: .destructive){
@@ -95,7 +101,7 @@ struct SettingsView: View {
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 .navigationTitle("Settings")
-                .alert("Are you sure you want to rest to a new year?", isPresented: $showAlert){
+                .alert("Are you sure you want to reset to a new year?", isPresented: $showAlert){
                     Button("Confirm", role: .destructive){
                         subjectmanager.subjects = []
                     }
@@ -108,7 +114,16 @@ struct SettingsView: View {
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
+//        .onAppear{
+//            print("Appear")
+//
+//        }
         
+//        if colorScheme == .dark {
+//            userData.colorSelect = userData.themelists[0]
+//        } else {
+//            userData.colorSelect = userData.themelists[3]
+//        }
     }
     
 }

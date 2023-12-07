@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selection = 2
     @StateObject private var userData = UserData()
-    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         TabView(selection: $selection){
             SubjectsView(userData: userData)
@@ -31,6 +31,14 @@ struct ContentView: View {
                         .ignoresSafeArea(.all)
                 }.tag(3)
             
+        }
+        .onAppear{
+            print("Appeared")
+            if colorScheme == .light{
+             //   userData.colorSelect = userData.themelists[0]
+            } else {
+             //   userData.colorSelect = userData.themelists[3]
+            }
         }
     }
 }
