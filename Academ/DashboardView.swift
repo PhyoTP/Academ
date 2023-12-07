@@ -93,18 +93,28 @@ struct DashboardView: View {
                                                     
                                                 LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
                                                     .foregroundStyle(.green)
+
                                                     
                                             }
-                                            .chartLegend(.visible)
+                
                                             
  
                                             
                                         }
                                         .frame(width: 300, height: 200)
                                         .chartYScale(domain:0...100)
-                                     //   .foregroundStyle(by: .value("type"), subject.type)
+  
+                                    }
+                                    HStack{
+                                        Image(systemName: "circle.fill")
+                                            .foregroundColor(.red)
+                                        Text("Marks per WA")
+                                        Image(systemName: "circle.fill")
+                                            .foregroundColor(.green)
+                                        Text("Goal marks")
                                     }
                                 }
+                                
                                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                             } else {
                                 Section{
