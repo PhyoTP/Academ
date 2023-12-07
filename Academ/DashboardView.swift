@@ -84,7 +84,7 @@ struct DashboardView: View {
                                 Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                         VStack{
-                                            Text("\(subject.name) trends")
+                                            Text("\(subject.name) overall grades")
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .offset(y: 8)
                                             Chart(subject.assessments, id: \.self) { assessment in
@@ -108,8 +108,8 @@ struct DashboardView: View {
                                     HStack{
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.red)
-                                        Text("Marks per WA")
-                                        Text("        ")
+                                        Text("WA marks")
+                                        Text("  ")
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.green)
                                         Text("Goal marks")
