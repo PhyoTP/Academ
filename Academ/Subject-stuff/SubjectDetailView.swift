@@ -60,6 +60,8 @@ struct SubjectDetailView: View {
                     if (sub.assessments.count <= 1) {
                         Text("Track two or more scores to see your grades over time!")
                     } else {
+                        Text("\(sub.name)")
+                            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         Chart(sub.assessments, id: \.self) { assessment in
                             LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                 .foregroundStyle(.red)
@@ -67,6 +69,7 @@ struct SubjectDetailView: View {
                                 .foregroundStyle(.green)
 
                         }
+                        .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         .chartYScale(domain:0...100)
                     }
                     if sub.assessments.count > 1{
@@ -79,6 +82,7 @@ struct SubjectDetailView: View {
                                 .foregroundColor(.green)
                             Text("Goal marks")
                         }
+                        .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                     }
                     
                 }
