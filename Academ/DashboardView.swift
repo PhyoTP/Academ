@@ -90,17 +90,19 @@ struct DashboardView: View {
                                             Chart(subject.assessments, id: \.self) { assessment in
                                                 LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
                                                     .foregroundStyle(.red)
+                                                    
                                                 LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
                                                     .foregroundStyle(.green)
-
+                                                    
                                             }
-                                           // .chartForegroundStyleScale(["Overall": Color.green, "Score": Color.purple])
                                             .chartLegend(.visible)
+                                            
  
                                             
                                         }
                                         .frame(width: 300, height: 200)
                                         .chartYScale(domain:0...100)
+                                     //   .foregroundStyle(by: .value("type"), subject.type)
                                     }
                                 }
                                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
@@ -111,14 +113,16 @@ struct DashboardView: View {
                                     }
                                 }
                                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+                                
                             }
                         }
-                        
+                    
                     }
+                
+                
                     
    
-                
-            }
+                }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle("Dashboard")
