@@ -48,17 +48,15 @@ class UserData: ObservableObject{
         // textColor: .white
         themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: .black, secondColor: Color(hex: "5a5a5a"), LightMode: false),
         // textColor: .white
-        themeColors(themeName: "Light (For Light Mode)", hideBackground: true, mainColor: .white, secondColor: Color(hex: "f2f2f7"), LightMode: true),
+        themeColors(themeName: "Light", hideBackground: true, mainColor: .white, secondColor: Color(hex: "f2f2f7"), LightMode: true),
                     //textColor: .black)
-        themeColors(themeName: "Beach (For Light Mode)", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        themeColors(themeName: "Beach", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff"), LightMode: true),
         // textColor: .black)
-        themeColors(themeName: "Winter (For Light Mode)", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff"), LightMode: true),
-        // textColor: .black
-        themeColors(themeName: "Lemon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff"), LightMode: true),
-       // textColor: .black
-       
-        themeColors(themeName: "Salmon (For Light Mode)", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3"), LightMode: true),
-        //textColor: .black
+        themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        themeColors(themeName: "Salmon", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3"), LightMode: true),
+        themeColors(themeName: "Purple", hideBackground: true, mainColor: Color(hex: "d0bdf4"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        
     ]
 
 }
