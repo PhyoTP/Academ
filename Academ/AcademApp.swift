@@ -42,19 +42,22 @@ class UserData: ObservableObject{
     
     let themelists = [
         themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e"), LightMode: false),
-     //   textColor: .white
-     
+    
         themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21"), LightMode: false),
-        // textColor: .white 8300c4
-        themeColors(themeName: "Purple", hideBackground: true, mainColor: Color(hex: "31004a"), secondColor: Color(hex: "4c00a4"), LightMode: false),
-        // textColor: .white
+
+        themeColors(themeName: "Purple (Dark mode)", hideBackground: true, mainColor: Color(hex: "31004a"), secondColor: Color(hex: "4c00a4"), LightMode: false),
+        
+        themeColors(themeName: "Charcoal", hideBackground: true, mainColor: Color(hex: "101314"), secondColor: Color(hex: "36454f"), LightMode: false),
+      
         themeColors(themeName: "Light", hideBackground: true, mainColor: .white, secondColor: Color(hex: "f2f2f7"), LightMode: true),
-                    //textColor: .black)
+
         themeColors(themeName: "Beach", hideBackground: true, mainColor: Color(hex: "f5f5dc"), secondColor: Color(hex: "ffffff"), LightMode: true),
-        // textColor: .black)
+
         themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        
         themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff"), LightMode: true),
-        themeColors(themeName: "Purple", hideBackground: true, mainColor: Color(hex: "d0bdf4"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        
+        themeColors(themeName: "Purple (Light mode)", hideBackground: true, mainColor: Color(hex: "d0bdf4"), secondColor: Color(hex: "ffffff"), LightMode: true),
         
     ]
 
