@@ -6,6 +6,7 @@ struct AssessmentDetailView: View {
     @State private var isDisplayed = false
     @State var NotificationSet =  true
     @ObservedObject var userData: UserData
+    @State private var showAlert = false
     // all data has to be binding or else it would refresh
     func requestNotificationAuthorization() {
         let center = UNUserNotificationCenter.current()
@@ -62,10 +63,21 @@ struct AssessmentDetailView: View {
                         
                         
                     }
-                    HStack{
+                    //                    HStack {
+                    //                        Text("Total marks:")
+                    //                        TextField("Marks", value: $assess.totalMarks, formatter: NumberFormatter())
+                    //
+                    //                    }
+                    HStack {
                         Text("Total marks:")
                         TextField("Marks", value: $assess.totalMarks, formatter: NumberFormatter())
-                        
+                            .onChange(of: assess.totalMarks) { newValue in
+                                if let value = Int?(Int(newValue)), value < Int(assess.markAttained) || value <= 0 {
+                                    
+                                    assess.totalMarks = assess.markAttained + 1
+                                   //     .foregroundColor(.red)
+                                }
+                            }
                     }
                     
                     HStack{
@@ -111,6 +123,7 @@ struct AssessmentDetailView: View {
             .navigationTitle($assess.name)
             //            .background(.green)
             //            .scrollContentBackground(.hidden)
+
         }
     }
 }

@@ -35,7 +35,7 @@ struct ContentView: View {
         .onAppear{
             print("Appeared")
             if colorScheme == .light{
-                userData.colorSelect = 3
+                userData.colorSelect = 4
             } else {
                 userData.colorSelect = 0
             }
@@ -48,7 +48,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
-           // .colorScheme(.dark)
+            //.colorScheme(.dark)
     }
 }
 
