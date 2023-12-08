@@ -41,12 +41,12 @@ class UserData: ObservableObject{
     @AppStorage("themes") var colorSelect = 3
     
     let themelists = [
-        themeColors(themeName: "Default (For Dark Mode)", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e"), LightMode: false),
+        themeColors(themeName: "Default", hideBackground: false, mainColor: .black, secondColor: Color(hex: "1c1c1e"), LightMode: false),
      //   textColor: .white
      
-        themeColors(themeName: "Minty (For Dark Mode)", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21"), LightMode: false),
-        // textColor: .white
-        themeColors(themeName: "Dark (For Dark Mode)", hideBackground: true, mainColor: .black, secondColor: Color(hex: "5a5a5a"), LightMode: false),
+        themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "165607"), secondColor: Color(hex: "2a6f21"), LightMode: false),
+        // textColor: .white 8300c4
+        themeColors(themeName: "Purple", hideBackground: true, mainColor: Color(hex: "31004a"), secondColor: Color(hex: "4c00a4"), LightMode: false),
         // textColor: .white
         themeColors(themeName: "Light", hideBackground: true, mainColor: .white, secondColor: Color(hex: "f2f2f7"), LightMode: true),
                     //textColor: .black)
@@ -54,7 +54,6 @@ class UserData: ObservableObject{
         // textColor: .black)
         themeColors(themeName: "Winter", hideBackground: true, mainColor: Color(hex: "bddeec"), secondColor: Color(hex: "ffffff"), LightMode: true),
         themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff"), LightMode: true),
-        themeColors(themeName: "Salmon", hideBackground: true, mainColor: Color(hex: "c9343c"), secondColor: Color(hex: "ffdbe3"), LightMode: true),
         themeColors(themeName: "Purple", hideBackground: true, mainColor: Color(hex: "d0bdf4"), secondColor: Color(hex: "ffffff"), LightMode: true),
         
     ]

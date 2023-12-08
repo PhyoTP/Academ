@@ -133,6 +133,6 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
-            //.colorScheme(.dark)
+            .colorScheme(.dark)
     }
 }
