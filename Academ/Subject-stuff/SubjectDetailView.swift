@@ -67,6 +67,8 @@ struct SubjectDetailView: View {
                                 .foregroundStyle(.red)
                             LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.targetMark),series: .value("blank", "smth"))
                                 .foregroundStyle(.green)
+                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.currentOverall()),series: .value("blank", "ded"))
+                                .foregroundStyle(Color(hex:"0096FF"))
 
                         }
                         .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
@@ -81,6 +83,10 @@ struct SubjectDetailView: View {
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.green)
                             Text("Goal marks")
+                            Text("  ")
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(Color(hex:"0096FF"))
+                            Text("Overall marks")
                         }
                         .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                     }
