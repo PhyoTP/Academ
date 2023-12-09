@@ -29,6 +29,7 @@ struct NewAssessmentView: View {
     @State var alert1 = false
     @State var alert2 = false
     @State var alert3 = false
+    @State var alert4 = false
     @Environment(\.dismiss) var dismiss
     @Binding var sub: Subject
     @State private var markCheck:Double = 0.0
@@ -126,6 +127,9 @@ struct NewAssessmentView: View {
                     else if newAssessment.totalMarks < newAssessment.markAttained {
                         alert3 = true
                     }
+                    else if newAssessment.weightage == 0 {
+                        alert4 = true
+                    }
                     else {
                         sub.assessments.append(newAssessment)
                         dismiss()
@@ -155,6 +159,10 @@ struct NewAssessmentView: View {
         .alert("Marks attained cannot exceed total marks of an assessment",isPresented: $alert3){
             
         }
+        .alert("Weightage of an asssessment cannot be 0%",isPresented: $alert4){
+            
+        }
+
 
     }
 }
