@@ -58,6 +58,7 @@ class UserData: ObservableObject{
         themeColors(themeName: "Lemon", hideBackground: true, mainColor: Color(hex: "ffff9f"), secondColor: Color(hex: "ffffff"), LightMode: true),
         
         themeColors(themeName: "Purple (Light mode)", hideBackground: true, mainColor: Color(hex: "d0bdf4"), secondColor: Color(hex: "ffffff"), LightMode: true),
+        themeColors(themeName: "Minty", hideBackground: true, mainColor: Color(hex: "E1F8DC"), secondColor: Color(hex: "ffffff"), LightMode: true),
         
     ]
 
