@@ -46,7 +46,7 @@ struct DashboardView: View {
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
         NavigationStack{
-            List {
+            Form {
                 Section{
                     if subjectmanager.subjects.count == 0 {
                         Text("No subjects")

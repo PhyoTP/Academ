@@ -17,7 +17,7 @@ struct SettingsView: View {
     @EnvironmentObject var subjectmanager: SubjectManager
     @EnvironmentObject var systemmanager: SystemManager
     var body: some View {
-        //Color(hex:0xf2f2f7)
+        
         
         NavigationStack{
             
@@ -114,16 +114,6 @@ struct SettingsView: View {
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
         }
-//        .onAppear{
-//            print("Appear")
-//
-//        }
-        
-//        if colorScheme == .dark {
-//            userData.colorSelect = userData.themelists[0]
-//        } else {
-//            userData.colorSelect = userData.themelists[3]
-//        }
     }
     
 }
