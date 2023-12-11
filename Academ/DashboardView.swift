@@ -84,24 +84,46 @@ struct DashboardView: View {
                                 Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
                                         VStack{
-                                            Text("\(subject.name) overall grades")
+                                            Text("\(subject.name) mark trend")
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .offset(y: 8)
                                                 .font(.title2)
-                                            Chart(subject.assessments, id: \.self) { assessment in
-                                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                                            ZStack{
+                                                Chart(subject.assessments) { assessment in
+                                                    LineMark(
+                                                        x: .value("Assessment", assessment.name),
+                                                        y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks))
+                                                    )
                                                     .foregroundStyle(.red)
+                                                }
+                                                Chart(subject.assessments) { assessment in
                                                     
-                                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.targetMark),series: .value("blank", "smth"))
-                                                    .foregroundStyle(.green)
-                                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", subject.currentOverall()),series: .value("blank", "ded"))
-                                                    .foregroundStyle(Color(hex:"0096FF"))
+                                                    
+                                                    
+                                                   LineMark(
+                                                       x: .value("Assessment", assessment.name),
+                                                       y: .value("Mark", subject.targetMark)
+                                                   )
+                                                   .foregroundStyle(.green)
+                                                   
+                                                   
+                                                }
+                                                Chart(subject.assessments) { assessment in
+                                                    
+                                                    
 
+                                                   LineMark(
+                                                       x: .value("Assessment", assessment.name),
+                                                       y: .value("Mark", subject.currentOverall())
+                                                   )
                                                     
+                                                    
+                                                    
+                                                }
                                             }
-                
                                             
- 
+                                            
+                                            
                                             
                                         }
                                         .frame(width: 300, height: 200)
@@ -127,7 +149,7 @@ struct DashboardView: View {
                             } else {
                                 Section{
                                     NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                        Text("\(subject.name) needs at least two scores to see overall grades.")
+                                        Text("\(subject.name) needs at least two scores to see mark trend.")
                                     }
                                 }
                                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
