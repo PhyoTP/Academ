@@ -73,96 +73,102 @@ struct DashboardView: View {
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 
-                    if subjectmanager.subjects.count == 0 {
+                if subjectmanager.subjects.count == 0 {
+                    Section{
                         Text("No subjects available. Go add some in the subjects tab!")
                             .foregroundColor(.gray)
-                    }else{
-                        ForEach($subjectmanager.subjects){ $subject in
-                            
-                            if subject.assessments.count > 1 {
-                                // Text("\(subject.name) results")
-                                Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
-                                    NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                        VStack{
-                                            Text("\(subject.name) mark trend")
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .offset(y: 8)
-                                                .font(.title2)
-                                            ZStack{
-                                                Chart(subject.assessments) { assessment in
+                    }
+                    .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+                }else{
+                    ForEach($subjectmanager.subjects){ $subject in
+                        
+                        if subject.assessmentArray(type:1).count > 1 {
+                            // Text("\(subject.name) results")
+                            Section(subject == subjectmanager.subjects.first ? "Subjects" : "") {
+                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                    VStack{
+                                        Text("\(subject.name) mark trends")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .offset(y: 8)
+                                            .font(.title2)
+                                        ZStack{
+                                            Chart(subject.assessments) { assessment in
+                                                if assessment.examDone{
                                                     LineMark(
                                                         x: .value("Assessment", assessment.name),
                                                         y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks))
                                                     )
                                                     .foregroundStyle(.red)
                                                 }
-                                                Chart(subject.assessments) { assessment in
-                                                    
-                                                    
-                                                    
-                                                   LineMark(
-                                                       x: .value("Assessment", assessment.name),
-                                                       y: .value("Mark", subject.targetMark)
-                                                   )
-                                                   .foregroundStyle(.green)
-                                                   
-                                                   
-                                                }
-                                                Chart(subject.assessments) { assessment in
-                                                    
-                                                    
-
-                                                   LineMark(
-                                                       x: .value("Assessment", assessment.name),
-                                                       y: .value("Mark", subject.currentOverall())
-                                                   )
-                                                    
-                                                    
-                                                    
-                                                }
                                             }
-                                            
-                                            
-                                            
-                                            
+                                            Chart(subject.assessments) { assessment in
+                                                
+                                                
+                                                if assessment.examDone{
+                                                    LineMark(
+                                                        x: .value("Assessment", assessment.name),
+                                                        y: .value("Mark", subject.targetMark)
+                                                    )
+                                                    .foregroundStyle(.green)
+                                                }
+                                                
+                                            }
+                                            Chart(subject.assessments) { assessment in
+                                                
+                                                
+                                                if assessment.examDone{
+                                                    LineMark(
+                                                        x: .value("Assessment", assessment.name),
+                                                        y: .value("Mark", subject.currentOverall())
+                                                    )
+                                                }
+                                                
+                                                
+                                            }
                                         }
-                                        .frame(width: 300, height: 200)
-                                        .chartYScale(domain:0...100)
-  
+                                        
+                                        
+                                        
+                                        
                                     }
-                                    HStack{
-                                        Image(systemName: "circle.fill")
-                                            .foregroundColor(.red)
-                                        Text("WA marks")
-                                        Text("  ")
-                                        Image(systemName: "circle.fill")
-                                            .foregroundColor(.green)
-                                        Text("Goal marks")
-                                        Text("  ")
-                                        Image(systemName: "circle.fill")
-                                            .foregroundColor(Color(hex:"0096FF"))
-                                        Text("Overall marks")
-                                    }
+                                    .frame(width: 300, height: 200)
+                                    .chartYScale(domain:0...100)
+                                    
                                 }
-                                
-                                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
-                            } else {
-                                Section{
-                                    NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
-                                        Text("\(subject.name) needs at least two scores to see mark trend.")
-                                    }
+                                HStack{
+                                    Image(systemName: "circle.fill")
+                                        .foregroundColor(.red)
+                                    Text("WA marks")
+                                    Text("  ")
+                                    Image(systemName: "circle.fill")
+                                        .foregroundColor(.green)
+                                    Text("Goal marks")
+                                    Text("  ")
+                                    Image(systemName: "circle.fill")
+                                        .foregroundColor(Color(hex:"0096FF"))
+                                    Text("Overall marks")
                                 }
-                                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
-                                
                             }
+                            
+                            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+                        } else {
+                            Section{
+                                NavigationLink(destination: SubjectDetailView(sub: $subject,userData: userData)){
+                                    Text("\(subject.name) needs at least two scores to see mark trends.")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
+                            
                         }
-                    
                     }
-                
-                
                     
-   
                 }
+                
+                
+                
+                
+            }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
             .navigationTitle("Dashboard")

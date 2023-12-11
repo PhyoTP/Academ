@@ -57,19 +57,21 @@ struct SubjectDetailView: View {
                 }
                 .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                 Section(header: Text("Subject trends (%)")){
-                    if (sub.assessments.count <= 1) {
+                    if sub.assessmentArray(type: 1).count <= 1 {
                         Text("Track two or more scores to see your grades over time!")
+                            .foregroundColor(.gray)
                     } else {
                         Text("\(sub.name)")
                             .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         Chart(sub.assessments, id: \.self) { assessment in
-                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
-                                .foregroundStyle(.red)
-                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.targetMark),series: .value("blank", "smth"))
-                                .foregroundStyle(.green)
-                            LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.currentOverall()),series: .value("blank", "ded"))
-                                .foregroundStyle(Color(hex:"0096FF"))
-
+                            if assessment.examDone{
+                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", percentage(amount: assessment.markAttained, total: assessment.totalMarks)))
+                                    .foregroundStyle(.red)
+                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.targetMark),series: .value("blank", "smth"))
+                                    .foregroundStyle(.green)
+                                LineMark(x: .value("Assessment", assessment.name), y: .value("Mark", sub.currentOverall()),series: .value("blank", "ded"))
+                                    .foregroundStyle(Color(hex:"0096FF"))
+                            }
                         }
                         .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         .chartYScale(domain:0...100)
@@ -92,7 +94,7 @@ struct SubjectDetailView: View {
                     }
                     
                 }
-                
+                .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
             }
             .background(userData.themelists[userData.colorSelect].mainColor)
             .scrollContentBackground(userData.themelists[userData.colorSelect].hideBackground ? .hidden : .visible)
@@ -124,6 +126,11 @@ struct SubjectDetailView: View {
 }
 struct SubjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: false, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date())],targetMark:75,credits: 0, numOfAssessments: 4)),userData: UserData())
+        SubjectDetailView(sub: .constant(Subject(name: "Mathematics", assessments: [
+            Assessment(name: "WA1", weightage: 10, totalMarks: 20, examDone: true, markAttained: 12, examDate: Date(), haveReminder: false, reminder: Date()),
+            Assessment(name: "WA2", weightage: 15, totalMarks: 30, examDone: true, markAttained: 23, examDate: Date(), haveReminder: false, reminder: Date()),
+            Assessment(name: "WA3", weightage: 15, totalMarks: 45, examDone: true, markAttained: 37, examDate: Date(), haveReminder: false, reminder: Date()),
+            Assessment(name: "EYE", weightage: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: true, reminder: Date())
+        ], targetMark: 80, credits: 0, numOfAssessments: 4)),userData: UserData())
     }
 }
