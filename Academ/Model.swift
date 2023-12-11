@@ -27,7 +27,7 @@ struct Subject: Identifiable, Codable, Equatable{
     // var hasGoal: Bool
     var credits: Int
     var numOfAssessments: Int
-//    var isHMT = false
+    //    var isHMT = false
     var isFoundation = false
     var isMTSB = false
     func assessmentArray(type:Int)->[Double]{
@@ -69,15 +69,15 @@ struct Subject: Identifiable, Codable, Equatable{
         return high
     }//finds the highest value in an array
     /*func average()->Double{
-        let doubleArray = arrayPercentage()
-        var sum:Double = 0
-        for i in doubleArray{
-            sum+=i
-        }
-        sum/=Double(doubleArray.count)
-        return sum
-        
-    }*///finds the average of doubles in an array (deprecated)
+     let doubleArray = arrayPercentage()
+     var sum:Double = 0
+     for i in doubleArray{
+     sum+=i
+     }
+     sum/=Double(doubleArray.count)
+     return sum
+     
+     }*///finds the average of doubles in an array (deprecated)
     func currentOverall() -> Double {
         let examWeightages = assessmentArray(type: 2)
         let arrayPercentages = arrayPercentage()
@@ -114,18 +114,18 @@ struct Subject: Identifiable, Codable, Equatable{
     func checkIfSubjectGradeExceeds100() -> Double{
         
         var finalGradeForSubject:Double = 0.0
-       // var exceeds100 = false
+        // var exceeds100 = false
         for test in  (assessments) {
             finalGradeForSubject += test.weightage
             
-    //        if finalGradeForSubject >= 100.0 {
-   //             exceeds100 = true        
-   //         }
+            //        if finalGradeForSubject >= 100.0 {
+            //             exceeds100 = true
+            //         }
         }
         return finalGradeForSubject
     }//pretty self explanatory
     func getUnfinishedAssessments()->[Assessment]{
-    var unfinishedArray:[Assessment]=[]
+        var unfinishedArray:[Assessment]=[]
         for i in assessments{
             if !i.examDone{
                 unfinishedArray.append(i)

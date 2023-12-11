@@ -48,7 +48,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
-            //.colorScheme(.dark)
+        //.colorScheme(.dark)
     }
 }
 

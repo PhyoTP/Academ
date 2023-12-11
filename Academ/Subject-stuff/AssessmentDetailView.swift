@@ -75,7 +75,7 @@ struct AssessmentDetailView: View {
                                 if let value = Int?(Int(newValue)), value < Int(assess.markAttained) || value <= 0 {
                                     
                                     assess.totalMarks = assess.markAttained + 1
-                                   //     .foregroundColor(.red)
+                                    //     .foregroundColor(.red)
                                 }
                             }
                     }
@@ -123,7 +123,7 @@ struct AssessmentDetailView: View {
             .navigationTitle($assess.name)
             //            .background(.green)
             //            .scrollContentBackground(.hidden)
-
+            
         }
     }
 }

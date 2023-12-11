@@ -69,7 +69,7 @@ struct SettingsView: View {
                 
                 Section("Themes") {
                     Picker("Set Theme", selection: $userData.colorSelect) {
-
+                        
                         if colorScheme == .light{
                             ForEach(userData.themelists.indices) { index in
                                 if userData.themelists[index].LightMode == true{
@@ -77,17 +77,17 @@ struct SettingsView: View {
                                     
                                 }
                             }
-                             //userData.colorSelect = userData.themelists[0]
+                            //userData.colorSelect = userData.themelists[0]
                             
                         } else {
                             ForEach(userData.themelists.indices) { index in
                                 if userData.themelists[index].LightMode == false{
                                     Text(userData.themelists[index].themeName)
-                                   
+                                    
                                 }
                                 
                             }
-                           // userData.colorSelect = userData.themelists[3]
+                            // userData.colorSelect = userData.themelists[3]
                         }
                     }
                     .pickerStyle(.menu)
@@ -123,6 +123,6 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(userData: UserData())
             .environmentObject(SubjectManager())
             .environmentObject(SystemManager())
-            //.colorScheme(.dark)
+        //.colorScheme(.dark)
     }
 }

@@ -100,6 +100,6 @@ struct SubjectOverallView_Previews: PreviewProvider {
             Assessment(name: "WA3", weightage: 15, totalMarks: 45, examDone: true, markAttained: 37, examDate: Date(), haveReminder: false, reminder: Date()),
             Assessment(name: "EYE", weightage: 60, totalMarks: 120, examDone: false, markAttained: 0, examDate: Date(), haveReminder: true, reminder: Date())
         ], targetMark: 80, credits: 0, numOfAssessments: 4)),userData: UserData())
-            .environmentObject(SystemManager())
+        .environmentObject(SystemManager())
     }
 }

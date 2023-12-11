@@ -9,18 +9,18 @@ import SwiftUI
 import UserNotifications
 
 func requestNotificationAuthorization() {
-  print("glory to soon")
-  let center = UNUserNotificationCenter.current()
-  center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-      if granted {
-          print("Notification authorization granted")
-          DispatchQueue.main.async {
-              UIApplication.shared.registerForRemoteNotifications()
-          }
-      } else {
-          print("Notification authorization denied")
-      }
-  }
+    print("glory to soon")
+    let center = UNUserNotificationCenter.current()
+    center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        if granted {
+            print("Notification authorization granted")
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        } else {
+            print("Notification authorization denied")
+        }
+    }
 }
 
 
@@ -39,32 +39,32 @@ struct NewAssessmentView: View {
         
         requestNotificationAuthorization()
         
-       // Remove all pending notifications
-       
+        // Remove all pending notifications
+        
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-       UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-
-       let content = UNMutableNotificationContent()
-       content.title = title
-       content.body = body
-
-       let calendar = Calendar.current
-       let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-
-       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-
-       let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-       UNUserNotificationCenter.current().add(request) { error in
-           if let error = error {
-               print("Error scheduling notification: \(error.localizedDescription)")
-           } else {
-               print("Notification scheduled successfully at \(components)")
-           }
-       }
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully at \(components)")
+            }
+        }
     }
-
+    
     var body: some View {
         Form{
             Section("Assessment Info"){
@@ -134,7 +134,7 @@ struct NewAssessmentView: View {
                         sub.assessments.append(newAssessment)
                         dismiss()
                         if newAssessment.haveReminder && NotificationSet{
-//                            requestNotificationAuthorization()
+                            //                            requestNotificationAuthorization()
                             print("ASKING FOR NOTIFICATION")
                             scheduleNotification(at: newAssessment.reminder, body: "Your exam is on \(newAssessment.examDate)h", title: newAssessment.name)
                             NotificationSet = false
@@ -162,14 +162,14 @@ struct NewAssessmentView: View {
         .alert("Weightage of an asssessment cannot be 0%",isPresented: $alert4){
             
         }
-
-
+        
+        
     }
 }
 struct NewAssessmentView_Previews: PreviewProvider {
     static var previews: some View {
         NewAssessmentView(sub: .constant(Subject(name: "Mathematics", assessments: [], targetMark: 75, credits: 0, numOfAssessments: 4)), userData: UserData())
-            
+        
     }
 }
 

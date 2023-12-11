@@ -36,14 +36,14 @@ struct NewSubjectView: View {
                     }
                     if userData.selection==3{
                         
-//                        Toggle("Foundation Subject?", isOn: $newSubject.isFoundation)
+                        //                        Toggle("Foundation Subject?", isOn: $newSubject.isFoundation)
                         
                         
-//                        Toggle("Higher Mother Tongue?", isOn: $newSubject.isHMT)
+                        //                        Toggle("Higher Mother Tongue?", isOn: $newSubject.isHMT)
                         
                     }
                     if userData.selection==7{
-//                        Toggle("Mother Tongue Syllabus B?", isOn:$newSubject.isMTSB)
+                        //                        Toggle("Mother Tongue Syllabus B?", isOn:$newSubject.isMTSB)
                         
                     }
                 }
