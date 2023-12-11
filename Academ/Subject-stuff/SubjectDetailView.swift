@@ -76,7 +76,7 @@ struct SubjectDetailView: View {
                         .listRowBackground(userData.themelists[userData.colorSelect].secondColor)
                         .chartYScale(domain:0...100)
                     }
-                    if sub.assessments.count > 1{
+                    if sub.assessmentArray(type: 1).count > 1{
                         HStack{
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.red)
