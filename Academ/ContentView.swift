@@ -33,25 +33,25 @@ struct ContentView: View {
             
         }
         .onAppear{
-            while (true){
-                if colorScheme == .light{
-                    if userData.themelists[userData.colorSelect].LightMode == true{
-                        
-                    }else {
-                        userData.colorSelect = 4
-                    }
+            
+            if colorScheme == .light{
+                if userData.themelists[userData.colorSelect].LightMode == true{
+                    
+                }else {
+                    userData.colorSelect = 4
+                }
+                
+            } else {
+                if userData.themelists[userData.colorSelect].LightMode == false{
                     
                 } else {
-                    if userData.themelists[userData.colorSelect].LightMode == false{
-                        
-                    } else {
-                        userData.colorSelect = 0
-                    }
-                    
+                    userData.colorSelect = 0
                 }
+                
             }
+            
         }
-
+        
     }
 }
 
