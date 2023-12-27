@@ -35,9 +35,19 @@ struct ContentView: View {
         .onAppear{
             print("Appeared")
             if colorScheme == .light{
-                userData.colorSelect = 4
+                if userData.themelists[userData.colorSelect].LightMode == true{
+                    
+                }else {
+                    userData.colorSelect = 4
+                }
+                
             } else {
-                userData.colorSelect = 0
+                if userData.themelists[userData.colorSelect].LightMode == false{
+                    
+                } else {
+                    userData.colorSelect = 0
+                }
+                
             }
         }
     }
